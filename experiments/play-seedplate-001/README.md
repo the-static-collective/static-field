@@ -36,6 +36,18 @@ The generator in `seedplate.mjs` is **deterministic**, uses no network/AI/model 
 6. **Skip/stop is legal.** Nothing in this prototype gates access to rest, care, or personal relationships.
 7. **Visual differentiation is intentional.** All four donors need not share a beige skin; use the grammar, not the surface clone.
 
+## LISTENING ROOM 0.1 / PLAY-SEEDPLATE-002A — procedural spatial greybox
+
+A **browser-playable optional 3D room** has now landed in this experimental branch. Select both **Haunted Toaster** and **GrooveRooms**, compose the room, and use **Visit the listening room**. It dynamically starts a warm procedural Three.js interior with an inspect-only picture machine and listening chair. The two accessible DOM hotspot buttons perform the same inspection for keyboard/touch users; any gameplay choice still uses the original card preview and `appendRunEvent`. **Back to simple view** retains exactly the same local save. Selecting a new composition or clearing the existing one disposes the old renderer.
+
+To exercise the combined move, inspect the chair → listen → return; inspect the machine → view candidates → explicitly KEEP one → return; inspect the chair again → create the now-available **listening echo**. The existing deterministic replay supplies the unlock and exact kept-scene parent, not the 3D renderer. KEEP-first, then listen, also works. A viewed or scraped candidate never silently becomes history.
+
+**Zero external model/asset spend.** The room is built from authored Three.js primitive meshes and lighting. [room-asset-manifest.json](./room-asset-manifest.json) pins the **optional prototype** renderer to Three.js `0.180.0` on jsDelivr and records its MIT license and source. **This experimental room needs browser network access and WebGL2** to load the 3D view. Loading failure/context loss returns to the fully functional simple view. A final shipped build requires a separately reviewed bundled/vendored Three.js package rather than a CDN dependency.
+
+**Browser QA:** [PLAY-SEEDPLATE proof CI](https://github.com/the-static-collective/static-field/actions/workflows/play-seedplate-proof.yml) now runs the pure game/projection tests plus an actual mobile-sized Chromium smoke test. The smoke test boots the 3D canvas, uses DOM hotspots for listening and KEEP→echo, checks event IDs and local-save parity across mode switching and reload, and blocks the Three.js URL to verify the flat-game fallback. The run also uploads a phone-sized screenshot artifact. **This is executable proof, not human visual acceptance, measured phone FPS, final room geometry certification, or production deployment.**
+
+**Next gate:** manual visual and mobile-device review of the loaded camera and tap target placement. Approve a measured room plan/actual aperture schedule before replacing this greybox with final geometry or paying an asset provider; [ROOM-002](./ROOM-002.md) and [the build brief](./LISTENING-ROOM-0.1-BUILD-BRIEF.md) hold those conditions. No Game Development Studio local CLI invocation, Meshy/Tripo/Thrixel credit spend, Unity migration, or publishing has occurred.
+
 ## Proof and exercise
 
 From the repository root:
