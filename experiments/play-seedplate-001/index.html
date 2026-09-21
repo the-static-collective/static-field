@@ -24,12 +24,23 @@
       <section class="stage" id="stage" tabindex="-1" aria-label="Playable composed room">
         <div class="stage-inner">
           <p class="eyebrow" id="stage-eyebrow">YOUR NEW ROOM</p>
+          <div id="room-switch" class="room-switch" hidden>
+            <button id="room-toggle" class="room-toggle" type="button" aria-pressed="false">Visit the listening room</button>
+            <span id="room-switch-status" class="room-switch-status" role="status" aria-live="polite"></span>
+          </div>
           <div class="scene-art" aria-hidden="true">
             <div class="art-window"><span class="art-sun"></span></div>
             <div class="art-line"></div>
             <div class="art-table"><span class="art-cup"></span><span class="art-lemon"></span></div>
             <div class="art-door"></div>
             <span class="art-note">?</span>
+          </div>
+          <div id="room-surface" class="room-surface" hidden>
+            <div id="room-view" class="room-view" role="img" aria-label="A warm, small 3D listening room with a picture machine and listening chair. Use the object buttons below to inspect either."></div>
+            <div id="room-hotspots" class="room-hotspots" role="group" aria-label="Inspect room objects">
+              <button type="button" id="inspect-machine" data-hotspot="picture-machine">Picture machine</button>
+              <button type="button" id="inspect-chair" data-hotspot="listening-chair">Listening chair</button>
+            </div>
           </div>
           <h2 id="stage-title">A room is waiting.</h2>
           <p id="stage-body" class="stage-body">Pick at least two seeds to see what they can make together.</p>
