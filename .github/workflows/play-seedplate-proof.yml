@@ -26,3 +26,19 @@ jobs:
           node --check experiments/play-seedplate-001/listening-room.mjs
       - name: Run pure gameplay checks
         run: node --test experiments/play-seedplate-001/seedplate.test.mjs experiments/play-seedplate-001/listening-room.test.mjs
+      - name: Install pinned browser QA dependency
+        run: |
+          cd experiments/play-seedplate-001
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Play the phone-sized spatial room and its fallback
+        run: |
+          cd experiments/play-seedplate-001
+          node browser-smoke.mjs
+      - name: Save browser QA screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: listening-room-phone-qa
+          path: experiments/play-seedplate-001/listening-room-phone.png
+          if-no-files-found: ignore
