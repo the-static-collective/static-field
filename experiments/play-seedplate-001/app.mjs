@@ -1,6 +1,8 @@
 import {
   SEEDS,composeSeedplate,createRun,replayRun,appendRunEvent,exportRun,importRun,exportCompositionRecipe,
 } from "./seedplate.mjs";
+import {hotspotActions,projectListeningRoom} from "./room-projection.mjs";
+import {createListeningRoom} from "./listening-room.mjs";
 
 const STORE="static-play.seedplate-001.local-run.v1";
 const $=(selector)=>document.querySelector(selector);
@@ -19,6 +21,7 @@ const button=(label,cls,handler)=>{
 const addText=(container,tag,cls,text)=>container.append(node(tag,cls,text));
 const selectedSeeds=new Set(["grace","toaster"]);
 let visualLead="grace",run=null,chosenAction=null,focusedCandidate=null,noteDraft="";
+let roomEnabled=false,roomRenderer=null,roomStartToken=0,roomInfo="";
 try{
   const stored=window.localStorage.getItem(STORE);
   if(stored){
@@ -77,6 +80,7 @@ function commit(event){
 $("#compose-button").addEventListener("click",()=>{
   try {
     if(run?.events.length&&!window.confirm("Start a new local room? Your current local play trail will be replaced."))return;
+    closeSpatial();
     const composition=composeSeedplate([...selectedSeeds],{visualLead});
     run=createRun(composition);
     window.localStorage.setItem(STORE,exportRun(run));
@@ -100,10 +104,76 @@ $("#recipe-button").addEventListener("click",async()=>{
 });
 $("#reset-button").addEventListener("click",()=>{
   if(run?.events.length&&!window.confirm("Clear your local play trail and start another composition?"))return;
+  closeSpatial();
   run=null;chosenAction=null;focusedCandidate=null;noteDraft="";
   window.localStorage.removeItem(STORE);
   $("#composer").open=true;render();
 });
+
+function closeSpatial(){
+  roomStartToken+=1;
+  roomEnabled=false;
+  if(roomRenderer){roomRenderer.dispose();roomRenderer=null;}
+}
+function inspectRoomObject(id){
+  if(!run || !roomEnabled || !roomRenderer)return;
+  const view=replayRun(run);
+  if(view.stage!=="room")return;
+  const actions=hotspotActions(view,id);
+  if(!actions.length)return;
+  chosenAction=actions[0].id;
+  renderStage();
+  $("#stage-actions").scrollIntoView({block:"nearest",behavior:
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+for(const button of document.querySelectorAll("[data-hotspot]")){
+  button.addEventListener("click",()=>inspectRoomObject(button.dataset.hotspot));
+}
+$("#room-toggle").addEventListener("click",async()=>{
+  if(roomEnabled){closeSpatial();roomInfo="";chosenAction=null;render();return;}
+  if(!run || !["toaster","groove"].every(seed=>run.composition.seedIds.includes(seed)))return;
+  roomEnabled=true;roomInfo="Preparing the room…";
+  const token=++roomStartToken;
+  render();
+  try{
+    const instance=await createListeningRoom({
+      mount:$("#room-view"),
+      onInspect:inspectRoomObject,
+      onFallback:message=>{
+        if(roomEnabled){closeSpatial();roomInfo=message;render();}
+      },
+    });
+    if(!roomEnabled || token!==roomStartToken){instance.dispose();return;}
+    roomRenderer=instance;
+    roomInfo="";
+    chosenAction=null;
+    render();
+  }catch(failure){
+    if(token!==roomStartToken)return;
+    closeSpatial();
+    roomInfo="3D is unavailable here. The simple game remains fully playable.";
+    console.warn("Optional listening-room renderer was unavailable",failure);
+    render();
+  }
+});
+function syncSpatial(view){
+  const eligible=!!view&&["toaster","groove"].every(seed=>view.composition.seedIds.includes(seed));
+  const sw=$("#room-switch"),toggle=$("#room-toggle");
+  sw.hidden=!eligible;
+  toggle.textContent=roomEnabled?"Back to simple view":"Visit the listening room";
+  toggle.setAttribute("aria-pressed",String(roomEnabled));
+  $("#room-switch-status").textContent=eligible?roomInfo:"";
+  const active=eligible&&roomEnabled&&!!roomRenderer;
+  $("#room-surface").hidden=!active;
+  $("#stage").classList.toggle("is-spatial",active);
+  if(active){
+    const projection=projectListeningRoom(view);
+    roomRenderer.update(projection);
+    for(const element of document.querySelectorAll("[data-hotspot]")){
+      element.disabled=!hotspotActions(view,element.dataset.hotspot).length;
+    }
+  }
+}
 
 function decorateStage(view){
   const stage=$("#stage");const palette=view?.composition.palette??
@@ -125,14 +195,18 @@ function makeActionCard(action,active,onSelect){
 function showRoom(view){
   $("#stage-eyebrow").textContent=`${view.composition.title} · ${view.beats} OF 4 BEATS REMAIN`;
   const last=view.memory.at(-1);
-  $("#stage-title").textContent=last?"The room is different now.":"An ordinary room. Several possibilities.";
-  $("#stage-body").textContent=last?
-    `${last.text}. You are here again with the next move still yours.`:
+  $("#stage-title").textContent=roomEnabled&&roomRenderer?"The listening room":
+    last?"The room is different now.":"An ordinary room. Several possibilities.";
+  $("#stage-body").textContent=roomEnabled&&roomRenderer?
+    "The picture machine shows what might be. The listening chair holds what you have noticed. Choose one to look closer.":
+    last?`${last.text}. You are here again with the next move still yours.`:
     "The chair is empty, a light is on, and no one has decided what this gathering will become. What will you put into the room?";
   $("#stage-status").textContent=`${view.composition.donorRoles.length} donor voices · one local encounter`;
   const actions=$("#stage-actions"),preview=$("#stage-preview");
   actions.replaceChildren();preview.replaceChildren();
-  for(const action of view.choices){
+  const shown=roomEnabled&&roomRenderer?
+    view.choices.filter(action=>action.id===chosenAction):view.choices;
+  for(const action of shown){
     actions.append(makeActionCard(action,chosenAction===action.id,()=>{
       chosenAction=chosenAction===action.id?null:action.id;
       renderStage();
@@ -231,6 +305,7 @@ function renderStage(){
     $("#stage-status").textContent="11 possible two-to-four-seed combinations";
     $("#stage-actions").replaceChildren();
     $("#stage-preview").replaceChildren();
+    syncSpatial(null);
     return;
   }
   const view=replayRun(run);decorateStage(view);
@@ -241,6 +316,7 @@ function renderStage(){
     case "ending":showEnding(view);break;
     default:throw new Error("Unknown room stage");
   }
+  syncSpatial(view);
 }
 function renderJournal(){
   const list=$("#journal-list"),sources=$("#source-links");list.replaceChildren();sources.replaceChildren();
