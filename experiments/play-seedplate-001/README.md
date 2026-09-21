@@ -45,6 +45,6 @@ node --test experiments/play-seedplate-001/seedplate.test.mjs
 python3 -m http.server 8765
 ```
 
-Visit `http://localhost:8765/experiments/play-seedplate-001/` in a browser. Choose at least two donor cards; press **Compose this room**; perform an action or propose/scrape/keep a candidate; return to the room; inspect the **Room remembers** drawer; alter the seed selection and compare.
+Visit `http://localhost:8765/experiments/play-seedplate-001/` in a browser. Choose at least two donor cards; press **Compose this room**; perform an action or propose/scrape/keep a candidate; return to the room; inspect the **Room remembers** drawer; alter the seed selection and compare. The **Copy this seed recipe** action exports selected donor identities, independently chosen visual lead, source links, mechanic descriptions, and explicit non-claims as portable JSON. It neither copies donor implementations nor invokes them.
 
 The current lab supports every 2–4-donor set, but it has no networked rooms, real media render, live world crossing, actual FORK inheritance transfer, or Full Measure admission. No production donor repository was modified.
