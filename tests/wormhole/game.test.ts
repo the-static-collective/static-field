@@ -78,8 +78,9 @@ test("a wrong adapter exposes a concrete gap without declaring the bridge comple
   assert.equal(failed.board.bridgeReceipt, null);
   assert.equal(failed.board.turn, "north");
   assert.throws(() => exportBridgeArtifact(failed.match), /no completed/);
-  m = take(failed.match, { kind: "fit", actor: "north", adapter: "relay" });
-  m = take(m, { kind: "test", actor: "south" });
+  m = take(failed.match, { kind: "rest", actor: "north" });
+  m = take(m, { kind: "fit", actor: "south", adapter: "relay" });
+  m = take(m, { kind: "test", actor: "north" });
   assert.equal(replayMatch(m).bridgeReceipt, m.events.at(-1)?.receiptId);
 });
 test("insufficient charge must be restored by consuming a turn to rest", () => {
