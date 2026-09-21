@@ -42,7 +42,7 @@ test("browser table offers original local card play and retains source/receiving
     for(const card of originalArt){
       const response=await fetch(runtime.url+"/wormhole-art/"+card+".svg");
       assert.equal(response.status,200,card+" art did not load");
-      assert.match(response.headers.get("content-type")||"",/image\\/svg\\+xml/);
+      assert.match(response.headers.get("content-type")||"",/image\/svg\+xml/);
       const image=await response.text();
       assert.match(image,/<svg[^>]+viewBox="0 0 520 520"/);
       assert.match(image,/aria-labelledby="title desc"/);
