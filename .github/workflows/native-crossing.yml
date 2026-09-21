@@ -1,0 +1,19 @@
+name: native-source-crossing
+on:
+  pull_request:
+  push:
+    branches: [feat/first-bell-native-crossing-002]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm run demo:first-bell -- --out out/first-bell
+      - run: npm run crossing:source -- --phase offer --from out/first-bell --out out/offered --at 2026-09-21T22:13:00.000Z
