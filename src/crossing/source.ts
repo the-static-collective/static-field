@@ -49,7 +49,7 @@ export function dispatchSourceCrossing(history:readonly WorldEvent[],action:Sour
   const event=makeEvent({
    kind:"GATE_OPEN_OFFERED",actor:action.actor,occurredAt:action.at,
    evidenceClass:"observed",sourceStatus:"unresolved",parentEventIds:lastParent(history),
-   payload:{gateId:gate.gateId,sourcePlayReceiptRef:play!.receiptId,sourceWorldRef:SOURCE_WORLD,
+   payload:{gateId:gate!.gateId,sourcePlayReceiptRef:play!.receiptId,sourceWorldRef:SOURCE_WORLD,
     destinationWorldRef:FOREIGN_ROOM,scope:"fictional-local-crossing",authorizedDestination:false},
   });
   return appendEvent(history,event);
