@@ -1,7 +1,12 @@
 import { readFile } from "node:fs/promises";
+import { randomUUID } from "node:crypto";
 import { extname, resolve } from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { projectWorld } from "../kernel/projection.js";
+import { makeEvent, appendEvent } from "../kernel/events.js";
+import { projectWormholeWorld, proposeWormholeEvent, type WormholeCommand } from "../wormhole/world-ledger.js";
+import type { Action } from "../wormhole/game.js";
+import type { IncomingArtifact, ReceivingAction, AdmissionChoice } from "../wormhole/receiving.js";
 import type { WorldEvent } from "../kernel/types.js";
 import { FileEventLog } from "../persistence/event-log.js";
 import { CAPACITY_VERBS } from "../world/charge.js";
@@ -34,6 +39,24 @@ async function readJson(request: IncomingMessage): Promise<unknown> {
   return JSON.parse(raw);
 }
 
+function parseWormholeCommand(body: unknown): WormholeCommand {
+  if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error("declared_command_object_required");
+  const input = body as Record<string, unknown>;
+  const keys = Object.keys(input).sort().join(",");
+  if (input.kind === "start" && keys === "kind") return { kind: "start", matchId: randomUUID() };
+  if (input.kind === "card" && keys === "action,kind") return { kind: "card", action: input.action as Action };
+  if (input.kind === "receive" && keys === "artifact,choice,kind"
+    && ["admit","hold","refuse"].includes(String(input.choice))) {
+    return { kind: "receive", artifact: input.artifact as IncomingArtifact,
+      choice: input.choice as AdmissionChoice, receivingId: randomUUID() };
+  }
+  if (input.kind === "receiving" && keys === "action,kind") {
+    return { kind: "receiving", action: input.action as ReceivingAction };
+  }
+  if (input.kind === "publish" && keys === "kind") return { kind: "publish" };
+  throw new Error("unsupported_or_malformed_wormhole_command");
+}
+
 function contentType(path: string): string {
   switch (extname(path)) {
     case ".html": return "text/html; charset=utf-8";
@@ -61,6 +84,39 @@ export function createRequestHandler(
       }
       if (method === "GET" && url.pathname === "/api/history") {
         sendJson(response, 200, history);
+        return;
+      }
+      if (method === "GET" && url.pathname === "/api/wormhole") {
+        sendJson(response, 200, projectWormholeWorld(history));
+        return;
+      }
+      if (method === "POST" && url.pathname === "/api/wormhole/command") {
+        const body = await readJson(request);
+        let command: WormholeCommand;
+        try { command = parseWormholeCommand(body); }
+        catch (error) { sendJson(response, 400, { error: error instanceof Error ? error.message : String(error) }); return; }
+        const mutation = mutationTail.then(async () => {
+          try {
+            const proposed = proposeWormholeEvent(history, command);
+            const event = makeEvent({
+              kind: proposed.kind, occurredAt: new Date().toISOString(),
+              actor: {kind: "human", id: "human/local-player"},
+              evidenceClass: "derived", sourceStatus: "unresolved",
+              payload: proposed.payload as never,
+              parentEventIds: history.length ? [history[history.length - 1]!.eventId] : []
+            });
+            const next = appendEvent(history, event);
+            projectWormholeWorld(next); // fail closed BEFORE persistence
+            await eventLog.append(event);
+            history = next;
+            sendJson(response, 200, projectWormholeWorld(history));
+          } catch (error) {
+            sendJson(response, 409, { error: "wormhole_command_refused",
+              reason: error instanceof Error ? error.message : String(error) });
+          }
+        });
+        mutationTail = mutation.catch(() => undefined);
+        await mutation;
         return;
       }
       if (method === "POST" && url.pathname === "/api/action") {
@@ -104,7 +160,7 @@ export function createRequestHandler(
 
       const publicRoot = resolve(process.cwd(), "public");
       const relative = url.pathname === "/" ? "index.html" : url.pathname.replace(/^\/+/, "");
-      if (!["index.html", "app.js", "styles.css"].includes(relative)) {
+      if (!["index.html", "app.js", "styles.css", "wormhole.html", "wormhole.js", "wormhole.css"].includes(relative)) {
         sendJson(response, 404, { error: "not_found" });
         return;
       }
