@@ -1,4 +1,4 @@
-name: PLAY-SEEDPLATE-001 proof
+name: PLAY-SEEDPLATE proof
 on:
   pull_request:
     paths:
@@ -22,5 +22,7 @@ jobs:
         run: |
           node --check experiments/play-seedplate-001/seedplate.mjs
           node --check experiments/play-seedplate-001/app.mjs
+          node --check experiments/play-seedplate-001/room-projection.mjs
+          node --check experiments/play-seedplate-001/listening-room.mjs
       - name: Run pure gameplay checks
-        run: node --test experiments/play-seedplate-001/seedplate.test.mjs
+        run: node --test experiments/play-seedplate-001/seedplate.test.mjs experiments/play-seedplate-001/listening-room.test.mjs
