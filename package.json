@@ -13,7 +13,8 @@
     "build": "tsc -p tsconfig.json",
     "start": "node build/src/server/app.js",
     "demo:first-bell": "node build/src/cli/first-bell.js",
-    "crossing:source": "node build/src/cli/foreign-room.js"
+    "crossing:source": "node build/src/cli/foreign-room.js",
+    "export:played-porch": "node build/src/cli/export-log.js"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
