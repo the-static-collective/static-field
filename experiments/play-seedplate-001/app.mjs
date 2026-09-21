@@ -1,5 +1,5 @@
 import {
-  SEEDS,composeSeedplate,createRun,replayRun,appendRunEvent,exportRun,importRun,
+  SEEDS,composeSeedplate,createRun,replayRun,appendRunEvent,exportRun,importRun,exportCompositionRecipe,
 } from "./seedplate.mjs";
 
 const STORE="static-play.seedplate-001.local-run.v1";
@@ -85,6 +85,18 @@ $("#compose-button").addEventListener("click",()=>{
     render();
     $("#stage").scrollIntoView({block:"start",behavior:"smooth"});
   }catch(failure){error(failure instanceof Error?failure.message:String(failure));}
+});
+$("#recipe-button").addEventListener("click",async()=>{
+  const status=$("#recipe-status");
+  if(!run){status.textContent="Compose a room first.";return;}
+  const recipe=exportCompositionRecipe(run.composition);
+  try{
+    await navigator.clipboard.writeText(recipe);
+    status.textContent="Recipe copied. This carries UX ideas, not donor code or world authority.";
+  }catch{
+    window.prompt("Copy this seed recipe to carry it elsewhere:",recipe);
+    status.textContent="The copyable recipe was opened. No donor runtime was connected.";
+  }
 });
 $("#reset-button").addEventListener("click",()=>{
   if(run?.events.length&&!window.confirm("Clear your local play trail and start another composition?"))return;
