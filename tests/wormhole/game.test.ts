@@ -5,7 +5,7 @@ import {
 } from "../../src/wormhole/game.js";
 
 function take(match: Match, action: Action): Match { return act(match, action).match; }
-function play(actor: "north" | "south", card: "signal" | "receiver" | "second-chair" | "missing-corner", lane = "porch" as const): Action {
+function play(actor: "north" | "south", card: "signal" | "receiver" | "second-chair" | "missing-corner", lane: "porch" | "hall" | "road" = "porch"): Action {
   return { kind: "play", actor, card, lane };
 }
 function opened(): Match {
