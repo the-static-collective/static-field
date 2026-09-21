@@ -1,0 +1,26 @@
+name: PLAY-SEEDPLATE-001 proof
+on:
+  pull_request:
+    paths:
+      - 'experiments/play-seedplate-001/**'
+      - '.github/workflows/play-seedplate-proof.yml'
+  push:
+    branches: [experiment/play-seedplate-001]
+    paths:
+      - 'experiments/play-seedplate-001/**'
+      - '.github/workflows/play-seedplate-proof.yml'
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check browser modules
+        run: |
+          node --check experiments/play-seedplate-001/seedplate.mjs
+          node --check experiments/play-seedplate-001/app.mjs
+      - name: Run pure gameplay checks
+        run: node --test experiments/play-seedplate-001/seedplate.test.mjs
