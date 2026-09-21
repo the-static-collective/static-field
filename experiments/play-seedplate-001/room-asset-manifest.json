@@ -1,0 +1,48 @@
+{
+  "schema": "static-play-seedplate.room-assets.v1",
+  "status": "experimental-greybox",
+  "roomId": "seedplate-listening-room-001",
+  "runtime": {
+    "renderer": "Three.js",
+    "version": "0.180.0",
+    "url": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+    "source": "https://github.com/mrdoob/three.js",
+    "license": "MIT",
+    "loading": "dynamic and optional on user request; browser network and WebGL2 required",
+    "productionGate": "vendor or bundle exact reviewed package before final shipping; CDN is provisional experimental dependency"
+  },
+  "authoredGeometry": [
+    {
+      "key": "room-shell",
+      "source": "procedural boxes",
+      "purpose": "closed interior; no traversable exterior"
+    },
+    {
+      "key": "listening-chair",
+      "source": "procedural primitive meshes",
+      "purpose": "inspect-only listening hotspot"
+    },
+    {
+      "key": "picture-machine",
+      "source": "procedural primitive meshes",
+      "purpose": "inspect-only Toaster hotspot"
+    },
+    {
+      "key": "central-table-and-props",
+      "source": "procedural primitive meshes",
+      "purpose": "non-interactive lived-in ambience"
+    },
+    {
+      "key": "lighting-rug-wall-art-and-closed-entry",
+      "source": "procedural primitive meshes",
+      "purpose": "ambient identity without a false traversable door"
+    }
+  ],
+  "paidAssets": [],
+  "externalModels": [],
+  "nonClaims": [
+    "procedural prototype is not approved room Form/Runtime evidence",
+    "art concept image is visual inspiration only and was not imported as game geometry",
+    "no real Toaster image, GrooveRooms audio, or remote participant is loaded"
+  ]
+}
