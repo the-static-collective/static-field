@@ -13,7 +13,8 @@
     "build": "tsc -p tsconfig.json",
     "start": "node build/src/server/app.js",
     "demo:first-bell": "node build/src/cli/first-bell.js",
-    "demo:wormhole": "node build/src/cli/wormhole-wars.js demo"
+    "demo:wormhole": "node build/src/cli/wormhole-wars.js demo",
+    "demo:wormhole-receiving": "node build/src/cli/wormhole-receiving.js demo"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
