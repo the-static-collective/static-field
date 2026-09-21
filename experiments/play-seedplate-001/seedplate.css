@@ -87,3 +87,26 @@ footer{font-size:10px;letter-spacing:.17em;color:#8a8076;text-align:center;paddi
 @media(max-width:850px){.layout{grid-template-columns:1fr}.page{padding:0 15px}.stage{min-height:auto}.mast-extra{display:none}.welcome{padding:30px 0 20px}.welcome h1{font-size:53px}.stage-inner{padding:23px}.sidebar{grid-template-columns:1fr}.composer{order:-1}.composer:not([open]){order:2}.journal{order:3}.aside-note{order:4}}
 @media(max-width:480px){.welcome h1{font-size:45px}.welcome>p:last-child{font-size:13px}.stage-inner{padding:18px 16px 23px}.stage{border-radius:22px}.stage h2{font-size:39px}.scene-art{height:130px}.brand div span{font-size:8px}.stage-body{font-size:14px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Optional room canvas is a spatial *view*; accessible action cards stay DOM. */
+.room-switch[hidden],.room-surface[hidden]{display:none!important}
+.room-switch{display:flex;flex-wrap:wrap;align-items:center;gap:11px;margin:3px 0 13px}
+.room-toggle{min-height:44px;border-radius:100px;padding:10px 16px;background:transparent;
+  border:1px solid color-mix(in srgb,var(--ink) 32%,transparent);color:var(--ink);font-size:12px;font-weight:700}
+.room-toggle[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.room-switch-status{font-size:11px;line-height:1.4;color:var(--secondary)}
+.stage.is-spatial .scene-art{display:none}
+.room-surface{margin:5px 0 22px;border-radius:18px;overflow:hidden;background:#a99a83;
+  border:1px solid color-mix(in srgb,var(--ink) 22%,transparent)}
+.room-view{height:clamp(260px,35vw,390px);position:relative;background:#e5d6c1;overflow:hidden}
+.room-canvas{display:block;width:100%;height:100%;touch-action:manipulation}
+.room-hotspots{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px;
+  background:color-mix(in srgb,var(--paper) 95%,white)}
+.room-hotspots button{min-height:44px;border-radius:10px;border:1px solid color-mix(in srgb,var(--ink) 26%,transparent);
+  color:var(--ink);background:var(--paper);font-weight:700;font-size:12px;padding:9px 7px}
+.room-hotspots button:hover,.room-hotspots button:focus-visible{border-color:var(--accent)}
+.room-hotspots button:disabled{opacity:.45}
+.stage.is-spatial .stage-inner{padding-top:23px}
+.stage.is-spatial #stage-title{font-size:clamp(32px,3.2vw,43px)}
+@media(max-width:480px){.room-view{height:300px}.room-hotspots{gap:6px;padding:8px}
+.room-hotspots button{font-size:12px;padding:9px 4px}}
