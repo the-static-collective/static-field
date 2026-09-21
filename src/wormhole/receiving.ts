@@ -86,7 +86,7 @@ function calculateAdmission(
   id: string, match: Match, claimed: IncomingArtifact, choice: AdmissionChoice
 ): Admission {
   const result = verifySource(match, claimed);
-  const disposition = !result.good || choice === "refuse" ? "refused"
+  const disposition: Admission["disposition"] = !result.good || choice === "refuse" ? "refused"
     : choice === "hold" ? "held" : "admitted";
   const reason = !result.good ? result.reason : choice === "hold" ? "receiving_owner_held"
     : choice === "refuse" ? "receiving_owner_refused" : "receiving_owner_admitted_local_play";
