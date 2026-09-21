@@ -10,6 +10,7 @@ on:
       - "public/wormhole.html"
       - "public/wormhole.js"
       - "public/wormhole.css"
+      - "public/wormhole-art/**"
       - "public/index.html"
       - "src/cli/wormhole-wars.ts"
       - "src/cli/wormhole-receiving.ts"
@@ -17,12 +18,14 @@ on:
       - "docs/protocol/wormhole-wars-001.md"
       - "docs/protocol/wormhole-wars-002.md"
       - "docs/protocol/wormhole-wars-003.md"
+      - "docs/protocol/wormhole-visual-001.md"
       - "package.json"
       - ".github/workflows/wormhole-verify.yml"
   push:
     branches:
       - experiment/wormhole-wars-001
       - experiment/wormhole-wars-003-table-world
+      - experiment/wormhole-wars-004-visual-pass
 
 permissions:
   contents: read

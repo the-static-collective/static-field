@@ -25,6 +25,7 @@
         <div><span class="micro">WORLD CROSSINGS</span><strong id="crossing-count">0</strong></div>
       </div>
       <p id="message" class="message" role="status" aria-live="polite">Opening the table…</p>
+      <div id="visual-feedback" class="visual-feedback" data-outcome="idle" aria-hidden="true"><span id="visual-feedback-icon">◈</span><span id="visual-feedback-text">AWAITING FIRST MOVE</span></div>
     </section>
 
     <section class="arena" aria-labelledby="arena-title">
@@ -42,6 +43,7 @@
         <div class="player"><span class="micro">SOUTH</span><strong id="south-charge">4 / 5</strong><span class="micro">CHARGE</span></div>
       </div>
       <div class="lanes" id="lanes" aria-label="Tactical lanes"></div>
+      <div class="portal-stage" id="portal-stage" data-phase="unmade" role="img" aria-label="The dimensional bridge has not been constituted."><div class="portal-glow"></div><div class="portal-ring portal-ring-outer"></div><div class="portal-ring portal-ring-inner"></div><div class="portal-core"></div><div class="portal-label"><span class="eyebrow">BETWEEN WORLDS</span><strong id="portal-title">THE GAP REMAINS</strong><span id="portal-caption">Two distinct histories. One possible connection.</span></div></div>
       <div class="hands">
         <div><div class="eyebrow">SELECT A CARD · ACTIVE ROLE</div><div id="hand" class="hand"></div></div>
         <div class="moves"><div class="eyebrow">COMPOSITION MOVES</div>

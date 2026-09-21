@@ -62,6 +62,7 @@ function contentType(path: string): string {
     case ".html": return "text/html; charset=utf-8";
     case ".js": return "text/javascript; charset=utf-8";
     case ".css": return "text/css; charset=utf-8";
+    case ".svg": return "image/svg+xml";
     default: return "application/octet-stream";
   }
 }
@@ -160,7 +161,9 @@ export function createRequestHandler(
 
       const publicRoot = resolve(process.cwd(), "public");
       const relative = url.pathname === "/" ? "index.html" : url.pathname.replace(/^\/+/, "");
-      if (!["index.html", "app.js", "styles.css", "wormhole.html", "wormhole.js", "wormhole.css"].includes(relative)) {
+      if (!["index.html", "app.js", "styles.css", "wormhole.html", "wormhole.js", "wormhole.css",
+        "wormhole-art/signal.svg", "wormhole-art/receiver.svg", "wormhole-art/second-chair.svg",
+        "wormhole-art/missing-corner.svg"].includes(relative)) {
         sendJson(response, 404, { error: "not_found" });
         return;
       }
