@@ -1,6 +1,6 @@
 # PLAY-SEEDPLATE-002 — THE ROOM YOU CAN ENTER
 
-**Status:** proposed bounded vertical slice, not an implementation receipt or approved 3D layout.
+**Status:** 002A optional procedural spatial greybox implemented and browser-smoke tested; **002B final geometry, human visual acceptance, paid assets, and deployment remain proposed and unapproved**.
 **Implementation handoff:** [LISTENING ROOM 0.1 — Build Brief](./LISTENING-ROOM-0.1-BUILD-BRIEF.md) specifies exact current-kernel actions, UI stages, file seams, test fixtures and greybox scope; it does not certify a completed 3D room.
 **Parent:** [PLAY-SEEDPLATE-001 experimental composer](./README.md) / [draft PR #7](https://github.com/the-static-collective/static-field/pull/7).
 **Purpose:** turn a selected UX-seed composition into **one browser-playable spatial room** with an accessible scene-first surface. The experiment demonstrates an actual gameplay composition, not a 3D catalog or a generalized world engine.
@@ -75,4 +75,4 @@ No paid Meshy generation, local GPU capture, local CLI mutation, Unity project e
 - Layout, paid-asset, Form, Runtime, Unity-build, and public-deployment approvals are individually explicit.
 - A plausible beautiful room without real input/feedback and state parity **fails** the slice.
 
-**What exists as of this document:** PLAY-SEEDPLATE-001 browser composer, deterministic replay, 10 green Node tests on its PR head, and a portable source-attributed recipe. **What does not yet exist:** a built 3D room, Meshy assets, a Unity port, a HyperFrames transition, or a measured browser 3D playtest.
+**Current receipt:** The optional 002A procedural Three.js room, two inspect-only hotspots, responsive accessible DOM controls, original run persistence, and visual-disabled fallback are implemented on the experimental PR. Sixteen deterministic tests plus mobile-sized Chromium boot/interaction/mode-switch/restore/offline-fallback smoke pass. The browser QA artifact contains flat, spatial, and post-echo screenshots. The camera frame is a recognizably playable **greybox**, not the approved final visual direction. **Still not completed:** paid or accepted GLBs, human visual/device review, measured FPS or loading performance on physical mobile hardware, Function/Form/Runtime geometry approvals, Unity port, HyperFrames crossing, or public deployment.
