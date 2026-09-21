@@ -106,6 +106,17 @@ export async function createListeningRoom({mount,onInspect,onFallback}) {
   box(machine,.85,.69,.56,materials.woodLight,0,1.02,0);
   box(machine,.68,.46,.025,materials.dark,0,1.07,.293);
   const aperture=box(machine,.57,.36,.029,materials.screen,0,1.07,.313);
+  // An unmistakable but bounded visual echo, rendered ONLY from replay's
+  // committed parented event. Merely previewing a candidate never shows this.
+  const echoMaterial=new T.MeshBasicMaterial({color:"#f4d38d",transparent:true,opacity:.88});
+  const echoRing=new T.Mesh(new T.TorusGeometry(.44,.025,6,40),echoMaterial);
+  echoRing.position.set(0,1.07,.39);
+  echoRing.visible=false;
+  machine.add(echoRing);
+  const echoRingOuter=new T.Mesh(new T.TorusGeometry(.53,.013,6,40),
+    new T.MeshBasicMaterial({color:"#d59165",transparent:true,opacity:.73}));
+  echoRingOuter.position.set(0,1.07,.405);echoRingOuter.visible=false;
+  machine.add(echoRingOuter);
   box(machine,.87,.06,.65,materials.trim,0,.69,0);
   cylinder(machine,.05,.05,.025,materials.gold,-.29,.79,.31);
   cylinder(machine,.05,.05,.025,materials.gold,.29,.79,.31);
@@ -160,7 +171,7 @@ export async function createListeningRoom({mount,onInspect,onFallback}) {
     const width=Math.max(1,Math.round(rect.width));
     const height=Math.max(1,Math.round(rect.height));
     const aspect=width/height;
-    const halfWidth=aspect<1.12?5.9:4.75;
+    const halfWidth=aspect<1.12?4.9:4.75;
     const halfHeight=halfWidth/aspect;
     camera.left=-halfWidth;camera.right=halfWidth;
     camera.top=halfHeight;camera.bottom=-halfHeight;
@@ -180,6 +191,8 @@ export async function createListeningRoom({mount,onInspect,onFallback}) {
     materials.screen.emissiveIntensity=intensity;
     materials.screen.color.set(roomState==="echo"?"#efd1a7":roomState==="proposal"?"#ab88ba":"#d1a56c");
     aperture.scale.x=roomState==="echo"?1.07:1;
+    echoRing.visible=roomState==="echo";
+    echoRingOuter.visible=roomState==="echo";
     scheduleRender();
   };
   resize();scheduleRender();
@@ -196,6 +209,7 @@ export async function createListeningRoom({mount,onInspect,onFallback}) {
         if(object.isMesh)object.geometry.dispose();
       });
       Object.values(materials).forEach(m=>m.dispose());
+      echoMaterial.dispose();echoRingOuter.material.dispose();
       renderer.dispose();canvas.remove();
     },
   };
