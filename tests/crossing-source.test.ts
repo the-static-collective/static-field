@@ -9,10 +9,10 @@ const actor={kind:"human" as const,id:"human/specimen"};
 function play(withClue=true):readonly WorldEvent[]{
  let h:readonly WorldEvent[]=[];
  const sequence=["ENTER_PORCH","BELL_1","BELL_2",...(withClue?["NOTICE_OPEN_CORNER","ENTER_RESONANCE","TRACE_PRIOR_RELATION"]:[]),"KNOCK","CLOSE_PLAY"] as const;
- sequence.forEach((type,index)=>{h=dispatchFirstBellAction(h,{type,actor,occurredAt:`2026-09-21T22:${String(index).padStart(2,"0")}:00.000Z`});});
+ sequence.forEach((type,index)=>{h=dispatchFirstBellAction(h,{type:type as Parameters<typeof dispatchFirstBellAction>[1]["type"],actor,occurredAt:`2026-09-21T22:${String(index).padStart(2,"0")}:00.000Z`});});
  return h;
 }
-function foreign(ns:string,body:Record<string,unknown>){return {...body,receiptId:"sha256:"+createHash("sha256").update(ns+"\n"+canonicalize(body)).digest("hex")};}
+function foreign(ns:string,body:Record<string,unknown>):Record<string,unknown>&{receiptId:string}{return {...body,receiptId:"sha256:"+createHash("sha256").update(ns+"\n"+canonicalize(body)).digest("hex")};}
 function packet(offerRef:string){
  const admission=foreign("origin-live-admission-v01",{receiptType:"LiveDestinationAdmissionReceipt",sourceOfferRef:offerRef,sourceWorldRef:"static-field/worldseed-001",destinationWorldRef:"foreign-room-seed-001",bundleRef:"sha256:bundle",disposition:"ADMIT_SCOPED"});
  const confirmation=foreign("origin-live-confirmation-v01",{receiptType:"LivePartyConfirmationReceipt",explicitChoice:true,actorRef:actor.id,sourceOfferRef:offerRef,admissionRef:admission.receiptId,bundleRef:admission.bundleRef,destinationWorldRef:"foreign-room-seed-001",at:"2026-09-21T22:15:00.000Z"});
