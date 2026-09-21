@@ -40,7 +40,7 @@ test("world ledger reconstructs source, admitting destination, and published ind
   clock = 0;
   let history = source();
   const first = projectWormholeWorld(history);
-  assert.equal(first.source?.board.finished,true);
+  assert.equal(first.source?.board?.finished,true);
   assert.equal(first.source?.artifact?.lane,"hall");
   assert.equal(first.crossings.length,0);
   const candidate = first.source!.artifact!;
@@ -52,7 +52,7 @@ test("world ledger reconstructs source, admitting destination, and published ind
   ] as const;
   for (const action of receives) history = commit(history,{kind:"receiving",action});
   const before = projectWormholeWorld(history);
-  assert.equal(before.receiving?.state.crossed,true);
+  assert.equal(before.receiving?.state?.crossed,true);
   assert.equal(before.crossings.length,0);
   history = commit(history,{kind:"publish"});
   const projection = projectWorld(history);
