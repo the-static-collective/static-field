@@ -66,7 +66,7 @@ export function dispatchSourceCrossing(history:readonly WorldEvent[],action:Sour
   &&confirmation.actorRef===action.actor.id&&confirmation.sourceOfferRef===offerReceipt!.receiptId
   &&confirmation.admissionRef===admission.receiptId&&confirmation.bundleRef===admission.bundleRef
   &&confirmation.destinationWorldRef===FOREIGN_ROOM,"HUMAN_CONFIRMATION_REQUIRED");
- requireValid(typeof confirmation.at==="string"&&action.at>=confirmation.at,"DEPARTURE_PRECEDES_CONFIRMATION");
+ requireValid(typeof confirmation.at==="string"&&action.at>=(confirmation.at as string),"DEPARTURE_PRECEDES_CONFIRMATION");
  const event=makeEvent({
   kind:"PORCH_DEPARTED",actor:action.actor,occurredAt:action.at,
   evidenceClass:"observed",sourceStatus:"unresolved",parentEventIds:lastParent(history),
