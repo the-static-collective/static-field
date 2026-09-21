@@ -3,14 +3,17 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "test": "npm run build:test && node --test \"build-test/tests/**/*.test.js\"",
     "build:test": "tsc -p tsconfig.json --outDir build-test",
     "typecheck": "tsc --noEmit",
     "build": "tsc -p tsconfig.json",
     "start": "node build/src/server/app.js",
-    "demo:first-bell": "node build/src/cli/first-bell.js"
+    "demo:first-bell": "node build/src/cli/first-bell.js",
+    "demo:wormhole": "node build/src/cli/wormhole-wars.js demo"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
