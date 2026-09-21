@@ -1,4 +1,5 @@
 import type { WorldEvent } from "./types.js";
+import { projectWormholeWorld } from "../wormhole/world-ledger.js";
 import { deriveSurface } from "../world/surface.js";
 import { deriveResonance } from "../world/resonance.js";
 import { deriveParty } from "../world/party.js";
@@ -17,6 +18,7 @@ export function projectWorld(history: readonly WorldEvent[]) {
     charge: deriveCharge(history),
     party: deriveParty(history),
     gates: deriveDetectableGates(history),
+    wormhole: projectWormholeWorld(history),
     story: deriveFirstBellStory(history),
   };
 }

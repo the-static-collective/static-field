@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#121319">
+  <title>STATIC FIELD · WORMHOLE WARS</title>
+  <link rel="stylesheet" href="/wormhole.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main class="shell">
+    <header class="mast">
+      <a class="back" href="/">← THE PORCH</a>
+      <div class="mastline"><span>STATIC FIELD / FIELD MODULE 003</span><span>THE FOLDING TABLE</span></div>
+      <h1>WORMHOLE <em>WARS</em></h1>
+      <p class="deckline">One table. Two roles. A bridge neither player can make alone.</p>
+    </header>
+
+    <section class="meta-panel">
+      <div class="eyebrow">LOCAL FICTIONAL SESSION · NO EXTERNAL PERMISSIONS</div>
+      <div class="statusline">
+        <div><span class="micro">MATCH</span><strong id="match-name">UNSTARTED</strong></div>
+        <div><span class="micro">ACTIVE TURN</span><strong id="turn-name">—</strong></div>
+        <div><span class="micro">WORLD CROSSINGS</span><strong id="crossing-count">0</strong></div>
+      </div>
+      <p id="message" class="message" role="status" aria-live="polite">Opening the table…</p>
+    </section>
+
+    <section class="arena" aria-labelledby="arena-title">
+      <div class="arena-heading">
+        <div><span class="eyebrow">A · THE ORIGINAL GAME</span><h2 id="arena-title">THE TABLE</h2></div>
+        <button id="new-match" type="button">NEW LOCAL MATCH ↗</button>
+      </div>
+      <div class="playerbar">
+        <div class="player"><span class="micro">NORTH</span><strong id="north-charge">4 / 5</strong><span class="micro">CHARGE</span></div>
+        <div class="shared"><span class="micro">SELECT A LANE</span><div class="lane-selector" role="group" aria-label="Active lane">
+          <button type="button" data-lane="porch" class="selected">PORCH</button>
+          <button type="button" data-lane="hall">HALL</button>
+          <button type="button" data-lane="road">ROAD</button>
+        </div></div>
+        <div class="player"><span class="micro">SOUTH</span><strong id="south-charge">4 / 5</strong><span class="micro">CHARGE</span></div>
+      </div>
+      <div class="lanes" id="lanes" aria-label="Tactical lanes"></div>
+      <div class="hands">
+        <div><div class="eyebrow">SELECT A CARD · ACTIVE ROLE</div><div id="hand" class="hand"></div></div>
+        <div class="moves"><div class="eyebrow">COMPOSITION MOVES</div>
+          <div class="move-row" id="offer-actions">
+            <button type="button" id="accept">ACCEPT CHAIR</button>
+            <button type="button" id="decline">DECLINE CHAIR</button>
+          </div>
+          <label for="adapter">ADAPTER</label>
+          <div class="move-row"><select id="adapter"><option value="direct">DIRECT</option><option value="relay">RELAY</option><option value="reverse">REVERSE</option></select><button type="button" id="fit">FIT</button><button type="button" id="test">TEST</button></div>
+          <div class="move-row"><button type="button" id="rest">REST +2</button><button type="button" id="deploy">DEPLOY BRIDGE</button></div>
+        </div>
+      </div>
+      <div class="stage-notes"><div class="eyebrow">CURRENT TABLE STATE</div><p id="table-note"></p></div>
+    </section>
+
+    <section class="receiver" aria-labelledby="receiver-title">
+      <span class="eyebrow">B · DESTINATION-OWNED PLAY</span>
+      <div class="arena-heading"><div><h2 id="receiver-title">THE RECEIVING SIDE</h2><p class="subline">Finishing a match proposes a bridge. This world independently checks it.</p></div><span id="receipt-chip" class="receipt-chip">NO BRIDGE</span></div>
+      <div class="receiver-grid">
+        <div class="receiver-card">
+          <span class="micro">LOCAL ADMISSION</span>
+          <p id="receiver-note">Complete a bridge on the card table to propose a receiving encounter.</p>
+          <div class="move-row"><label for="choice">RECEIVE AS</label><select id="choice"><option value="admit">ADMIT</option><option value="hold">HOLD</option><option value="refuse">REFUSE</option></select><button type="button" id="receive">SUBMIT BRIDGE</button></div>
+        </div>
+        <div class="receiver-card"><span class="micro">SECOND GAME · TURN-BASED</span><p id="second-note">No receiving encounter yet.</p>
+          <div class="move-row"><button type="button" id="inspect">NORTH · INSPECT</button><button type="button" id="attune">SOUTH · ATTUNE RELAY</button><button type="button" id="cross">NORTH · CROSS</button></div>
+        </div>
+      </div>
+      <div class="publish"><div><strong>RETURN TO STATIC FIELD</strong><p>The local result can be recorded as an explicitly fictional world event. This does not open First Bell's unresolved Gate.</p></div><button type="button" id="publish">RECORD LOCAL CROSSING</button></div>
+    </section>
+
+    <section class="receipts"><div class="arena-heading"><div><span class="eyebrow">THE RECEIPT STACK</span><h2>WHAT ACTUALLY HAPPENED</h2></div><button id="reload" type="button">RELOAD FROM WORLD LOG ↺</button></div>
+      <ol id="history" class="timeline" aria-label="Recent local game actions"></ol></section>
+    <footer><p>All roles are local declarations. Local hashes and replay do not authenticate people, prove external events, or grant authority in other projects. Stop play at any time.</p></footer>
+  </main>
+  <script type="module" src="/wormhole.js"></script>
+</body>
+</html>
