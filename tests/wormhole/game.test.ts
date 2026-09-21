@@ -123,7 +123,7 @@ test("sealed game history refuses modified rules, altered receipts and counterfe
 test("unsupported commands and unauthenticated authority fields are rejected", () => {
   const m = newMatch("guard");
   assert.throws(() => act(m, { kind: "execute", actor: "north", shell: "echo hi" } as unknown as Action), /unsupported/);
-  assert.throws(() => act(m, { ...play("north", "signal"), admin: true } as unknown as Action), /undeclared/);
+  assert.throws(() => act(m, { ...play("north", "signal"), admin: true } as unknown as Action), /unsupported card or lane/);
   assert.equal(m.events.length, 0);
 });
 test("deterministic replay and independent match IDs produce distinct descendants", () => {
