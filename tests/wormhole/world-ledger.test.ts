@@ -78,7 +78,7 @@ test("bad artifact and explicit hold/refuse never produce a world crossing", () 
     assert.throws(()=>proposeWormholeEvent(h,{kind:"publish"}),/only an admitted/);
     const refused=commit(h,{kind:"receiving",action:{kind:"inspect",actor:"north",lane:"hall"}});
     assert.equal(projectWormholeWorld(refused).receiving?.events[0]?.disposition,"refused");
-    assert.equal(projectWormholeWorld(refused).receiving?.state.crossed,false);
+    assert.equal(projectWormholeWorld(refused).receiving?.state?.crossed,false);
   }
   const bad={...artifact,sourceReceipt:"ww-rct-sha256:"+"0".repeat(64)};
   const h=commit(first,{kind:"receive",receivingId:"forged-import",choice:"admit",artifact:bad});
@@ -111,7 +111,7 @@ test("starting another match leaves earlier world events intact without inheriti
   const old=source();
   const newer=commit(old,{kind:"start",matchId:"fresh"});
   assert.equal(old.length+1,newer.length);
-  assert.equal(projectWormholeWorld(newer).source?.board.eventCount,0);
+  assert.equal(projectWormholeWorld(newer).source?.board?.eventCount,0);
   assert.equal(projectWormholeWorld(newer).receiving,null);
   assert.throws(()=>proposeWormholeEvent(newer,{kind:"start",matchId:"match-one"}),/already used/);
 });
