@@ -5,8 +5,10 @@ on:
     paths:
       - "src/wormhole/**"
       - "src/cli/wormhole-wars.ts"
+      - "src/cli/wormhole-receiving.ts"
       - "tests/wormhole/**"
       - "docs/protocol/wormhole-wars-001.md"
+      - "docs/protocol/wormhole-wars-002.md"
       - "package.json"
       - ".github/workflows/wormhole-verify.yml"
   push:
@@ -29,3 +31,4 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm run demo:wormhole
+      - run: npm run demo:wormhole-receiving
