@@ -1,10 +1,10 @@
 const $ = (selector) => document.querySelector(selector);
 const state = { game: null, lane: "porch", pending: false };
 const CARDS = [
-  { id: "signal", title: "SIGNAL", cost: 1, description: "Place a tone:bell source." },
-  { id: "receiver", title: "RECEIVER", cost: 1, description: "Place a tone:knock receiving port." },
-  { id: "second-chair", title: "SECOND CHAIR", cost: 1, description: "Offer a voluntary shared connection." },
-  { id: "missing-corner", title: "MISSING CORNER", cost: 2, description: "Turn an admitted gap into a playable puzzle." }
+  { id: "signal", title: "SIGNAL", cost: 1, series: "01 / RESONANCE", description: "Place a tone:bell source." },
+  { id: "receiver", title: "RECEIVER", cost: 1, series: "02 / RECEPTION", description: "Place a tone:knock receiving port." },
+  { id: "second-chair", title: "SECOND CHAIR", cost: 1, series: "03 / RELATION", description: "Offer a voluntary shared connection." },
+  { id: "missing-corner", title: "MISSING CORNER", cost: 2, series: "04 / COMPOSITION", description: "Turn an admitted gap into a playable puzzle." }
 ];
 const LANES = ["porch", "hall", "road"];
 function element(tag, className, text) {
@@ -15,6 +15,34 @@ function element(tag, className, text) {
 }
 function message(text) { $("#message").textContent = text; }
 function receiptShort(id) { return id ? id.slice(0, 19) + "…" : "—"; }
+function latestOutcome(previous, current, command) {
+  const oldSource = previous?.source?.events?.length || 0;
+  const oldReceiving = previous?.receiving?.events?.length || 0;
+  if ((current?.source?.events?.length || 0) > oldSource) {
+    const receipt = current.source.events.at(-1);
+    return { outcome: receipt.decision.status, text: receipt.decision.reason.replaceAll("_", " ") };
+  }
+  if ((current?.receiving?.events?.length || 0) > oldReceiving) {
+    const receipt = current.receiving.events.at(-1);
+    return { outcome: receipt.disposition, text: receipt.reason.replaceAll("_", " ") };
+  }
+  if (command.kind === "receive") {
+    return { outcome: current.receiving.admission.disposition, text:
+      "RECEIVING WORLD: " + current.receiving.admission.reason.replaceAll("_", " ") };
+  }
+  if (command.kind === "publish") return { outcome: "admitted", text: "LOCAL CROSSING RECORDED" };
+  return { outcome: "idle", text: "NEW LOCAL MATCH READY" };
+}
+function visualFeedback(outcome, text) {
+  const panel = $("#visual-feedback");
+  panel.dataset.outcome = outcome;
+  $("#visual-feedback-icon").textContent = outcome === "admitted" ? "✦" :
+    outcome === "refused" ? "×" : outcome === "held" ? "◌" : "◈";
+  $("#visual-feedback-text").textContent = text.toUpperCase();
+  panel.classList.remove("flash");
+  void panel.offsetWidth; // restart the visual pulse only on a new result, not on render.
+  panel.classList.add("flash");
+}
 async function request(command) {
   if (state.pending) return;
   state.pending = true;
@@ -27,10 +55,14 @@ async function request(command) {
     });
     const body = await response.json();
     if (!response.ok) throw Error(body.reason || body.error || "Action refused");
+    const result = latestOutcome(state.game, body, command);
     state.game = body;
-    message("Recorded in the Static Field local world log.");
+    message(result.outcome === "refused" ? "Attempt recorded; the world did not admit that move." :
+      "Recorded in the Static Field local world log.");
+    visualFeedback(result.outcome, result.text);
   } catch (error) {
     message(error instanceof Error ? error.message : String(error));
+    visualFeedback("refused", "COMMAND NOT ADMITTED");
   } finally {
     state.pending = false;
     render();
@@ -42,6 +74,7 @@ async function reload() {
     if (!response.ok) throw Error("The local world did not respond.");
     state.game = await response.json();
     message("Replayed from the persistent Static Field world history.");
+    visualFeedback("idle", "WORLD HISTORY RELOADED");
     render();
   } catch (error) { message(error instanceof Error ? error.message : String(error)); }
 }
@@ -66,34 +99,72 @@ function render() {
   const lanes = $("#lanes");
   lanes.replaceChildren();
   for (const lane of LANES) {
-    const tile = element("div", "lane" + (lane === state.lane ? " selected" : ""));
+    const tile = element("div", "lane lane--" + lane + (lane === state.lane ? " selected" : "")
+      + (board?.puzzle?.lane === lane ? " has-gap" : "")
+      + (board?.bridgeLane === lane ? " has-bridge" : ""));
     tile.dataset.selectLane = lane;
     tile.tabIndex = 0;
     tile.setAttribute("role", "button");
     tile.setAttribute("aria-label", "Select " + lane + " lane");
-    tile.append(element("h3", "", lane.toUpperCase()));
+    const vista = element("div", "lane-vista");
+    const horizon = element("span", "lane-horizon");
+    vista.append(horizon);
+    tile.append(vista, element("h3", "", lane.toUpperCase()));
     for (const piece of board?.pieces?.filter(part => part.lane === lane) || []) {
-      tile.append(element("p", "piece" + (piece.kind === "target" ? " target" : ""),
-        piece.owner.toUpperCase() + " / " + piece.kind.toUpperCase() + " / " + piece.port));
+      const fixture = element("div", "piece" + (piece.kind === "target" ? " target" : ""));
+      const image = element("img", "piece-art");
+      image.src = "/wormhole-art/" + (piece.kind === "source" ? "signal" : "receiver") + ".svg";
+      image.alt = "";
+      fixture.append(image, element("span", "", piece.owner.toUpperCase() + " / "
+        + piece.kind.toUpperCase() + " / " + piece.port));
+      tile.append(fixture);
     }
     if (board?.puzzle?.lane === lane) tile.append(element("p", "lane-note",
       "GAP: " + (board.puzzle.adapter || "NO ADAPTER") + (board.bridgeReceipt ? " / BRIDGE MADE" : "")));
     if (board?.bridgeLane === lane && board.finished) tile.append(element("p", "lane-note", "STABILIZED"));
     lanes.append(tile);
   }
+  const phase = !board ? "unmade" : second?.crossed ? "crossed" :
+    receiving?.admission?.disposition === "admitted" ? "received" :
+    board.finished ? "stabilized" : board.bridgeReceipt ? "constituted" :
+    board.puzzle ? "gap" : "unmade";
+  const portal = $("#portal-stage");
+  portal.dataset.phase = phase;
+  const portalCopy = {
+    unmade: ["THE GAP REMAINS", "Two distinct histories. One possible connection."],
+    gap: ["THE SEAM IS EXPOSED", "An adapter must actually join tone:bell to tone:knock."],
+    constituted: ["THE BRIDGE EXISTS", "The admitted connection can now be deployed."],
+    stabilized: ["ONE LANE STABILIZED", "The completed source match can propose a receiving encounter."],
+    received: ["A WORLD IS LISTENING", "The receiving encounter has its own steps and permissions."],
+    crossed: ["THE SECOND SIDE", "This local fictional crossing was reached by play."]
+  };
+  $("#portal-title").textContent = portalCopy[phase][0];
+  $("#portal-caption").textContent = portalCopy[phase][1];
+  portal.setAttribute("aria-label", portalCopy[phase].join(". "));
   const hand = $("#hand");
   hand.replaceChildren();
   const active = Boolean(board && !board.finished && !receiving);
   for (const card of CARDS) {
     const count = board ? board.hand[board.turn][card.id] : 0;
-    const button = element("button", "card-tile");
+    const button = element("button", "card-tile card--" + card.id);
     button.type = "button";
     button.dataset.card = card.id;
-    button.disabled = !active || !count || state.pending;
-    button.append(element("strong", "", card.title), element("span", "", card.description));
+    button.setAttribute("aria-label", card.title + ", Charge cost " + card.cost
+      + ", " + count + " remaining. " + card.description);
+    button.disabled = !active || !count || board.charge[board.turn] < card.cost || state.pending;
+    const top = element("span", "card-top");
+    top.append(element("span", "card-series", card.series), element("span", "card-cost", "◆ " + card.cost));
+    const art = element("span", "card-art");
+    const image = element("img", "card-art-image");
+    image.src = "/wormhole-art/" + card.id + ".svg";
+    image.alt = "";
+    image.loading = "lazy";
+    art.append(image, element("span", "card-art-sheen"));
+    const name = element("span", "card-name", card.title);
+    const detail = element("span", "card-description", card.description);
     const foot = element("span", "card-footer");
-    foot.append(element("b", "", "COST " + card.cost), element("b", "", "×" + count));
-    button.append(foot);
+    foot.append(element("span", "", "STATIC / 001"), element("span", "", "×" + count));
+    button.append(top, art, name, detail, foot);
     hand.append(button);
   }
   const offer = board?.offer;
