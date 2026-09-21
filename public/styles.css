@@ -1,0 +1,16 @@
+:root { color-scheme: dark; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #11100e; color: #e7e0d3; }
+main { width: min(960px, 92vw); margin: 0 auto; padding: 7vh 0 12vh; }
+.eyebrow { opacity: .55; letter-spacing: .14em; font-size: .75rem; }
+h1 { font-size: clamp(2.7rem, 8vw, 6rem); margin: .1em 0; font-weight: 500; }
+#objective { opacity: .8; }
+nav { display: flex; gap: .5rem; margin: 3rem 0 1rem; }
+button { border: 1px solid #625d55; background: transparent; color: inherit; padding: .7rem .85rem; cursor: pointer; }
+button:hover, button.active { background: #e7e0d3; color: #11100e; }
+.map { display: none; border-top: 1px solid #38342e; padding-top: 1.5rem; min-height: 280px; }
+.map.active { display: block; }
+.objects, #story-actions, .care-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+aside { margin-top: 2rem; border-top: 1px solid #38342e; padding-top: 1.5rem; }
+pre { white-space: pre-wrap; opacity: .72; }
+#message { min-height: 1.4em; color: #ffca7a; }
