@@ -34,10 +34,29 @@ test("browser table offers original local card play and retains source/receiving
   try {
     const first=(await fetch(runtime.url+"/wormhole.html"));
     assert.equal(first.status,200);
-    assert.match(await first.text(),/WORMHOLE/);
+    const html=await first.text();
+    assert.match(html,/WORMHOLE/);
+    assert.match(html,/id="portal-stage"/);
+    assert.match(html,/id="visual-feedback"/);
+    const originalArt=["signal","receiver","second-chair","missing-corner"];
+    for(const card of originalArt){
+      const response=await fetch(runtime.url+"/wormhole-art/"+card+".svg");
+      assert.equal(response.status,200,card+" art did not load");
+      assert.match(response.headers.get("content-type")||"",/image\\/svg\\+xml/);
+      const image=await response.text();
+      assert.match(image,/<svg[^>]+viewBox="0 0 520 520"/);
+      assert.match(image,/aria-labelledby="title desc"/);
+      assert.doesNotMatch(image,/<script|foreignObject|https?:\\/\\//i);
+    }
+    const forbidden=await fetch(runtime.url+"/wormhole-art/unapproved.svg");
+    assert.equal(forbidden.status,404);
     const script=await fetch(runtime.url+"/wormhole.js");
     assert.equal(script.status,200);
-    assert.match(await script.text(),/api\/wormhole\/command/);
+    const frontend=await script.text();
+    assert.match(frontend,/api\/wormhole\/command/);
+    assert.match(frontend,/card-art-image/);
+    assert.match(frontend,/visualFeedback/);
+    assert.match(frontend,/portalCopy/);
     assert.equal((await command(runtime,{kind:"start"})).status,200);
     const wrong=(await command(runtime,{kind:"card",action:{
       kind:"play",actor:"south",card:"receiver",lane:"porch"
