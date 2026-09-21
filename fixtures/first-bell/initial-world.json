@@ -1,0 +1,51 @@
+{
+  "worldId": "static-field/worldseed-001",
+  "regionId": "the-porch",
+  "objects": [
+    {
+      "id": "chair-a",
+      "kind": "chair",
+      "state": "available"
+    },
+    {
+      "id": "chair-b",
+      "kind": "chair",
+      "state": "available"
+    },
+    {
+      "id": "extension-cord",
+      "kind": "cable",
+      "state": "coiled"
+    },
+    {
+      "id": "old-amp",
+      "kind": "amp",
+      "state": "unplugged"
+    },
+    {
+      "id": "chipped-cup",
+      "kind": "cup",
+      "state": "present"
+    },
+    {
+      "id": "dog-water-bowl",
+      "kind": "water-bowl",
+      "state": "empty"
+    },
+    {
+      "id": "screen-door",
+      "kind": "door",
+      "state": "closed"
+    },
+    {
+      "id": "repaired-handrail",
+      "kind": "handrail",
+      "state": "repaired"
+    },
+    {
+      "id": "bell-place",
+      "kind": "hanging-position",
+      "state": "unresolved"
+    }
+  ]
+}
