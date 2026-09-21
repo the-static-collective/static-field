@@ -125,7 +125,7 @@ test("source or admission receipt cannot be changed without failing full replay"
     (x:ReceivingWorld) => { (x.admission as unknown as {disposition:string}).disposition="held"; },
     (x:ReceivingWorld) => { (x.claimedArtifact as unknown as {authorization:string}).authorization="external"; },
     (x:ReceivingWorld) => { (x.sourceMatch.events[3] as unknown as {action:{accept:boolean}}).action.accept=false; },
-    (x:ReceivingWorld) => { (x.events[1] as unknown as {decision:{reason:string}}).decision.reason="fake"; },
+    (x:ReceivingWorld) => { (x.events[1] as unknown as {reason:string}).reason="fake"; },
     (x:ReceivingWorld) => { (x.events[2] as unknown as {previousReceipt:string}).previousReceipt="forged"; },
     (x:ReceivingWorld) => { (x as unknown as {receivingId:string}).receivingId="changed-receiver"; },
     (x:ReceivingWorld) => { (x.events[2] as unknown as {authority:string}).authority="world-admin"; },
