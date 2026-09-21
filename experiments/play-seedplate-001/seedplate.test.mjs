@@ -124,3 +124,25 @@ test("a portable recipe attributes exact donor mechanics and keeps UX inspiratio
   assert.ok(recipe.donors.every(donor=>donor.mechanic&&donor.skin));
   assert.ok(recipe.constraints.includes("a composed UX recipe is not donor code, a runtime adapter, or world admission"));
 });
+
+test("Toaster × GrooveRooms creates a new playable listening echo only after exact KEEP",()=>{
+  let run=createRun(composeSeedplate(["toaster","groove"]));
+  run=act(run,"groove:listen");run=add(run,"continue");
+  assert.ok(!replayRun(run).choices.some(choice=>choice.id==="groove:echo"));
+  run=act(run,"toaster:propose");run=add(run,"scrape");
+  assert.ok(!replayRun(run).memory.some(item=>item.action==="toaster:keep"));
+  run=add(run,"keep",{candidateId:"scene-1-1"});
+  const kept=replayRun(run).memory.at(-1);
+  run=add(run,"continue");
+  assert.ok(replayRun(run).choices.some(choice=>choice.id==="groove:echo"));
+  run=act(run,"groove:echo");
+  const echo=replayRun(run).memory.at(-1);
+  assert.equal(echo.kind,"crossing");
+  assert.equal(echo.parentId,kept.id);
+  assert.equal(echo.seedId,"groove");
+  assert.match(replayRun(run).receipt.body,/No remote listener/);
+  let withoutToaster=createRun(composeSeedplate(["groove","fork"]));
+  withoutToaster=act(withoutToaster,"groove:listen");
+  withoutToaster=add(withoutToaster,"continue");
+  assert.ok(!replayRun(withoutToaster).choices.some(choice=>choice.id==="groove:echo"));
+});
