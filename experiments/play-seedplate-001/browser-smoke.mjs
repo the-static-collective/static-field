@@ -48,6 +48,7 @@ try {
     `Room canvas was not actually sized: ${JSON.stringify(dimensions)}`);
   assert.equal(await page.evaluate(()=>localStorage.getItem("static-play.seedplate-001.local-run.v1")),before,
     "Entering a visual mode cannot append gameplay events");
+  await page.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));
   await page.locator(".room-canvas").screenshot({path:"listening-room-phone-spatial.png"});
   const chair=page.getByRole("button",{name:"Listening chair"});
   assert.ok((await chair.boundingBox()).height>=44,"Chair DOM target below 44px");
@@ -62,7 +63,11 @@ try {
   await page.getByRole("button",{name:"Listening chair"}).click();
   await page.getByText("Leave a listening echo of the kept scene").first().waitFor();
   await page.getByRole("button",{name:"Do it"}).click();
+  await page.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));
   await page.locator(".room-canvas").screenshot({path:"listening-room-phone-echo.png"});
+  assert.notDeepEqual(await readFile("listening-room-phone-echo.png"),
+    await readFile("listening-room-phone-spatial.png"),
+    "A committed echo should visibly alter the rendered room");
   const trace=await page.evaluate(()=>JSON.parse(localStorage.getItem("static-play.seedplate-001.local-run.v1")));
   assert.equal(trace.events.length,6);
   assert.equal(trace.events[3].type,"keep");
