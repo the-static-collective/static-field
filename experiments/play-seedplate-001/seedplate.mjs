@@ -50,6 +50,8 @@ const motifGroups=[
 ];
 const positiveInt=(n)=>Number.isInteger(n)&&n>=0;
 const own=(x,key)=>Object.prototype.hasOwnProperty.call(x,key);
+const seedsIncludes=(composition,id)=>composition.seedIds.includes(id);
+
 const assert=(condition,message)=>{if(!condition)throw new Error(message);};
 
 export function composeSeedplate(ids,{visualLead=ids?.[0]}={}) {
@@ -108,7 +110,11 @@ function nextChoices(seeds,view) {
         {id:"grace:call",seedId:id,label:"Make the call",detail:"Spend one beat on an attempt, not an outcome."};
       case "toaster":return {id:"toaster:propose",seedId:id,label:"Look through the picture machine",detail:"See three possibilities; none becomes history by appearing."};
       case "groove":return view.memory.some(m=>m.action==="groove:listen")?
-        {id:"groove:note",seedId:id,label:"Leave a note in the room",detail:"A local note is not somebody else's response."}:
+        (seeds.includes("toaster") && view.memory.some(m=>m.action==="toaster:keep") &&
+          !view.memory.some(m=>m.action==="groove:echo")?
+          {id:"groove:echo",seedId:id,label:"Leave a listening echo of the kept scene",
+            detail:"Only this Toaster × GrooveRooms crossing can carry a particular kept picture into a local listening trace."}:
+          {id:"groove:note",seedId:id,label:"Leave a note in the room",detail:"A local note is not somebody else's response."}):
         {id:"groove:listen",seedId:id,label:"Listen to the room",detail:"Spend one beat noticing what is already here."};
       case "fork":return view.memory.some(m=>m.action==="fork:intruder")?
         {id:"fork:bend",seedId:id,label:"Bend the intruder",detail:"Continue from its recorded parent rather than editing that event."}:
@@ -180,6 +186,13 @@ export function replayRun(run) {
         text="You listened at the center of the room";body="This is your listening position, not a remote person's testimony.";break;
       case "groove:note":
         text=`You left a local note: ${event.note.trim()}`;body="The room can remember your note; nobody else is claimed to have heard it.";break;
+      case "groove:echo": {
+        const kept=view.memory.findLast(item=>item.action==="toaster:keep");
+        assert(kept&&seedsIncludes(view.composition,"toaster"),"Listening echo requires an admitted Toaster scene");
+        text=`Listening echo of ${kept.text.replace(/^Kept proposed scene: /,"")}`;
+        body="A particular kept scene was carried into this local listening trace. No remote listener or actual performance is claimed.";
+        kind="crossing";break;
+      }
       case "fork:intruder":
         text="FORK! offered an intruder: the empty chair has a new question";
         body="A fictional possibility has been placed on the table, not admitted as an actual visitor.";kind="proposal";break;
@@ -191,6 +204,8 @@ export function replayRun(run) {
     }
     const branchParent=action.id==="fork:bend"
       ? view.memory.findLast(item=>item.action==="fork:intruder")?.id
+      : action.id==="groove:echo"?
+        view.memory.findLast(item=>item.action==="toaster:keep")?.id
       : null;
     if(action.id==="fork:bend")assert(branchParent,"BEND requires an attributable intruder parent");
     view.memory.push({id:event.id,action:action.id,seedId:action.seedId,kind,text,
