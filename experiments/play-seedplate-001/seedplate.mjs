@@ -170,8 +170,12 @@ export function replayRun(run) {
         body="A new fictional branch grew from an attributable earlier turn; its parent did not change.";kind="branch";break;
       default:throw new Error("Unsupported action");
     }
+    const branchParent=action.id==="fork:bend"
+      ? view.memory.findLast(item=>item.action==="fork:intruder")?.id
+      : null;
+    if(action.id==="fork:bend")assert(branchParent,"BEND requires an attributable intruder parent");
     view.memory.push({id:event.id,action:action.id,seedId:action.seedId,kind,text,
-      detail:body,parentId:action.id==="fork:bend"?parent:null});
+      detail:body,parentId:branchParent});
     view.receipt={title:action.label,body,source:action.seedId,kind};
     view.stage="receipt";
   }
