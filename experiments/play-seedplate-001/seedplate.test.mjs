@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  SEEDS,composeSeedplate,createRun,getCandidates,replayRun,appendRunEvent,exportRun,importRun,
+  SEEDS,composeSeedplate,createRun,getCandidates,replayRun,appendRunEvent,exportRun,importRun,exportCompositionRecipe,
 } from "./seedplate.mjs";
 const ids=SEEDS.map(seed=>seed.id);
 const combinations=()=>{
@@ -112,4 +112,15 @@ test("one four-donor sample can play a situated act, propose, keep, listen and b
   assert.equal(v.beats,0);assert.equal(v.stage,"ending");
   assert.equal(v.memory.length,4);
   assert.deepEqual(new Set(v.memory.map(m=>m.seedId)),new Set(ids));
+});
+
+test("a portable recipe attributes exact donor mechanics and keeps UX inspiration separate from runtime authority",()=>{
+  const composition=composeSeedplate(["grace","groove","fork"],{visualLead:"fork"});
+  const recipe=JSON.parse(exportCompositionRecipe(composition));
+  assert.equal(recipe.schema,"static-play-seedplate.recipe.v1");
+  assert.equal(recipe.visualLead,"fork");
+  assert.deepEqual(recipe.donors.map(donor=>donor.id),["grace","groove","fork"]);
+  assert.ok(recipe.donors.every(donor=>donor.source.startsWith("https://github.com/")));
+  assert.ok(recipe.donors.every(donor=>donor.mechanic&&donor.skin));
+  assert.ok(recipe.constraints.includes("a composed UX recipe is not donor code, a runtime adapter, or world admission"));
 });
