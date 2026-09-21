@@ -222,12 +222,12 @@ export function replayMatch(match: Match): Board {
     asserted(event && typeof event === "object", "invalid receipt");
     validateAction(event.action);
     const decision = determine(s, event.action);
-    const body = {
-      schema: "static-field.wormhole-wars.event/v0.1" as const,
+    const body: Omit<Receipt, "receiptId"> = {
+      schema: "static-field.wormhole-wars.event/v0.1",
       matchId: match.matchId, sequence: index + 1,
       previousReceipt: prev, action: event.action, decision
     };
-    const expected = { ...body, receiptId: "ww-rct-sha256:" + sha256Canonical(body) };
+    const expected: Receipt = { ...body, receiptId: "ww-rct-sha256:" + sha256Canonical(body) };
     asserted(canonicalize(event) === canonicalize(expected), "game receipt/transition mismatch at " + (index + 1));
     apply(s, event.action, decision, expected.receiptId);
     prev = expected.receiptId;
@@ -258,7 +258,7 @@ export function exportBridgeArtifact(match: Match): {
   asserted(s.finished && s.puzzle && s.offer && s.puzzle.adapterReceipt && s.bridgeReceipt
     && s.finishedReceipt, "no completed local bridge encounter");
   const body = {
-    schema: ARTIFACT_SCHEMA, matchId: match.matchId, lane: s.puzzle.lane,
+    schema: ARTIFACT_SCHEMA as typeof ARTIFACT_SCHEMA, matchId: match.matchId, lane: s.puzzle.lane,
     sourceReceipt: s.puzzle.sourceId, targetReceipt: s.puzzle.targetId,
     offerReceipt: s.offer.receiptId, openingReceipt: s.puzzle.openedReceipt,
     adapterReceipt: s.puzzle.adapterReceipt, bridgeReceipt: s.bridgeReceipt,
