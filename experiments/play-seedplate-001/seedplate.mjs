@@ -70,6 +70,25 @@ export function composeSeedplate(ids,{visualLead=ids?.[0]}={}) {
     nonClaims:["UX composition != donor code integration","local fiction != shared-world occurrence","source inspiration != automatic canon"],
   };
 }
+export function exportCompositionRecipe(composition) {
+  const canonical=composeSeedplate(composition.seedIds,{visualLead:composition.visualLead});
+  assert(composition.id===canonical.id,"Composition identity mismatch");
+  return JSON.stringify({
+    schema:"static-play-seedplate.recipe.v1",
+    status:"experimental-ux-recipe",
+    id:canonical.id,
+    seedIds:[...canonical.seedIds],
+    visualLead:canonical.visualLead,
+    title:canonical.title,
+    donors:canonical.donorRoles.map(donor=>{
+      const seed=lookup.get(donor.id);
+      return {id:donor.id,role:donor.role,mechanic:seed.mechanic,
+        skin:seed.skin,source:donor.source};
+    }),
+    constraints:[...canonical.nonClaims,
+      "a composed UX recipe is not donor code, a runtime adapter, or world admission"],
+  },null,2);
+}
 export function createRun(composition) {
   const verified=composeSeedplate(composition.seedIds,{visualLead:composition.visualLead});
   assert(composition.id===verified.id,"Composition identity mismatch");
