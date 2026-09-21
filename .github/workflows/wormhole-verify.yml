@@ -4,16 +4,25 @@ on:
   pull_request:
     paths:
       - "src/wormhole/**"
+      - "src/server/routes.ts"
+      - "src/kernel/projection.ts"
+      - "tests/integration/wormhole-browser.test.ts"
+      - "public/wormhole.html"
+      - "public/wormhole.js"
+      - "public/wormhole.css"
+      - "public/index.html"
       - "src/cli/wormhole-wars.ts"
       - "src/cli/wormhole-receiving.ts"
       - "tests/wormhole/**"
       - "docs/protocol/wormhole-wars-001.md"
       - "docs/protocol/wormhole-wars-002.md"
+      - "docs/protocol/wormhole-wars-003.md"
       - "package.json"
       - ".github/workflows/wormhole-verify.yml"
   push:
     branches:
       - experiment/wormhole-wars-001
+      - experiment/wormhole-wars-003-table-world
 
 permissions:
   contents: read
