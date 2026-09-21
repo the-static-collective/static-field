@@ -925,7 +925,7 @@ Explicitly deferred per the design:
 
 ### Placeholder scan
 
-No `TBD`, `TODO`, `FIXME`, `XXX`, “implement later,” or unspecified “handle edge cases” steps are permitted. Every task names exact files, interfaces, failing behaviors, commands, expected results, and commit boundary.
+No placeholder markers, deferred implementation stubs, or unspecified edge-case instructions are permitted. Every task names exact files, interfaces, failing behaviors, commands, expected results, and commit boundary.
 
 ### Type consistency
 
