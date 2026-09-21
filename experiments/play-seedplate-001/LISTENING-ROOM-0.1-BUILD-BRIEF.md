@@ -4,7 +4,7 @@
 **Project:** STATIC PLAY SEEDPLATE / STATIC FIELD experimental lab  
 **Parent design:** [ROOM-002 — The Room You Can Enter](./ROOM-002.md)  
 **Current reference code:** [seedplate.mjs](./seedplate.mjs), [app.mjs](./app.mjs), [index.html](./index.html), [seedplate.test.mjs](./seedplate.test.mjs)  
-**Status:** authorized **design handoff**; greybox runtime, 3D models, render QA, budgeted assets, and public deployment have **not** been completed or approved by this document.  
+**Status:** the proposed **002A procedural greybox** and browser QA are now implemented on the experimental branch; final 3D assets, geometry approvals, human mobile playtest, measured real-device performance, and deployment are not completed or approved by this document.  
 **Scope:** one optional, solo, browser-local, 3–7 minute listening room composed from **Toaster × GrooveRooms**, with no project-native Toaster or GrooveRooms runtime invocation.
 
 ### 1. Player fantasy and complete first-session flow
@@ -77,7 +77,7 @@ The following measurements are **proposed greybox implementation assumptions onl
 
 Keep current public browser lab at `experiments/play-seedplate-001/`. Add spatial rendering additively; do not migrate all work to Unity/React for the first slice.
 
-**Suggested small file plan (not yet implemented):**
+**Implemented 002A files and remaining review seams:**
 
 - `listening-room.mjs`: optional renderer adapter; initializes/disposes Three.js scene, camera, two object hit regions, resize and context-loss handling. It receives a read-only projection from `replayRun` and calls an **inspect-only** callback such as `onInspect("picture-machine"|"listening-chair")`. It never imports, writes, or independently serializes the run.
 - `room-projection.mjs`: pure mapping `replayRun(run) -> room visual state`, including stage, objects available, proposal-only screen, current kept scene ID/title and echo-parent ID. No independent simulation or one-off timers affecting outcomes.
@@ -86,7 +86,7 @@ Keep current public browser lab at `experiments/play-seedplate-001/`. Add spatia
 - `room-asset-manifest.json`: for first pass, stable keys identifying **procedural proxies only**. Do not vendor or download Meshy/Tripo/Thrixel props yet. Later accepted GLB assets need separate provenance/license/hash and explicit placement gates.
 - `listening-room.test.mjs` (or appropriate browser QA files): pure projection and entry/exit parity cases below. For browser screenshot/mobile QA, test the real loaded canvas plus DOM, not just Node unit tests.
 
-**Suggested adapter shape (illustrative interface, not code already shipped):**
+**Adapter shape (current implementation concept; actual files are linked above):**
 
 ```text
 run (existing seedplate state)
@@ -128,5 +128,5 @@ run (existing seedplate state)
 ### 9. Handoff receipt
 
 - **Documented from current source:** `seedplate.mjs` already supports `toaster:propose`, `scrape` (max 2), `pass`, exact `keep(candidateId)`, `groove:listen`, `groove:echo`, replay, finite beats, event IDs, echo parentage, and exported local run. `app.mjs` already owns DOM selection, commit, the current local-storage key, and the optional memory drawer.
-- **Proposed here, not implemented yet:** render adapter, physical room, two spatial hotspots, room projection, fixed camera and props, 2D/3D switching, actual browser QA.
+- **Now implemented in 002A:** optional procedural Three.js render adapter, fixed room camera, two inspect-only spatial hotspots with accessible DOM mirrors, pure room projection, fixed-source replay parity, 2D/3D switching, browser mobile-sized screenshot/interaction proof and offline fallback. **Still proposed:** accepted final room plan, physical wall aperture certification, production assets, human playtest, real-device performance data, and final Form/Runtime approvals.
 - **Approval scope:** this build brief authorizes **no provider credits, project deployment, final asset acceptance, or promotion of the new room to STATIC FIELD canon**. It makes 002A sufficiently concrete to implement independently and then seek human layout/asset review.
