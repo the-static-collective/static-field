@@ -1,6 +1,7 @@
 # PLAY-SEEDPLATE-002 — THE ROOM YOU CAN ENTER
 
 **Status:** proposed bounded vertical slice, not an implementation receipt or approved 3D layout.
+**Implementation handoff:** [LISTENING ROOM 0.1 — Build Brief](./LISTENING-ROOM-0.1-BUILD-BRIEF.md) specifies exact current-kernel actions, UI stages, file seams, test fixtures and greybox scope; it does not certify a completed 3D room.
 **Parent:** [PLAY-SEEDPLATE-001 experimental composer](./README.md) / [draft PR #7](https://github.com/the-static-collective/static-field/pull/7).
 **Purpose:** turn a selected UX-seed composition into **one browser-playable spatial room** with an accessible scene-first surface. The experiment demonstrates an actual gameplay composition, not a 3D catalog or a generalized world engine.
 
