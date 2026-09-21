@@ -81,7 +81,7 @@ test("room listening/notes are local and imported note events require their actu
   r=add(r,"continue");
   assert.throws(()=>act(r,"groove:note",{note:""}),/1–120/);
   r=act(r,"groove:note",{note:"I will be back after the song."});
-  assert.match(replayRun(r).receipt.body,/not somebody else's response/);
+  assert.match(replayRun(r).receipt.body,/nobody else is claimed to have heard it/);
   assert.throws(()=>act(r,"groove:note",{note:"duplicate action"}),/requires the room foreground/);
 });
 test("a FORK branch points at an actual parent and cannot retroactively rewrite it",()=>{
