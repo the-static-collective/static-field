@@ -248,3 +248,5 @@ button:not(:disabled):active{transform:translateY(1px)}
  .visual-feedback{font-size:.65rem}
 }
 @media(max-width:380px){.hand{gap:7px}.card-tile .card-art{max-height:122px}.card-tile .card-series{font-size:.52rem}}
+
+@media(prefers-reduced-motion:reduce){.visual-feedback,.portal-ring,.card-tile,.card-art-sheen,button{animation:none!important;transition:none!important}}
