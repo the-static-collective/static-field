@@ -40,5 +40,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: listening-room-phone-qa
-          path: experiments/play-seedplate-001/listening-room-phone.png
+          path: experiments/play-seedplate-001/listening-room-phone*.png
           if-no-files-found: ignore
