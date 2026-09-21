@@ -175,7 +175,8 @@ export async function createListeningRoom({mount,onInspect,onFallback}) {
   const update=(next)=>{
     if(disposed)return;
     projection=next;roomState=next?.hero?.status??"empty";
-    const intensity=roomState==="echo"?.91:roomState==="kept"?.58:roomState==="proposal"?.42:.16;
+    const intensity=roomState==="echo" ? 0.91 :
+      roomState==="kept" ? 0.58 : roomState==="proposal" ? 0.42 : 0.16;
     materials.screen.emissiveIntensity=intensity;
     materials.screen.color.set(roomState==="echo"?"#efd1a7":roomState==="proposal"?"#ab88ba":"#d1a56c");
     aperture.scale.x=roomState==="echo"?1.07:1;
