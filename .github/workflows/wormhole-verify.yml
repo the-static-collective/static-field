@@ -1,0 +1,31 @@
+name: STATIC FIELD Wormhole Wars proof
+
+on:
+  pull_request:
+    paths:
+      - "src/wormhole/**"
+      - "src/cli/wormhole-wars.ts"
+      - "tests/wormhole/**"
+      - "docs/protocol/wormhole-wars-001.md"
+      - "package.json"
+      - ".github/workflows/wormhole-verify.yml"
+  push:
+    branches:
+      - experiment/wormhole-wars-001
+
+permissions:
+  contents: read
+
+jobs:
+  game-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --ignore-scripts
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run demo:wormhole
