@@ -46,7 +46,7 @@ test("browser table offers original local card play and retains source/receiving
       const image=await response.text();
       assert.match(image,/<svg[^>]+viewBox="0 0 520 520"/);
       assert.match(image,/aria-labelledby="title desc"/);
-      assert.doesNotMatch(image,/<script|foreignObject|https?:\\/\\//i);
+      assert.doesNotMatch(image,/<script|foreignObject|<image|(?:href|src)="https?:\/\//i);
     }
     const forbidden=await fetch(runtime.url+"/wormhole-art/unapproved.svg");
     assert.equal(forbidden.status,404);
