@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4eee2">
+  <meta name="description" content="A little laboratory for composing four distinct ways to play. Local fictional encounters only.">
+  <title>STATIC PLAY · Seedplate 001</title>
+  <link rel="stylesheet" href="./seedplate.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="brand"><span class="mark" aria-hidden="true">◫</span><div><b>STATIC PLAY</b><span>SEEDPLATE 001 / EXPERIMENTAL</span></div></div>
+      <div class="mast-extra">One room. More than one way to play.</div>
+    </header>
+    <section class="welcome" aria-labelledby="welcome-heading">
+      <p class="eyebrow">A LITTLE PLAYABLE DESIGN EXPERIMENT</p>
+      <h1 id="welcome-heading">What happens when<br><i>our favorite games meet?</i></h1>
+      <p>Choose a few ways of playing. Give one of them the paintbrush. See what kind of room they make together.</p>
+    </section>
+    <main class="layout">
+      <section class="stage" id="stage" tabindex="-1" aria-label="Playable composed room">
+        <div class="stage-inner">
+          <p class="eyebrow" id="stage-eyebrow">YOUR NEW ROOM</p>
+          <div id="room-switch" class="room-switch" hidden>
+            <button id="room-toggle" class="room-toggle" type="button" aria-pressed="false">Visit the listening room</button>
+            <span id="room-switch-status" class="room-switch-status" role="status" aria-live="polite"></span>
+          </div>
+          <div class="scene-art" aria-hidden="true">
+            <div class="art-window"><span class="art-sun"></span></div>
+            <div class="art-line"></div>
+            <div class="art-table"><span class="art-cup"></span><span class="art-lemon"></span></div>
+            <div class="art-door"></div>
+            <span class="art-note">?</span>
+          </div>
+          <div id="room-surface" class="room-surface" hidden>
+            <div id="room-view" class="room-view" role="img" aria-label="A warm, small 3D listening room with a picture machine and listening chair. Use the object buttons below to inspect either."></div>
+            <div id="room-hotspots" class="room-hotspots" role="group" aria-label="Inspect room objects">
+              <button type="button" id="inspect-machine" data-hotspot="picture-machine">Picture machine</button>
+              <button type="button" id="inspect-chair" data-hotspot="listening-chair">Listening chair</button>
+            </div>
+          </div>
+          <h2 id="stage-title">A room is waiting.</h2>
+          <p id="stage-body" class="stage-body">Pick at least two seeds to see what they can make together.</p>
+          <div id="stage-status" class="stage-status" aria-live="polite"></div>
+          <div id="stage-actions" class="action-stack"></div>
+          <div id="stage-preview" class="preview"></div>
+          <div id="stage-error" class="error" role="alert" hidden></div>
+        </div>
+      </section>
+      <aside class="sidebar">
+        <details class="composer" id="composer" open>
+          <summary><span><small>01 / THE INGREDIENTS</small><strong>Pick your seeds</strong></span><span class="summary-icon" aria-hidden="true">＋</span></summary>
+          <div class="composer-inside">
+            <p class="hint">Each seed changes what you can <em>do</em>. Select two to four.</p>
+            <div id="donor-cards" class="donor-cards"></div>
+            <label class="lead-label" for="visual-lead">Who leads the look?</label>
+            <select id="visual-lead" aria-describedby="lead-help"></select>
+            <p id="lead-help" class="hint">A game can look like FORK! and still make Grace-shaped choices.</p>
+            <button class="primary-button" id="compose-button" type="button">Compose this room <span aria-hidden="true">↗</span></button>
+            <p class="hint micro">Changing the seeds starts a new <em>local fictional run</em>; it never edits a source project.</p>
+          </div>
+        </details>
+        <details class="journal" id="journal">
+          <summary><span><small>02 / THE TRACE</small><strong>The room remembers</strong></span><span class="summary-icon" aria-hidden="true">＋</span></summary>
+          <div class="journal-inside">
+            <p class="hint">Only what you actually chose to carry. Proposed scenes stay proposals.</p>
+            <ol id="journal-list"></ol>
+            <div id="source-links" class="source-links"></div>
+          </div>
+        </details>
+        <section class="aside-note">
+          <p class="eyebrow">THE HOUSE RULE</p>
+          <p>One game can lend another its grammar without claiming its history, its people, or its authority.</p>
+          <p class="fineprint">This is a solo, browser-local encounter; no live rooms, shared worlds, or connected project execution.</p>
+          <button type="button" id="recipe-button" class="reset-button">Copy this seed recipe ↗</button>
+          <p id="recipe-status" class="fineprint" aria-live="polite"></p>
+          <button type="button" id="reset-button" class="reset-button">Begin a fresh composition</button>
+        </section>
+      </aside>
+    </main>
+    <footer>MADE OF DISTINCT SEEDS · KEEP THE PARTICULARS</footer>
+  </div>
+</body>
+</html>
