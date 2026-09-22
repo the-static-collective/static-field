@@ -8,12 +8,12 @@
 - Project ID: `6bc35142-41ee-4483-9cd1-07a2fe5b6596`; committed **revision 1** (operation `porch-blockout-002`, 2026-09-21).
 - Original exported GLB: 72,732 bytes; provider ETag `384a12a477926c922a6a32ca45f8e5df`.
 - Original editable .blend: 924,991 bytes; provider ETag `9d5b6eff9ff1e5922c51c1e57a2dfda8`.
-- Original GLB/.blend binary files **are not copied into this repository**. Provider download URLs expire; open the stable project above to retrieve that exact revision when available. An ETag is not a SHA-256 checksum.
+- The original provider GLB/.blend binary files are **not mirrored byte-for-byte**. However, [porch-reexport-r1.glb](porch-reexport-r1.glb) is a fresh portable GLB export from the **same committed Higgsfield Blender scene revision 1**, produced by the project-scoped inspection worker on 2026-09-22 (69,612 bytes). It is a reusable Git-tracked game-asset candidate, **not** the provider's original 72,732-byte export. The editable .blend remains at the stable Higgsfield project above, and [build_porch.py](build_porch.py) offers an independent local reconstruction. Provider download URLs expire; an ETag is not a SHA-256 checksum.
 - [build_porch.py](build_porch.py) is a reusable **local Blender reconstruction of the procedural scene**. Run `blender --background --python build_porch.py` to generate `porch-reconstructed.blend` and `porch-reconstructed.glb`. These outputs are not claimed byte-identical to Higgsfield's exported files.
 
 ## Existing scene facts (verified via Higgsfield Blender query)
 
-44 objects including the porch, window, screen door, empty chair, workbench, Bell, open-corner mark, delivery camera and three area lights. Materials: Bell brass, Cedar, Desert, Lantern amber, Night and Oak. The project export succeeded at revision 1; appearance on different renderers and asset compatibility with the game are **not yet verified**. Blender AREA lights were reported unsupported by the GLB exporter; use game-native lighting or portable light types when integrating.
+44 objects including the porch, window, screen door, empty chair, workbench, Bell, open-corner mark, delivery camera and three area lights. Materials: Bell brass, Cedar, Desert, Lantern amber, Night and Oak. The provider project export and the Git-checked-in re-export both succeeded; appearance on different renderers and asset compatibility with the game are **not yet verified**. Blender AREA lights were reported unsupported by the GLB exporter; use game-native lighting or portable light types when integrating.
 
 ## Reuse target and contract
 
