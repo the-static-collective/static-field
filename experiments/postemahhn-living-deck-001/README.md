@@ -39,3 +39,20 @@ Real adapters must be separate and explicit:
 The receipt includes `provenance.origin=local-demo-fixture`, `verifiedExternalCardIdentity=false`, `authority=none`, and `acceptedIntoSharedWorld=false`. Audio is locally synthesized, not sourced from a real Static Collective recording. Export is an explicit browser download, not remote submission. No persistent session, physical sticker recognition, server world update, outside repo adapter, authentication, multiplayer, or canonical card generation is implemented.
 
 **Next test frontier:** import one real card and one real sticker through their source-owned interface, and demonstrate separate proposal, destination admission, and an actual authorized local receipt before claiming any cross-system integration.
+
+
+## Crater 002 — portable Full Measure × ROroomOM handoff
+
+The Fellowship Table now has **Export Full Measure × ROroomOM proposal**. This downloads a versioned `static-field.living-deck-portable-proposal` JSON bundle with ordered fixture card refs, sticker ref, proposed Full Measure project-draft fields, and a ROroomOM `static-room-source-handoff` creative capsule.
+
+The public [Jubilee Engine VM PostEmahh'n v0.1 constitution PR #12](https://github.com/the-static-collective/Jubilee-Engine-VM/pull/12) specifies **RECEIVE // G0** and the 15-card microdeck, but it is **design-only**. `source-design.mjs` pins that real document at a commit and explicitly labels its source card as `specified-not-issued`. This historical design reference does not certify that Cicada, Radio, or any sticker has actually been issued by an independent PostEmahh'n implementation.
+
+`interop.mjs` implements a fail-closed future admission contract: exact input reconstruction, explicit human approval, independent source-card and source-sticker verification by separately provided trusted ports, followed by independent Full Measure and ROroomOM destination dispositions. It does not provide a genuine source-owned verifier or mutate those repos. Test-only stub ports prove sequencing and refusal; **test-stub: receipts are not live external evidence**.
+
+For the currently executable **file-based** crossing, open [ROroomOM Living Deck Room PR #3](https://github.com/the-static-collective/ROroomOM/pull/3), run its standalone guest room and choose this page's downloaded JSON. The Room renders an INSPECT → ATTEMPT → LEAVE → RETURN encounter, preserves its own local trace and exports a second local receipt. This is actual producer→consumer interoperability, not privileged project import or canonical world mutation.
+
+```sh
+node --test tests/*.test.mjs
+```
+
+The separate GitHub Actions contract workflow tests the compiler, browser export shape, and prospective destination-admission gates. ROroomOM's workflow checks out this producer branch separately and runs a true cross-repo handoff test.
