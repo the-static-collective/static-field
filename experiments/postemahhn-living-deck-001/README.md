@@ -56,3 +56,10 @@ node --test tests/*.test.mjs
 ```
 
 The separate GitHub Actions contract workflow tests the compiler, browser export shape, and prospective destination-admission gates. ROroomOM's workflow checks out this producer branch separately and runs a true cross-repo handoff test.
+
+
+### Optional three-stage playable chain
+
+You can now carry the exported proposal into the isolated [Full Measure Living Deck quest PR #48](https://github.com/the-static-collective/full-measure-world-layer/pull/48), play a local quest, and export its versioned room request into [ROroomOM Living Deck guest-room PR #3](https://github.com/the-static-collective/ROroomOM/pull/3). The ROroomOM receiver validates both the original card proposal and the optional unconfirmed quest history independently. The full three-repository producer→quest→room path is exercised by ROroomOM's GitHub Actions contract test.
+
+Neither the project draft, the local quest receipt, nor the Room receipt grants project-owned mutation or proves any source card/sticker has actually been issued.
