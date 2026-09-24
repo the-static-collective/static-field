@@ -163,7 +163,7 @@ byId("export-handoff").addEventListener("click",()=>{
  if(!output?.ok)return;
  const packageData=buildBrowserHandoff(selected,events);
  if(packageData.status!=="unverified-proposal")return;
- const blob=new Blob([JSON.stringify(packageData,null,2)+"\\n"],{type:"application/json"});
+ const blob=new Blob([JSON.stringify(packageData,null,2)+"\n"],{type:"application/json"});
  const url=URL.createObjectURL(blob);
  const anchor=document.createElement("a");anchor.href=url;anchor.download=output.receipt.id.replaceAll(":","-")+"-crossworld-proposal.json";anchor.click();
  URL.revokeObjectURL(url);
