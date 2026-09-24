@@ -1,0 +1,26 @@
+name: Living Deck 001 contract
+
+on:
+  push:
+    branches:
+      - experiment/postemahhn-living-deck-001
+  pull_request:
+    paths:
+      - 'experiments/postemahhn-living-deck-001/**'
+      - '.github/workflows/living-deck-001.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify local deck compiler and cross-world proposal boundaries
+        run: node --test experiments/postemahhn-living-deck-001/tests/*.test.mjs
