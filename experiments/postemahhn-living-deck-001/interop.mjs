@@ -3,16 +3,8 @@ import { compose } from "./composer.mjs";
 
 // The Jubilee PR is an ACTUAL design source, not a source-issued card receipt.
 // Pin a commit rather than implying the branch name is immutable.
-export const DESIGN_SOURCE = Object.freeze({
-  sourceClass: "published-design-draft",
-  repository: "the-static-collective/Jubilee-Engine-VM",
-  commit: "20b529038be86cb88e2fd386536493cd694fd719",
-  path: "docs/superpowers/specs/2026-09-21-postemahhn-v0.1-design.md",
-  sourceCardTitle: "RECEIVE // G0",
-  sourceCardStatus: "specified-not-issued",
-  proofOfPhysicalCard: false,
-  proofOfStickerIssuance: false,
-});
+import { DESIGN_SOURCE } from "./source-design.mjs";
+export { DESIGN_SOURCE } from "./source-design.mjs";
 
 function plainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value) && Object.getPrototypeOf(value) === Object.prototype;
