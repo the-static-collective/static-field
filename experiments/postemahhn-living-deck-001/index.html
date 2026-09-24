@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Fellowship Table — Living Deck 001</title>
+<style>
+:root{font:16px/1.45 system-ui,sans-serif;color:#f0e8d6;background:#151b1c;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#34413e 0%,#151b1c 64%);min-height:100vh}
+main{max-width:1050px;margin:auto;padding:32px 18px 80px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font:600 clamp(2rem,6vw,4rem)/1.05 Georgia,serif;margin:32px 0 8px}
+h2{font:600 1.5rem Georgia,serif;margin:0 0 14px}h3{margin:10px 0}
+p{margin:7px 0 16px}small,.muted{color:#c5c6b7}
+.tag{border:1px solid #c1ab77;border-radius:50px;padding:5px 11px;letter-spacing:.08em;font-size:.75rem;color:#e2cf9b}
+.panel{border:1px solid #738079;background:#202b2a;border-radius:18px;padding:20px;margin-top:22px}
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.deck,.stickers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card,.sticker,.action{font:inherit;color:inherit;background:#31403c;border:1px solid #72827b;border-radius:12px;padding:12px;text-align:left;cursor:pointer}
+.card{min-height:117px;display:flex;flex-direction:column;justify-content:space-between}
+.card b{font:600 1.25rem Georgia,serif}.card small{display:block}
+.card[data-active="true"],.sticker[data-active="true"]{outline:3px solid #f5d388;outline-offset:1px;background:#49584a}
+.card:focus-visible,.sticker:focus-visible,.action:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.sticker{font-weight:700;text-align:center;padding:13px 4px}
+button.primary{background:#eacb89;color:#20201a;border:none;border-radius:12px;padding:13px 22px;font:700 1rem system-ui;cursor:pointer}
+button.secondary{background:transparent;color:#f4e8ca;border:1px solid #d3bc86;border-radius:10px;padding:9px 13px;cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}
+output{display:block;background:#15201f;border:1px solid #758078;border-radius:12px;padding:18px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.8rem;color:#d0dbc5;max-height:245px;overflow:auto}
+#events p{border-left:3px solid #d7ba7b;padding-left:10px;margin:9px 0}
+#status{min-height:1.5em}label{display:block;margin:12px 0}input[type=range]{width:min(300px,100%)}
+@media(max-width:730px){.stage,.result{grid-template-columns:1fr}.panel{padding:15px}h1{margin-top:20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body><main>
+<header><span class="tag">STATIC FIELD / THE FELLOWSHIP TABLE</span><span class="tag">EXPERIMENTAL • LOCAL ONLY</span></header>
+<h1>The Living Deck</h1>
+<p class="muted">Two cards. One sticker. One possible new encounter. Build a proposed room, try the only supported sound instrument, and export a receipt. No login, tracking, or network submission.</p>
+<div class="stage">
+<section class="panel" aria-labelledby="cards-title"><h2 id="cards-title">01 · Arrange the cards</h2>
+<p>Choose a source and a receiver. Their order matters.</p>
+<h3>Source card</h3><div class="deck" id="first"></div>
+<h3>Receiving card</h3><div class="deck" id="second"></div></section>
+<section class="panel" aria-labelledby="stickers-title"><h2 id="stickers-title">02 · Apply a sticker</h2>
+<p>A sticker requests an operation. Only a declared relationship can perform it.</p>
+<div class="stickers" id="stickers"></div>
+<div class="controls"><button class="primary" id="compose">Compose at the table</button></div>
+<p role="status" aria-live="polite" id="status"></p></section>
+</div>
+<section class="panel" id="result-panel" hidden aria-labelledby="result-title">
+<h2 id="result-title">03 · Encounter the result</h2>
+<output id="summary" aria-live="polite"></output>
+<div class="result">
+<div><h3>Playable local encounter</h3><p id="quest"></p><p id="scene"></p>
+<div class="controls"><button class="secondary action" data-action="INSPECT">Inspect</button><button class="secondary action" data-action="ATTEMPT">Attempt</button><button class="secondary action" data-action="LEAVE">Leave</button></div>
+<div id="events" aria-live="polite"></div></div>
+<div><h3 id="tool-title">Executable instrument</h3>
+<p id="tool-description"></p><div id="audio-controls" hidden>
+<label>Loop tempo: <span id="tempo-value">280</span> ms between tones
+<input type="range" id="tempo" min="150" max="800" step="10" value="280"></label>
+<div class="controls"><button class="secondary" id="play">Play sound</button><button class="secondary" id="stop" disabled>Stop sound</button></div></div>
+<h3>Composition receipt</h3><pre id="receipt"></pre><button class="secondary" id="export">Export JSON receipt</button> <button class="secondary" id="export-handoff">Export Full Measure × ROroomOM proposal</button></div>
+</div></section>
+<section class="panel"><h2>What this experiment does not claim</h2>
+<p class="muted">These four cards are local illustrative fixtures, not verified PostEmahh'n identities. The quest and room are proposed adapter payloads, not deployed Full Measure or ROroomOM content. Local actions do not alter Static Field's canonical history. Only Cicada → Radio + ECHO has an implemented executable sound tool. Other combinations can make a local story proposal, never an arbitrary executable command.</p></section>
+</main>
+<script type="module">
+import { CARDS, STICKERS, compose } from "./composer.mjs";
+import { buildBrowserHandoff } from "./browser-handoff.mjs";
+const byId=id=>document.getElementById(id);
+let selected={firstId:"cicada",secondId:"radio",stickerId:"echo"};
+let output=null,events=[],audio=null,timer=null,step=0;
+function stop(){
+ if(timer!==null){clearInterval(timer);timer=null}
+ if(audio){audio.close();audio=null}
+ byId("play").disabled=false;byId("stop").disabled=true;
+}
+function buttons(container,items,field,labelKey){
+ const root=byId(container);root.replaceChildren();
+ for(const item of items){
+  const b=document.createElement("button");
+  b.type="button";b.className=container==="stickers"?"sticker":"card";
+  b.dataset.active=String(selected[field]===item.id);
+  b.setAttribute("aria-pressed",String(selected[field]===item.id));
+  const title=document.createElement("b");title.textContent=item.title;
+  b.append(title);
+  if(item.kind){const k=document.createElement("small");k.textContent=item.kind.toUpperCase();b.append(k)}
+  b.addEventListener("click",()=>{
+   stop();selected[field]=item.id;output=null;byId("result-panel").hidden=true;
+   byId("status").textContent="Arrangement changed. Compose to preview.";
+   draw();
+  });
+  root.append(b);
+ }
+}
+function draw(){buttons("first",CARDS,"firstId");buttons("second",CARDS,"secondId");buttons("stickers",STICKERS,"stickerId")}
+function event(action){
+ if(!output)return;
+ if(action==="ATTEMPT"&&!events.includes("INSPECT")){
+  byId("status").textContent="Inspect the encounter before attempting the relation.";return;
+ }
+ if(action==="ATTEMPT"&&events.includes("LEAVE")){
+  byId("status").textContent="You left this local encounter. Compose again to return.";return;
+ }
+ if(action==="INSPECT"&&events.includes("LEAVE")){byId("status").textContent="Compose again to return.";return}
+ events.push(action);
+ const p=document.createElement("p");
+ p.textContent=action==="INSPECT"?"You inspect the two cards and notice the proposed relation.":action==="ATTEMPT"?
+  `You try the sticker. ${output.room.visibleConsequence} This is a local preview, not a shared-world change.`:
+  "You leave without completing the proposed quest. This choice is valid.";
+ byId("events").append(p);
+ byId("status").textContent=`Local action recorded: ${action}`;
+}
+function tone(){
+ if(!audio||!output?.tool)return;
+ const oscillator=audio.createOscillator(),gain=audio.createGain();
+ oscillator.type="sine";oscillator.frequency.value=output.tool.patternHz[step++%output.tool.patternHz.length];
+ gain.gain.setValueAtTime(0.0001,audio.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.09,audio.currentTime+0.015);
+ gain.gain.exponentialRampToValueAtTime(0.0001,audio.currentTime+0.15);
+ oscillator.connect(gain).connect(audio.destination);
+ oscillator.start();oscillator.stop(audio.currentTime+0.16);
+}
+byId("compose").addEventListener("click",()=>{
+ stop();events=[];byId("events").replaceChildren();
+ output=compose(selected);
+ if(!output.ok){byId("result-panel").hidden=true;byId("status").textContent=`Not composable: ${output.explanation}`;return}
+ byId("status").textContent="Composition accepted for local preview. No external change.";
+ byId("summary").textContent=`${output.quest.title} — ${output.receipt.id}`;
+ byId("quest").textContent=output.quest.objective+" "+output.quest.resolution;
+ byId("scene").textContent=output.room.visibleConsequence;
+ byId("tool-description").textContent=output.tool?
+  "Playable audio loop: four local synthesized tones. Adjust tempo. No recording or uploading.":
+  "No executable tool adapter is defined for this relation. The story preview and receipt remain available.";
+ byId("audio-controls").hidden=!output.tool;
+ byId("receipt").textContent=JSON.stringify(output.receipt,null,2);
+ byId("result-panel").hidden=false;
+});
+byId("tempo").addEventListener("input",()=>{byId("tempo-value").textContent=byId("tempo").value;
+ if(timer!==null){clearInterval(timer);timer=setInterval(tone,Number(byId("tempo").value))}});
+byId("play").addEventListener("click",async()=>{
+ if(!output?.tool||audio)return;
+ try{
+  const AudioEngine=window.AudioContext||window.webkitAudioContext;
+  if(!AudioEngine)throw new Error("Web Audio is unavailable in this browser.");
+  audio=new AudioEngine();await audio.resume();step=0;tone();
+  timer=setInterval(tone,Number(byId("tempo").value));
+  byId("play").disabled=true;byId("stop").disabled=false;
+ }catch(error){stop();byId("status").textContent=String(error.message||error)}
+});
+byId("stop").addEventListener("click",stop);
+byId("export").addEventListener("click",()=>{
+ if(!output?.ok)return;
+ const data={...output,localEncounterActions:[...events]};
+ const blob=new Blob([JSON.stringify(data,null,2)+"\n"],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const anchor=document.createElement("a");anchor.href=url;anchor.download=output.receipt.id.replaceAll(":","-")+".json";anchor.click();
+ URL.revokeObjectURL(url);
+});
+byId("export-handoff").addEventListener("click",()=>{
+ if(!output?.ok)return;
+ const packageData=buildBrowserHandoff(selected,events);
+ if(packageData.status!=="unverified-proposal")return;
+ const blob=new Blob([JSON.stringify(packageData,null,2)+"\n"],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const anchor=document.createElement("a");anchor.href=url;anchor.download=output.receipt.id.replaceAll(":","-")+"-crossworld-proposal.json";anchor.click();
+ URL.revokeObjectURL(url);
+ byId("status").textContent="Downloaded review-only handoff; no Full Measure, ROroomOM or PostEmahh'n adapter was called.";
+});
+document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>event(b.dataset.action)));
+draw();
+</script></body></html>
