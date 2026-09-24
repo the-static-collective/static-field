@@ -61,13 +61,14 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.8rem;color:#d0dbc5;ma
 <label>Loop tempo: <span id="tempo-value">280</span> ms between tones
 <input type="range" id="tempo" min="150" max="800" step="10" value="280"></label>
 <div class="controls"><button class="secondary" id="play">Play sound</button><button class="secondary" id="stop" disabled>Stop sound</button></div></div>
-<h3>Composition receipt</h3><pre id="receipt"></pre><button class="secondary" id="export">Export JSON receipt</button></div>
+<h3>Composition receipt</h3><pre id="receipt"></pre><button class="secondary" id="export">Export JSON receipt</button> <button class="secondary" id="export-handoff">Export Full Measure × ROroomOM proposal</button></div>
 </div></section>
 <section class="panel"><h2>What this experiment does not claim</h2>
 <p class="muted">These four cards are local illustrative fixtures, not verified PostEmahh'n identities. The quest and room are proposed adapter payloads, not deployed Full Measure or ROroomOM content. Local actions do not alter Static Field's canonical history. Only Cicada → Radio + ECHO has an implemented executable sound tool. Other combinations can make a local story proposal, never an arbitrary executable command.</p></section>
 </main>
 <script type="module">
 import { CARDS, STICKERS, compose } from "./composer.mjs";
+import { buildBrowserHandoff } from "./browser-handoff.mjs";
 const byId=id=>document.getElementById(id);
 let selected={firstId:"cicada",secondId:"radio",stickerId:"echo"};
 let output=null,events=[],audio=null,timer=null,step=0;
@@ -157,6 +158,16 @@ byId("export").addEventListener("click",()=>{
  const url=URL.createObjectURL(blob);
  const anchor=document.createElement("a");anchor.href=url;anchor.download=output.receipt.id.replaceAll(":","-")+".json";anchor.click();
  URL.revokeObjectURL(url);
+});
+byId("export-handoff").addEventListener("click",()=>{
+ if(!output?.ok)return;
+ const packageData=buildBrowserHandoff(selected,events);
+ if(packageData.status!=="unverified-proposal")return;
+ const blob=new Blob([JSON.stringify(packageData,null,2)+"\\n"],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const anchor=document.createElement("a");anchor.href=url;anchor.download=output.receipt.id.replaceAll(":","-")+"-crossworld-proposal.json";anchor.click();
+ URL.revokeObjectURL(url);
+ byId("status").textContent="Downloaded review-only handoff; no Full Measure, ROroomOM or PostEmahh'n adapter was called.";
 });
 document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>event(b.dataset.action)));
 draw();
