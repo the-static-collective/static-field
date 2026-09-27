@@ -1,0 +1,17 @@
+{
+  "relations": [
+    {
+      "relationId": "relation/first-bell-open-corner",
+      "subjectRefs": [
+        "occurrence/bell"
+      ],
+      "evidenceRefs": [
+        "archive/song/open-e-022100",
+        "archive/card/lmv-open-corner"
+      ],
+      "interpretation": "A prior musical/card relation resembles the present Bell occurrence.",
+      "sourceStatus": "unresolved",
+      "promotedClaim": false
+    }
+  ]
+}

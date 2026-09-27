@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>STATIC FIELD — THE PORCH</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">STATIC FIELD / WORLDSEED-001</p>
+      <h1>THE PORCH</h1>
+      <p id="objective">GET THE ROOM READY</p>
+    </header>
+
+    <nav aria-label="Map mode">
+      <button data-map="surface" class="active">SURFACE</button>
+      <button data-map="resonance">RESONANCE</button>
+    </nav>
+
+    <section id="surface" class="map active">
+      <div class="objects">
+        <button data-action="SET_OUT_CHAIR">set out a chair</button>
+        <button data-action="ROUTE_CABLE">route the cable</button>
+        <button data-action="PUT_OUT_WATER">put out water</button>
+        <button data-action="CHECK_DOOR">check the screen door</button>
+      </div>
+      <pre id="surface-state"></pre>
+    </section>
+
+    <section id="resonance" class="map">
+      <p id="resonance-copy">quiet</p>
+      <pre id="resonance-state"></pre>
+    </section>
+
+    <aside>
+      <p>Attendance: <span id="attendance">—</span></p>
+      <p>Charge: <span id="charge">—</span></p>
+      <div id="story-actions">
+        <button data-action="ENTER_PORCH">enter porch</button>
+        <button data-action="BELL_1">Bell I</button>
+        <button data-action="CONTINUE_PREPARATION">continue</button>
+        <button data-action="BELL_2">Bell II</button>
+        <button id="notice-clue" data-action="NOTICE_OPEN_CORNER" hidden>look closer</button>
+        <button data-action="ENTER_RESONANCE">enter resonance</button>
+        <button data-action="TRACE_PRIOR_RELATION">trace prior relation</button>
+        <button data-action="KNOCK">knock knock knock</button>
+        <button data-action="CLOSE_PLAY">close play</button>
+      </div>
+      <div class="care-actions">
+        <button data-action="REST">rest</button>
+        <button data-action="TEND">tend</button>
+        <button data-action="PRAY">pray</button>
+        <button data-action="ASK_FOR_HELP">ask for help</button>
+      </div>
+      <p id="message" role="status"></p>
+    </aside>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

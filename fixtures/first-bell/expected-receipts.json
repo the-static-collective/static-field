@@ -1,0 +1,32 @@
+{
+  "PorchArrivalReceipt": {
+    "eventId": "event/1f1c67a30e549f1d30a4cb38",
+    "receiptId": "receipt/4310d1bf24ede58a4cef4148",
+    "sourceStatus": "resolved"
+  },
+  "AttendanceReceipt": {
+    "eventId": "event/1f1c67a30e549f1d30a4cb38",
+    "receiptId": "receipt/daa47c43254fb15b00734a75",
+    "sourceStatus": "resolved"
+  },
+  "BellOccurrenceReceipt#1": {
+    "eventId": "event/12a9da726d487a613ca92cb2",
+    "receiptId": "receipt/b3e0973c6d346d354bfc7ec8",
+    "sourceStatus": "unresolved"
+  },
+  "BellOccurrenceReceipt#2": {
+    "eventId": "event/dd23ea81f1364f13a82cb471",
+    "receiptId": "receipt/20bbb5674cbd74f6269e1430",
+    "sourceStatus": "unresolved"
+  },
+  "ResonanceRelationReceipt": {
+    "eventId": "event/a535d2b8fa1cdb7b5c7985aa",
+    "receiptId": "receipt/88a1fdb2f6ee509ee7ae1dbb",
+    "sourceStatus": "unresolved"
+  },
+  "FirstBellPlayReceipt": {
+    "eventId": "event/52905bdcf9558e60340ad0f6",
+    "receiptId": "receipt/2066f924cb8606017a7d52ab",
+    "sourceStatus": "unresolved"
+  }
+}
