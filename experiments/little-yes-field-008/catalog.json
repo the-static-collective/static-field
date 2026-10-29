@@ -1,0 +1,124 @@
+{
+  "format": "static-field.optional-expansion-catalog/1",
+  "status": "REVIEW_ONLY_NOT_CANON",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "The Town That Plays Itself",
+      "theme": "Fictional need, separate witness, musical response",
+      "owner": "CANNON",
+      "source": "https://github.com/the-static-collective/CANNON/pull/66",
+      "availableHere": false,
+      "evidenceLevel": "LINKED_ONLY",
+      "entry": null
+    },
+    {
+      "number": 2,
+      "title": "Particularity Engine",
+      "theme": "Evidence-bounded useful field proposals",
+      "owner": "CANNON",
+      "source": "https://github.com/the-static-collective/CANNON/pull/69",
+      "availableHere": false,
+      "evidenceLevel": "LINKED_ONLY",
+      "entry": null
+    },
+    {
+      "number": 3,
+      "title": "Cooperative Compiler",
+      "theme": "Capabilities combined between towns",
+      "owner": "CANNON",
+      "source": "https://github.com/the-static-collective/CANNON/pull/71",
+      "availableHere": false,
+      "evidenceLevel": "LINKED_ONLY",
+      "entry": null
+    },
+    {
+      "number": 4,
+      "title": "Reciprocity Reactor",
+      "theme": "Shared ledger, multi-beneficiary plans, missing routes",
+      "owner": "CANNON",
+      "source": "https://github.com/the-static-collective/CANNON/pull/73",
+      "availableHere": false,
+      "evidenceLevel": "LINKED_ONLY",
+      "entry": null
+    },
+    {
+      "number": 5,
+      "title": "Impossibility Foundry",
+      "theme": "Invent a capability to unlock an impossibility",
+      "owner": "CANNON",
+      "source": "https://github.com/the-static-collective/CANNON/pull/75",
+      "availableHere": false,
+      "evidenceLevel": "LINKED_ONLY",
+      "entry": null
+    },
+    {
+      "number": 6,
+      "title": "Invention Ecosystem",
+      "theme": "Portfolios of coupled inventions",
+      "owner": "CANNON",
+      "source": "https://github.com/the-static-collective/CANNON/pull/76",
+      "availableHere": false,
+      "evidenceLevel": "LINKED_ONLY",
+      "entry": null
+    },
+    {
+      "number": 7,
+      "title": "Little Yes Express",
+      "theme": "Cooperative party railroad, crafting, provenance cards",
+      "owner": "CANNON",
+      "source": "https://github.com/the-static-collective/CANNON/pull/78",
+      "availableHere": true,
+      "evidenceLevel": "LOCAL_SOURCE_COPY",
+      "entry": "./rail/index.html"
+    },
+    {
+      "number": 8,
+      "title": "Who Built Your Kingdom? / The Earth Remembers",
+      "theme": "Worker voice, refusal, labor terms, shared victory",
+      "owner": "user-provided lyrics + local implementation",
+      "source": "originating conversation; local source copy",
+      "availableHere": true,
+      "evidenceLevel": "LOCAL_SOURCE_COPY",
+      "entry": "./kingdom/index.html",
+      "soundRecordingIncluded": false,
+      "realWorkerConsent": false
+    }
+  ],
+  "neighborSources": [
+    {
+      "owner": "Static Field Living Deck",
+      "source": "https://github.com/the-static-collective/static-field/pull/12",
+      "relation": "SOURCE_OWNED_COMPOSER_USED_IN_HELD_BRIDGE"
+    },
+    {
+      "owner": "Reality 2.0 Little Yes grammar",
+      "source": "https://github.com/the-static-collective/national-treasure/pull/65",
+      "relation": "HISTORICAL_DESIGN"
+    },
+    {
+      "owner": "GrO Mattercraft 42 claimed / 39 observed WOOD",
+      "source": "https://github.com/the-static-collective/GrO/pull/32",
+      "relation": "HISTORICAL_DESIGN_ZERO_SPENDABLE_DISPUTED_STOCK"
+    },
+    {
+      "owner": "GHoT Warm Thread firewood",
+      "source": "https://github.com/the-static-collective/GHoT/pull/33",
+      "relation": "HISTORICAL_DESIGN_NO_PHYSICAL_ACTION"
+    },
+    {
+      "owner": "Harmony Matter × Idea Craft",
+      "source": "https://github.com/the-static-collective/webZ/pull/190",
+      "relation": "HISTORICAL_DESIGN_NO_MINT"
+    }
+  ],
+  "nonClaims": [
+    "Game YES is not human consent",
+    "Game material isn't verified physical inventory",
+    "No blockchain NFT is minted",
+    "No real labor wage/safety is determined",
+    "The Suno recording is not included",
+    "001–006 are links, not imported executables",
+    "Only a separately governed owner can authorize real-world effects"
+  ]
+}

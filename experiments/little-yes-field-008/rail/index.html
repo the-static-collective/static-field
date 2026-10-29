@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LITTLE YES EXPRESS · a game for building what's possible</title>
+<style>
+:root{--bg:#111b1b;--ink:#edecdc;--soft:#b5c2b3;--muted:#899d92;--paper:#20302c;--line:#3f594f;--gold:#eec275;--lime:#b1d59a;--orange:#ee9b74;--blue:#a1cfd0;--pink:#d9b4bc;--serif:Georgia,'Times New Roman',serif}*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;font-size:15px;line-height:1.55}button,select,textarea,input{font:inherit}button{cursor:pointer}a{color:var(--gold)}header{background:radial-gradient(ellipse 70% 95% at 60% 0%,#375344 0%,#1c2a27 54%,#131d1b 100%);border-bottom:1px solid var(--line);padding:28px max(20px,calc((100% - 1320px)/2)) 24px}.overline{font-size:.72rem;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;font-weight:800}.brandrow{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}h1{font-family:var(--serif);font-size:clamp(2.9rem,7.8vw,6.8rem);line-height:.95;letter-spacing:-.055em;margin:15px 0 6px;font-weight:400}h1 em{color:var(--gold);font-style:normal}h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.3rem);margin:0 0 .5rem}h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;margin:.3rem 0}p{margin:.5rem 0 .9rem}.subtitle{color:#d5dccd;max-width:660px;font-size:1.08rem}.stamp{border:1px dashed var(--gold);padding:15px;max-width:250px;transform:rotate(4deg);color:var(--gold);font-family:var(--serif);font-size:1.4rem;text-align:center;line-height:1.1}.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;align-items:center}.tool,.action{background:#263c34;border:1px solid #698375;color:var(--ink);padding:9px 13px;border-radius:8px;transition:background .15s}.tool:hover,.action:hover{background:#385a49}.tool.primary,.action.primary{background:var(--gold);border-color:var(--gold);color:#19201a;font-weight:750}.tool.primary:hover,.action.primary:hover{background:#ffdb95}.tool:focus-visible,.action:focus-visible{outline:3px solid var(--blue);outline-offset:2px}select{color:#111e18;background:var(--ink);border:0;border-radius:6px;padding:9px}.layout{max-width:1360px;padding:24px 20px 70px;margin:auto}.statbar{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:10px;margin-bottom:18px}.stat{background:#21322d;border:1px solid var(--line);border-radius:11px;padding:14px 17px}.stat strong{font-family:var(--serif);font-size:2.1rem;font-weight:400;display:block;line-height:1.2}.stat small{color:var(--soft);display:block;letter-spacing:.08em;text-transform:uppercase;font-size:.68rem}.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}.columns{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(315px,1fr);gap:18px;align-items:start}.stack{display:grid;gap:16px}.map{width:100%;height:auto;display:block;overflow:visible;background:radial-gradient(ellipse at center,#2b433b,#20302c 70%);border:1px solid #4a6558;border-radius:14px;margin:14px 0}.map .edge{stroke:#6a756b;stroke-width:9;stroke-linecap:round;cursor:pointer}.map .edge-label{font-family:system-ui;font-size:13px;fill:#eee6c8;paint-order:stroke;stroke:#1a2926;stroke-width:3}.map .edge.yes{stroke:#cba771;stroke-dasharray:12 7}.map .edge.built{stroke:#b5d790;stroke-dasharray:none}.map .city{fill:#304941;stroke:#c4d5ae;stroke-width:3}.map .town-tag{fill:#e7eacd;font-size:13px;font-weight:800;text-anchor:middle}.map .town-num{fill:#f4cd90;font-size:14px;text-anchor:middle;font-weight:bold}.map .town-kind{font-size:11px;fill:#c2d1c4;text-anchor:middle}.eyebrow{color:var(--gold);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;font-weight:850}.pill{display:inline-block;border:1px solid #678877;border-radius:99px;padding:3px 9px;margin:4px 4px 0 0;font-size:.8rem}.pill.good{background:#375343;color:#d1f5b9}.pill.bad{background:#533934;color:#ffd7b8}.mission{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.mission:last-child{border:0}.mission strong{display:block}.mission p{margin:3px 0;font-size:.83rem;color:var(--soft)}.check{border:1px solid #6a786a;color:#dad5c1;border-radius:50%;height:36px;min-width:36px;display:grid;place-items:center}.check.done{background:#c5d58b;border-color:#c5d58b;color:#1c2721;font-weight:900}.resources{display:flex;flex-wrap:wrap;gap:8px}.resource{background:#162622;border:1px solid #50675b;border-radius:10px;padding:8px 13px;min-width:88px}.resource span{display:block;color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}.resource strong{display:block;color:var(--ink);font-family:var(--serif);font-size:1.5rem}.director{background:#2b3c35;border:1px solid #829874;border-left:6px solid var(--gold);border-radius:12px;padding:15px}.director p{color:#e3e8dd;font-size:.91rem}.director .title{font-family:var(--serif);font-size:1.38rem}.move-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:9px}.move{border:1px solid var(--line);padding:11px;border-radius:11px;background:#1b2c27}.move strong{display:block;font-size:.86rem;line-height:1.25}.move small{display:block;color:var(--soft);font-size:.74rem;min-height:27px}.move button{font-size:.77rem;margin-top:7px;padding:6px 10px;width:100%}details{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}summary{cursor:pointer;color:var(--gold);font-weight:700}.relics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px;max-height:250px;overflow:auto}.relic{padding:12px;background:#263a34;border:1px dashed #caa971;border-radius:9px;min-height:105px}.relic h4{font-family:var(--serif);font-size:1.05rem;margin:4px 0}.log{max-height:160px;overflow:auto;padding-left:20px;color:#b7c9bc;font-size:.84rem}.warn{background:#3f332f;border:1px solid #ad7c5c;padding:12px 14px;color:#ffe4c6;border-radius:9px;font-size:.88rem}.small{color:var(--soft);font-size:.88rem}.footer{margin-top:28px;color:var(--soft);font-size:.83rem}.field-card{background:#ede4cc;color:#21332c;padding:16px;margin:8px 0 0;border-radius:10px;line-height:1.55}.field-card h3{font-size:1.4rem}.field-card p{margin:7px 0}.print-only{display:none}.toast{position:fixed;bottom:22px;right:22px;max-width:420px;background:#d5e6c0;color:#1a271d;padding:13px 18px;border-radius:10px;box-shadow:0 10px 35px #111a1780;z-index:8}.ended{border:2px solid var(--gold);padding:16px;background:#2a4439;border-radius:12px}.bottom-panels{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.event-tag{padding:11px 14px;background:#182b26;border-radius:8px;border:1px solid #46665a;color:#d1dbd0}.card-line{font-size:.84rem}.link-note{color:var(--muted);font-size:.79rem}.divide{height:1px;background:var(--line);margin:18px 0}button[disabled]{opacity:.38;cursor:not-allowed}.map g.route{cursor:pointer}.map g.route:hover .edge{stroke:var(--gold)}.map g.route:hover .edge.built{stroke:#efffa5}
+@media(max-width:890px){.columns{grid-template-columns:1fr}.statbar{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom-panels{grid-template-columns:1fr}.stamp{max-width:none}.brandrow{align-items:flex-start}}
+@media print{body{background:#fff;color:#111;font-size:10pt}header,.layout,#toast{display:none!important}.print-only{display:block!important;padding:12mm} .print-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8mm}.print-card{break-inside:avoid;border:1.5px solid #222;min-height:50mm;padding:6mm}.print-card h3{font-family:Georgia;font-size:16pt;margin:0 0 5mm}.print-card p{font-size:10pt}.print-section{break-before:page}h1{font-size:28pt} }
+</style></head><body>
+<header><div class="brandrow"><div><div class="overline">Reality 2.0 · The Living Railway · Groovetown experimental expansion</div><h1>LITTLE <em>YES</em><br>EXPRESS.</h1><p class="subtitle">A cooperative railroad-making, resource-crafting party game. The towns want to help. The game wants to help. Your job is to discover what becomes possible together.</p></div><div class="stamp">No winner alone.<br>Everyone gets there.</div></div>
+<div class="toolbar"><label>Party seats <select id="party-size"><option value="2">2 players</option><option value="3">3 players</option><option value="4" selected>4 players</option><option value="5">5 players</option><option value="6">6 players</option></select></label><button class="tool primary" id="new">New game</button><button class="tool" id="undo">↶ Undo move</button><button class="tool" id="save">Export game + cards</button><button class="tool" id="print">Print party kit</button><button class="tool" id="help">How to play</button></div></header>
+<main class="layout"><div class="statbar" id="stats"></div><div class="columns"><div class="stack"><section class="panel"><div class="eyebrow">01 / The living board</div><h2>Build a line between needs and possibilities</h2><p class="small">Select any route below to record a fictional Little Yes or build it. Pale lines are possibilities; amber means agreed; green means built.</p><div id="board"></div><div class="event-tag" id="event" aria-live="polite"></div><div id="game-end"></div></section><section class="panel"><div class="eyebrow">02 / The shared commons</div><h2>What the table can actually spend</h2><p class="small">These are <strong>game tokens</strong>, not claims about available real-world materials.</p><div class="resources" id="resources"></div><div class="divide"></div><div class="eyebrow">Materials → transformations → capabilities</div><div class="move-grid" id="crafts"></div></section><section class="panel"><div class="eyebrow">03 / The places</div><h2>Gather, mine, garden, imagine</h2><div class="move-grid" id="gather"></div></section></div>
+<div class="stack"><section class="panel"><div class="eyebrow">The game plays with you</div><div class="director"><div class="eyebrow">The dispatcher proposes</div><div class="title" id="offer-title"></div><p id="offer-reason"></p><button class="action primary" id="offer-action">Take this action</button></div><p class="small" style="margin-top:12px">The dispatcher uses an explainable route-and-resource rule, not a remote AI or an order. The table can choose differently.</p><div id="role"></div></section><section class="panel"><div class="eyebrow">04 / Collective victory</div><h2>Three shared arrivals</h2><div id="missions"></div><div class="divide"></div><div class="eyebrow">Deliver on a connected route</div><div class="move-grid" id="deliveries"></div></section><section class="panel"><div class="eyebrow">05 / The living deck</div><h2>Recipes, tickets, witnessed questions</h2><p class="small">Every completed game construction creates a portable story card. A card isn't a blockchain NFT or proof of physical work.</p><div id="relics" class="relics"></div><div class="divide"></div><button id="audit" class="action">Investigate 42 claimed / 39 observed WOOD</button></section><section class="panel"><div class="eyebrow">06 / Return to Reality 2.0</div><h2>From play to a real question</h2><p>What could our <em>actual</em> community make possible together?</p><div class="field-card"><h3>FIELD CARD · UNSENT DRAFT</h3><p><b>NEED:</b> What precisely is missing?</p><p><b>OFFER:</b> What can someone voluntarily contribute?</p><p><b>LINK:</b> What connection would unlock the next step?</p><p><b>LITTLE YES:</b> Whose separate consent is required?</p><p><b>WITNESS:</b> What would count as independent evidence?</p></div><p class="small">This intentionally remains blank. Nothing in a board game authorizes real construction, firewood distribution, rail work or token issuance.</p></section></div></div>
+<section class="bottom-panels"><article class="panel"><h2>Tickets from the last few turns</h2><ol class="log" id="history"></ol></article><article class="panel"><h2>Party rules & safeguards</h2><p class="small">2–6 people · 20–35 minutes · one shared device or printed cards. Choose actions together. Each seat gets one action before the next round. Agree to fictional routes, craft rail from materials, build connections, and deliver 2 food and 2 firewood tokens to Lantern Town before round nine ends.</p><div class="warn">Fictional play only. A PLAY YES is not a real person's consent. A story token is not physical stock. Content-addressed cards are not spendable tokens or actual NFT mints. No real-world build, fire, shipment or payment is authorized.</div></article></section><div class="footer">Design references: Reality 2.0 Little Yes / Living Deck, Ticket to Arrive / Living Railway, GrO Mattercraft 42 WOOD / 39 observed, GHoT Warm Thread firewood chain, GROOVETOWN-001→006. New code is an independent party-game adapter, not a production connector.</div></main>
+<div class="print-only"><h1>LITTLE YES EXPRESS</h1><p>Cooperative party kit · 2–6 players · fictional game tokens only. Print, cut cards, and use with the digital board or paper tokens.</p><h2>HOW TO PLAY</h2><p>All players win together when the railway connects Millford to Lantern, the group delivers two firewood game tokens from Millford, and delivers two food game tokens from Cedar Junction, by the end of round nine. Each person performs one action on their turn: gather, craft, propose fictional agreement, build, ship, or audit. Routes require a Little Yes and enough rail segments. All materials belong to one shared game commons. Every round has a production roll and a community event. No real person or organization is obligated by the game.</p><div class="print-grid" id="print-cards"></div><div class="print-section"><h2>QUESTIONS FOR AN ACTUAL COMMUNITY</h2><div class="print-grid"><div class="print-card"><h3>NEED</h3><p>Precisely what is missing? Who has authority to speak for that need?</p></div><div class="print-card"><h3>OFFER</h3><p>What can someone freely offer? How current is their availability?</p></div><div class="print-card"><h3>BUILD</h3><p>What shared capability would solve more than one problem?</p></div><div class="print-card"><h3>LITTLE YES</h3><p>Whose permission must be obtained separately? Refusal remains possible.</p></div><div class="print-card"><h3>ARRIVAL</h3><p>How could the result be witnessed independently? What is still unknown?</p></div><div class="print-card"><h3>NO FALSE CREDIT</h3><p>Never treat cards as Deeds, payment, proof of resources, NFTs, or authorized field operations.</p></div></div></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>// LITTLE YES EXPRESS / REALITY.2 × GROOVETOWN-007 — cooperative fictional tabletop engine.
+// No actual land, materials, people, currency, blockchain mints, permissions or physical acts.
+const VERSION = 'LITTLE-YES-EXPRESS-007/v1';
+const TOWNS = [
+  {id:'millford',name:'Millford',resource:'wood',number:8,stock:7,x:94,y:185,kind:'Woodlands'},
+  {id:'bridgeport',name:'Bridgeport',resource:'ore',number:6,stock:7,x:273,y:118,kind:'Quarry'},
+  {id:'ovenham',name:'Ovenham',resource:'idea',number:9,stock:5,x:472,y:125,kind:'Workshop'},
+  {id:'lantern',name:'Lantern Town',resource:'idea',number:5,stock:4,x:666,y:198,kind:'Community Hearth'},
+  {id:'cedar',name:'Cedar Junction',resource:'food',number:7,stock:7,x:200,y:345,kind:'Garden'},
+  {id:'hearthside',name:'Hearthside',resource:'wood',number:10,stock:5,x:484,y:347,kind:'Commons'}
+];
+const LINKS = [
+  {id:'mb',a:'millford',b:'bridgeport',cost:1,name:'Millford–Bridgeport'},
+  {id:'bo',a:'bridgeport',b:'ovenham',cost:1,name:'Bridgeport–Ovenham'},
+  {id:'ol',a:'ovenham',b:'lantern',cost:2,name:'Ovenham–Lantern'},
+  {id:'mc',a:'millford',b:'cedar',cost:1,name:'Millford–Cedar'},
+  {id:'cb',a:'cedar',b:'bridgeport',cost:1,name:'Cedar–Bridgeport'},
+  {id:'ch',a:'cedar',b:'hearthside',cost:1,name:'Cedar–Hearthside'},
+  {id:'hl',a:'hearthside',b:'lantern',cost:2,name:'Hearthside–Lantern'},
+  {id:'bh',a:'bridgeport',b:'hearthside',cost:2,name:'Bridgeport–Hearthside'},
+  {id:'oh',a:'ovenham',b:'hearthside',cost:1,name:'Ovenham–Hearthside'}
+];
+const ROLES = [
+  {name:'The Engineer',task:'Ask what one rail connection could make possible.'},
+  {name:'The Hearthkeeper',task:'Protect warmth without confusing game fuel with safe physical heating.'},
+  {name:'The Gardener',task:'Connect the food supply to the town that needs it.'},
+  {name:'The Witness',task:'Keep claims distinct from observations and receipts.'},
+  {name:'The Mail Carrier',task:'Carry proposals, not obligations, between towns.'},
+  {name:'The Inventor',task:'Find useful shared infrastructure instead of redundant projects.'}
+];
+const RECIPES = [
+  {id:'rail',name:'Forge two rail segments',inputs:{wood:1,ore:1},outputs:{rail:2},at:'commons',flavor:'Shared material capability unlocks a new line.'},
+  {id:'firewood',name:'Craft two firewood tokens',inputs:{wood:1},outputs:{firewood:2},at:'millford',flavor:'Fictional material card; NOT real burning or heating guidance.'},
+  {id:'blueprint',name:'Compose a reusable blueprint',inputs:{idea:1,ore:1},outputs:{blueprint:1},at:'commons',flavor:'An idea token is non-physical, not an authenticated construction plan.'}
+];
+const copy = x => JSON.parse(JSON.stringify(x));
+const must = (condition,msg)=>{ if(!condition)throw Error(msg); };
+const safeInt=(x,low,high)=>Number.isSafeInteger(x)&&x>=low&&x<=high;
+function makeGame(size=4, seed=317){
+  must(safeInt(size,2,6),'Party supports 2–6 seats');
+  must(safeInt(seed,1,2147483646),'Invalid seed');
+  return {version:VERSION,mode:'SYNTHETIC_OFFLINE_PARTY',size,seed,random:seed,round:1,maxRounds:9,
+    actionsLeft:size,activeSeat:0,pressure:0,phase:'PLAYING',resources:{wood:2,ore:2,food:0,idea:1,rail:0,firewood:0,blueprint:0},
+    stock:Object.fromEntries(TOWNS.map(t=>[t.id,t.stock])),consents:[],built:[],delivered:{food:0,firewood:0},
+    claim:{item:'WOOD',claimed:42,observed:39,authority:'DISPUTED_NO_STOCK',audited:false},
+    relics:[],history:[{type:'START',text:'Six fictional towns form a cooperative table. Everything on this board is play.'}],
+    lastEvent:'The train waits for the first Little Yes.',lastRoll:0};
+}
+function connected(state,origin,destination){
+  if(origin===destination)return true;
+  const seen=new Set([origin]),stack=[origin];
+  while(stack.length){const current=stack.pop();for(const e of LINKS){if(!state.built.includes(e.id))continue;
+    const next=e.a===current?e.b:e.b===current?e.a:null;
+    if(next&&!seen.has(next)){if(next===destination)return true;seen.add(next);stack.push(next);}
+  }}return false;
+}
+function shortestPlan(state,origin,destination){
+  // Weighted path by absent route consent/build actions plus rail segments required; deterministic tie-break.
+  const paths=[{at:origin,via:[],cost:0}],best=new Map();
+  while(paths.length){paths.sort((a,b)=>a.cost-b.cost||a.via.join(',').localeCompare(b.via.join(',')));
+    const p=paths.shift();if(best.has(p.at)&&best.get(p.at)<=p.cost)continue;best.set(p.at,p.cost);
+    if(p.at===destination)return p;
+    for(const edge of LINKS){const to=edge.a===p.at?edge.b:edge.b===p.at?edge.a:null;if(!to||p.via.some(id=>id===edge.id))continue;
+      const missing=state.built.includes(edge.id)?0:(state.consents.includes(edge.id)?1:2);
+      paths.push({at:to,via:[...p.via,edge.id],cost:p.cost+missing+(state.built.includes(edge.id)?0:edge.cost*.1)});
+    }
+  }return null;
+}
+function goals(state){return {
+  railway:connected(state,'millford','lantern'),
+  warmth:state.delivered.firewood>=2,
+  food:state.delivered.food>=2
+};}
+function offer(state){
+  if(state.phase!=='PLAYING')return {title:state.phase==='WON'?'The towns did it together.':'Try another railway.',reason:'This is a finished fictional game, not an actual field receipt.'};
+  const g=goals(state);
+  if(!g.railway){const p=shortestPlan(state,'millford','lantern');
+    const missing=p?.via.map(id=>LINKS.find(x=>x.id===id)).find(e=>!state.built.includes(e.id));
+    if(missing){if(!state.consents.includes(missing.id))return {title:`Ask for the Little Yes: ${missing.name}`,reason:'Both fictional endpoints must be willing before a route enters play.',suggested:{kind:'agree',id:missing.id}};
+      if(state.resources.rail<missing.cost)return materialOffer(state,`To construct ${missing.name}, the table needs ${missing.cost} rail segment${missing.cost===1?'':'s'}.`);
+      return {title:`Build ${missing.name}`,reason:`A new route can connect the shared network; this one consumes ${missing.cost} rail.`,suggested:{kind:'build',id:missing.id}};
+    }
+  }
+  if(!g.warmth){if(state.resources.firewood<2){if(state.resources.wood<1)return gatherOffer(state,'wood','millford','Firewood tokens require one wood token first.');
+      return {title:'Craft two firewood tokens',reason:'A modeled warmth need requires a prepared material card; no physical heating is authorized.',suggested:{kind:'craft',id:'firewood'}};}
+    if(!connected(state,'millford','lantern'))return {title:'Connect Millford to Lantern Town',reason:'The simulated cargo needs a built route before the handoff.'};
+    return {title:'Send two firewood tokens to Lantern Town',reason:'One modeled handoff can now satisfy the warmth objective.',suggested:{kind:'ship',id:'firewood'}};
+  }
+  if(!g.food){if(state.resources.food<2)return gatherOffer(state,'food','cedar','The garden can contribute food tokens, while its source remains fictional.');
+    if(!connected(state,'cedar','lantern')){const p=shortestPlan(state,'cedar','lantern'),m=p?.via.map(id=>LINKS.find(x=>x.id===id)).find(x=>!state.built.includes(x.id));
+      if(m){if(!state.consents.includes(m.id))return {title:`Ask to connect ${m.name}`,reason:'The shared meal needs an actual built path in the game.',suggested:{kind:'agree',id:m.id}};
+        if(state.resources.rail<m.cost)return materialOffer(state,'One more rail connection could open the garden delivery.');
+        return {title:`Build ${m.name}`,reason:'This connects a missing segment in the shortest modeled route.',suggested:{kind:'build',id:m.id}};
+      }}
+    return {title:'Send two food tokens to Lantern Town',reason:'The garden is now connected to the destination.',suggested:{kind:'ship',id:'food'}};
+  }
+  return {title:'Try a town laboratory experiment',reason:'Check whether a new shared capability unlocks more than one downstream goal.'};
+}
+function gatherOffer(state,resource,town,why){return {title:`Gather ${resource} at ${TOWNS.find(t=>t.id===town).name}`,reason:why,suggested:{kind:'gather',id:town}};}
+function materialOffer(state,why){const r=RECIPES[0];if(state.resources.wood>=1&&state.resources.ore>=1)return {title:'Forge two new rail segments',reason:why,suggested:{kind:'craft',id:'rail'}};
+  const want=state.resources.wood<1?'wood':'ore',at=want==='wood'?'millford':'bridgeport';return gatherOffer(state,want,at,why);
+}
+function nextRandom(n){return (n*48271)%2147483647;}
+function nextRound(s){
+  s.round++;
+  s.actionsLeft=s.size;s.activeSeat=0;
+  s.random=nextRandom(s.random);const one=s.random%6+1;
+  s.random=nextRandom(s.random);const two=s.random%6+1;
+  s.lastRoll=one+two;
+  const tile=TOWNS.find(t=>t.number===s.lastRoll);
+  let production='No matching town produced this round.';
+  if(tile&&s.stock[tile.id]>0){s.stock[tile.id]--;s.resources[tile.resource]++;production=`${tile.name} produced one fictional ${tile.resource} token.`;}
+  const effects=[{text:'A gust rattles the stations. Pressure rises.',pressure:1},
+   {text:'A shared supper brings encouragement. Pressure eases.',pressure:-1},
+   {text:'A helpful question arrives. Gain one idea token.',idea:1},
+   {text:'A winter front approaches. Pressure rises.',pressure:1},
+   {text:'An old track is inspected. No automatic damage or credit.',pressure:0},
+   {text:'Cedar Junction finds one additional game-food token.',food:1},
+   {text:'A doubtful claim remains disputed; it cannot be spent.',pressure:0},
+   {text:'The neighbors make time for the commons. Pressure eases.',pressure:-1}];
+  const ev=effects[(s.round-2)%effects.length];s.pressure=Math.max(0,s.pressure+(ev.pressure||0));if(ev.idea)s.resources.idea+=ev.idea;if(ev.food)s.resources.food+=ev.food;
+  s.lastEvent=`Roll ${s.lastRoll}. ${production} ${ev.text}`;s.history.push({type:'ROUND',text:`Round ${s.round}: ${s.lastEvent}`});
+  if(s.round>s.maxRounds||s.pressure>=5)s.phase='LOST';
+}
+const resourceCheck=(s,inputs)=>Object.entries(inputs).every(([k,v])=>s.resources[k]>=v);
+function addRelic(s,type,title,details){
+  const serial=s.relics.length+1;
+  s.relics.push({id:`GAME-${String(serial).padStart(3,'0')}`,title,type,details,round:s.round,mode:'SYNTHETIC_PLAY_ONLY',transferable:'AS_A_FILE_ONLY',monetaryValue:null,blockchainMint:false});
+}
+function step(state,action){
+  must(state&&state.version===VERSION,'Unknown game state');
+  must(state.phase==='PLAYING','Game is finished');
+  must(safeInt(state.actionsLeft,1,6),'No actions left');
+  must(action&&typeof action.kind==='string','Missing action');
+  const s=copy(state),a=action;
+  let message='';
+  if(a.kind==='gather'){
+    const t=TOWNS.find(t=>t.id===a.id);must(t,'Unknown town');must(s.stock[t.id]>0,`${t.name} has no remaining fictional stock`);
+    s.stock[t.id]--;s.resources[t.resource]++;message=`Gathered one ${t.resource} token from ${t.name}.`;
+  }else if(a.kind==='agree'){
+    const e=LINKS.find(x=>x.id===a.id);must(e,'Unknown link');must(!s.consents.includes(a.id),'This link has already received its fictional Little Yes');
+    must(!s.built.includes(a.id),'This route already exists');s.consents.push(a.id);
+    message=`The table recorded a fictional Little Yes for ${e.name}. This is not real consent.`;
+  }else if(a.kind==='build'){
+    const e=LINKS.find(x=>x.id===a.id);must(e,'Unknown link');must(s.consents.includes(a.id),'A fictional Little Yes is required first');
+    must(!s.built.includes(a.id),'Route already built');must(s.resources.rail>=e.cost,`Need ${e.cost} rail tokens`);
+    s.resources.rail-=e.cost;s.built.push(a.id);message=`Built ${e.name} on the fictional board.`;
+    addRelic(s,'RAIL_TICKET',`Route: ${e.name}`,{routeId:e.id,cost:e.cost});
+  }else if(a.kind==='craft'){
+    const r=RECIPES.find(x=>x.id===a.id);must(r,'Unknown recipe');must(resourceCheck(s,r.inputs),`Missing materials for ${r.name}`);
+    for(const [k,n] of Object.entries(r.inputs))s.resources[k]-=n;
+    for(const [k,n] of Object.entries(r.outputs))s.resources[k]+=n;
+    message=`Crafted ${r.name.toLowerCase()}.`;
+    addRelic(s,'CRAFT_TOKEN',r.name,{recipeId:r.id,inputs:r.inputs,outputs:r.outputs});
+  }else if(a.kind==='ship'){
+    const isFood=a.id==='food',isWood=a.id==='firewood';must(isFood||isWood,'Unknown shipment');
+    const origin=isFood?'cedar':'millford';must(connected(s,origin,'lantern'),`No built route from ${origin} to Lantern Town`);
+    const item=a.id;must(s.resources[item]>=2,`Need 2 ${item} tokens`);must(s.delivered[item]<2,'Objective already served');
+    s.resources[item]-=2;s.delivered[item]+=2;message=`Handed off two fictional ${item} tokens to Lantern Town.`;
+    addRelic(s,'ARRIVAL_CARD',`${isFood?'Community meal':'Warm hearth'} arrival`,{from:origin,to:'lantern',material:item,quantity:2});
+  }else if(a.kind==='audit'){
+    must(!s.claim.audited,'Claim already examined');s.claim.audited=true;
+    s.resources.idea++;message='The table noticed the 42-vs-39 WOOD discrepancy. The claim remains disputed, and zero stock was credited. One idea token was earned for asking a better question.';
+    addRelic(s,'QUESTION_CARD','42 WOOD / 39 observed',{finding:'DISPUTED',spendableStockCredited:0});
+  }else throw Error('Unknown action');
+  s.history.push({type:a.kind.toUpperCase(),seat:s.activeSeat+1,round:s.round,text:message});
+  s.actionsLeft--;s.activeSeat=(s.activeSeat+1)%s.size;
+  if(Object.values(goals(s)).every(Boolean)){s.phase='WON';s.lastEvent='The three cooperative objectives were accomplished in the fictional game.';
+    addRelic(s,'COMMONS_EDITION','A railway that could carry care',{goals:goals(s),newPhysicalDeeds:0});
+  }else if(s.actionsLeft===0){if(s.round===s.maxRounds)s.phase='LOST';else nextRound(s);}
+  return {state:s,message};
+}
+function exportRecord(state){must(state&&state.version===VERSION,'Invalid state');
+  return {schema:'reality2-party-record-v1',fictional:true,authority:'NO_REAL_WORLD_CLAIMS',game:VERSION,
+    scores:{phase:state.phase,round:state.round,goals:goals(state),pressure:state.pressure},
+    relics:state.relics,history:state.history,board:{built:state.built,consents:state.consents},
+    boundaries:['Claim != inventory','Play agreement != human consent','Receipt != deed','NFT card != cryptocurrency','No real rail, firewood, construction or shipping authorized']};}
+</script>
+<script>
+(function(){'use strict';
+let state,undo=[],hint=null;const $=id=>document.getElementById(id);
+const names=id=>TOWNS.find(t=>t.id===id)?.name||id;
+function el(tag,attrs={},text){const node=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>node.setAttribute(k,v));if(text!==undefined)node.textContent=String(text);return node;}
+function load(){try{const cached=JSON.parse(localStorage.getItem('little-yes-express-007'));if(cached?.version===VERSION&&cached?.size>=2&&cached?.size<=6)return cached;}catch{}return makeGame();}
+function persist(){try{localStorage.setItem('little-yes-express-007',JSON.stringify(state));}catch{}}
+function toast(message){const t=$('toast');t.textContent=message;t.className='toast';clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>t.className='',4200);}
+function action(kind,id){try{const next=step(state,{kind,id});undo.push(state);if(undo.length>40)undo.shift();state=next.state;persist();render();toast(next.message);}catch(err){toast(err.message);}}
+function setButtons(parent,items){parent.replaceChildren();for(const item of items){const box=el('div',{class:'move'});box.append(el('strong',{},item.title),el('small',{},item.note));const btn=el('button',{class:'action',type:'button'},item.label||'Do this');if(item.disabled||state.phase!=='PLAYING')btn.disabled=true;btn.addEventListener('click',()=>action(item.kind,item.id));box.append(btn);parent.append(box);}}
+function renderBoard(){const points=Object.fromEntries(TOWNS.map(t=>[t.id,t]));const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','map');svg.setAttribute('viewBox','0 0 760 435');svg.setAttribute('role','img');svg.setAttribute('aria-label','Railway board showing six fictional towns and buildable routes');
+  for(const route of LINKS){const a=points[route.a],b=points[route.b],built=state.built.includes(route.id),yes=state.consents.includes(route.id),g=document.createElementNS(svg.namespaceURI,'g');g.setAttribute('class','route');
+    const line=document.createElementNS(svg.namespaceURI,'line');for(const [key,val] of Object.entries({x1:a.x,y1:a.y,x2:b.x,y2:b.y}))line.setAttribute(key,val);line.setAttribute('class','edge '+(built?'built':yes?'yes':''));g.append(line);
+    const label=document.createElementNS(svg.namespaceURI,'text');label.setAttribute('x',(a.x+b.x)/2);label.setAttribute('y',(a.y+b.y)/2-7);label.setAttribute('class','edge-label');label.setAttribute('text-anchor','middle');label.textContent=built?'✓':String(route.cost)+' rail';g.append(label);
+    g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',route.name+(built?' built':yes?' agreed':' available to propose'));
+    const click=()=>{if(state.phase!=='PLAYING')return; if(built){toast(route.name+' is already built.');return;}action(yes?'build':'agree',route.id);};
+    g.addEventListener('click',click);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();click();}});svg.append(g);
+  }
+  for(const t of TOWNS){const g=document.createElementNS(svg.namespaceURI,'g'),c=document.createElementNS(svg.namespaceURI,'circle');c.setAttribute('cx',t.x);c.setAttribute('cy',t.y);c.setAttribute('r',38);c.setAttribute('class','city');g.append(c);
+    for(const [text,y,kind] of [[t.name,t.y-8,'town-tag'],[''+t.number,t.y+12,'town-num'],[t.kind+' · '+state.stock[t.id],t.y+60,'town-kind']]){const textEl=document.createElementNS(svg.namespaceURI,'text');textEl.setAttribute('x',t.x);textEl.setAttribute('y',y);textEl.setAttribute('class',kind);textEl.textContent=text;g.append(textEl);}svg.append(g);}
+  $('board').replaceChildren(svg);
+}
+function render(){
+ $('party-size').value=String(state.size);
+ const met=goals(state),done=Object.values(met).filter(Boolean).length;
+ $('stats').innerHTML=`<div class="stat"><small>Collective outcomes</small><strong>${done} / 3</strong></div><div class="stat"><small>Round</small><strong>${state.round} / ${state.maxRounds}</strong></div><div class="stat"><small>Seat on the move</small><strong>${state.activeSeat+1} / ${state.size}</strong><small>${state.actionsLeft} actions remain</small></div><div class="stat"><small>World pressure</small><strong>${state.pressure} / 5</strong><small>${state.phase==='PLAYING'?'Time still moves':'Game complete'}</small></div>`;
+ renderBoard();$('event').textContent=state.lastEvent;
+ const end=$('game-end');end.replaceChildren();if(state.phase!=='PLAYING'){const box=el('div',{class:'ended'});box.append(el('h2',{},state.phase==='WON'?'Together, the towns arrive.':'The season changes. Try another path.'),el('p',{},state.phase==='WON'?'The fictional railway, warmth and meal became possible through joint play. Export your story cards.':'There is no individual loser here. Inspect the missed connections and start a new collective experiment.'));end.append(box);}
+ $('resources').replaceChildren();for(const [kind,num] of Object.entries(state.resources)){$('resources').append(el('div',{class:'resource'}));const box=$('resources').lastChild;box.append(el('span',{},kind),el('strong',{},num));}
+ hint=offer(state);$('offer-title').textContent=hint.title;$('offer-reason').textContent=hint.reason;$('offer-action').disabled=!hint.suggested||state.phase!=='PLAYING';
+ const role=ROLES[state.activeSeat%ROLES.length];$('role').replaceChildren(el('div',{class:'divide'}),el('div',{class:'eyebrow'},`Seat ${state.activeSeat+1} · ${role.name}`),el('p',{class:'small'},role.task));
+ const missions=[['railway','Railway for everyone','Build a connected route from Millford to Lantern Town.'],['warmth','Warm Hearth','Deliver 2 firewood game tokens from Millford to Lantern Town.'],['food','Shared Meal','Deliver 2 food game tokens from Cedar Junction to Lantern Town.']];
+ $('missions').replaceChildren();for(const [key,name,desc] of missions){const row=el('div',{class:'mission'});const content=el('div');content.append(el('strong',{},name),el('p',{},desc));row.append(content,el('div',{class:'check '+(met[key]?'done':'')},met[key]?'✓':'·'));$('missions').append(row);}
+ setButtons($('crafts'),RECIPES.map(r=>({title:r.name,note:Object.entries(r.inputs).map(([k,v])=>`${v} ${k}`).join(' + ')+' → '+Object.entries(r.outputs).map(([k,v])=>`${v} ${k}`).join(', '),kind:'craft',id:r.id,label:'Craft',disabled:Object.entries(r.inputs).some(([k,v])=>state.resources[k]<v)})));
+ setButtons($('gather'),TOWNS.map(t=>({title:t.name,note:`${t.kind} · ${t.resource} · ${state.stock[t.id]} tokens remain · roll ${t.number}`,kind:'gather',id:t.id,label:'Gather one',disabled:!state.stock[t.id]})));
+ setButtons($('deliveries'),[{title:'Firewood train',note:'Millford → Lantern · 2 firewood · built route required',kind:'ship',id:'firewood',label:state.delivered.firewood>=2?'Already arrived':'Ship two',disabled:state.delivered.firewood>=2||state.resources.firewood<2||!connected(state,'millford','lantern')},{title:'Food train',note:'Cedar → Lantern · 2 food · built route required',kind:'ship',id:'food',label:state.delivered.food>=2?'Already arrived':'Ship two',disabled:state.delivered.food>=2||state.resources.food<2||!connected(state,'cedar','lantern')}]);
+ $('audit').disabled=state.claim.audited||state.phase!=='PLAYING';$('audit').textContent=state.claim.audited?'Dispute inspected · still no stock credit':'Inspect disputed 42 WOOD / 39 observed';
+ $('relics').replaceChildren();if(!state.relics.length)$('relics').append(el('p',{class:'small'},'No story cards minted in the game yet. Build a connection or craft something.'));
+ for(const r of [...state.relics].reverse()){const c=el('div',{class:'relic'});c.append(el('div',{class:'eyebrow'},r.type.replaceAll('_',' ')),el('h4',{},r.title),el('small',{},`${r.id} · round ${r.round} · no blockchain`));$('relics').append(c);}
+ $('history').replaceChildren();for(const v of [...state.history].reverse().slice(0,9))$('history').append(el('li',{},v.text));$('undo').disabled=!undo.length;
+}
+function download(name,text,type='application/json'){const a=document.createElement('a');const blob=new Blob([text],{type});a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+async function save(){const record=exportRecord(state),text=JSON.stringify(record,null,2);let digest=null;try{if(globalThis.crypto?.subtle){const bytes=new TextEncoder().encode(text),arr=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));digest=[...arr].map(x=>x.toString(16).padStart(2,'0')).join('');}}catch{}
+  download(`little-yes-express-${state.seed}-round-${state.round}.json`,JSON.stringify({...record,sha256_of_canonical_record:digest,hashNote:digest?'SHA256 of the record WITHOUT this two-field wrapper; not identity or truth proof':'Hash unavailable; nothing fabricated'},null,2));toast(digest?'Exported local story cards with content digest.':'Exported game record; hash unavailable.');}
+function newGame(){if(!confirm('Start a new fictional railway? The current game can be exported first.'))return;state=makeGame(Number($('party-size').value),Math.floor(Math.random()*2_000_000_000)+1);undo=[];persist();render();}
+function showHelp(){alert('LITTLE YES EXPRESS — ONE TABLE, ONE TEAM\n\n1. Pick 2–6 seats and start a new game.\n2. Build a connected railway from Millford to Lantern Town.\n3. A route needs a fictional Little Yes (one action), then rail tokens (another action).\n4. Craft 2 rail from 1 wood + 1 ore. Gather at towns if the commons needs materials.\n5. Craft 2 firewood from 1 wood. Gather 2 food tokens at Cedar Junction.\n6. Deliver both cargoes only after a railway connects their source towns to Lantern.\n7. Three missions complete before round 9 ends = collective victory.\n\nThe dispatcher proposes a next move. It does not override the group. All receipts, tokens, permissions, stations and events are FICTIONAL. Print the party kit for paper cards.');}
+function printCards(){const data=[...ROLES.map(x=>({title:x.name,body:x.task})),...TOWNS.map(t=>({title:t.name,body:`${t.kind} / resource: ${t.resource} / production roll ${t.number}`})),...RECIPES.map(r=>({title:r.name,body:Object.entries(r.inputs).map(([k,n])=>`${n} ${k}`).join(' + ')+' → '+Object.entries(r.outputs).map(([k,n])=>`${n} ${k}`).join(', ')})),{title:'A Little Yes',body:'A proposed connection requires each real participant’s separate voluntary consent outside play. In this game, it is only a fictional table action.'},{title:'A Route Ticket',body:'A built track allows two fictional cargo tokens to travel from a connected source town to Lantern.'},{title:'The Witness',body:'42 WOOD declared, 39 observed. A disputed count never becomes spendable stock merely because someone made a card.'},{title:'The Non-Mint NFT',body:'A story artifact may be exported and hashed. No blockchain transaction, property right or monetary value is created.'}];
+ $('print-cards').replaceChildren();for(const d of data){const card=el('article',{class:'print-card'});card.append(el('h3',{},d.title),el('p',{},d.body));$('print-cards').append(card);}}
+$('offer-action').addEventListener('click',()=>hint?.suggested&&action(hint.suggested.kind,hint.suggested.id));$('audit').addEventListener('click',()=>action('audit'));$('new').addEventListener('click',newGame);$('undo').addEventListener('click',()=>{if(!undo.length)return;state=undo.pop();persist();render();toast('The last fictional move was undone.');});$('save').addEventListener('click',save);$('print').addEventListener('click',()=>window.print());$('help').addEventListener('click',showHelp);
+state=load();printCards();render();
+})();
+</script></body></html>

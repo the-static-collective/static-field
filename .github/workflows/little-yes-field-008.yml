@@ -1,0 +1,30 @@
+name: STATIC FIELD Little Yes Expansion 008
+on:
+  push:
+    branches:
+      - experiment/little-yes-field-008
+  pull_request:
+    paths:
+      - 'experiments/little-yes-field-008/**'
+      - 'experiments/postemahhn-living-deck-001/**'
+      - '.github/workflows/little-yes-field-008.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  play-and-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inherited source-owner Living Deck suite
+        run: node --test experiments/postemahhn-living-deck-001/tests/*.test.mjs
+      - name: Real 007 and 008 game engines and Field crossing
+        run: node --test experiments/little-yes-field-008/rail/game.test.mjs experiments/little-yes-field-008/kingdom/kingdom.test.mjs experiments/little-yes-field-008/tests/*.test.mjs
+      - name: Source syntax
+        run: node --check experiments/little-yes-field-008/field-bridge.mjs && node --check experiments/little-yes-field-008/kingdom/kingdom.mjs
