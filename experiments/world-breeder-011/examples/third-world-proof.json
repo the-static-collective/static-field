@@ -1,0 +1,76 @@
+{
+  "schema": "static-field.world-breeder-proof/011",
+  "synthetic": true,
+  "authority": "NONE",
+  "title": "THE NAME ON THE TICKET",
+  "sourceParents": [
+    {
+      "worldId": "world-f2d42d92c118561",
+      "candidateDigest": "sha256:b0f5dfccb2a196f009d5cbecb7391629c632cf0d251e57101b83c7386d734be1",
+      "template": "SECOND_TRACK",
+      "lens": "CONNECTION",
+      "sourceOfferDigest": "sha256:80b3b75fd808e097f585f15062a840c5e5e41b26c8264e7411775652ca9f4995"
+    },
+    {
+      "worldId": "world-e7cb82555224f93",
+      "candidateDigest": "sha256:85ac5229e4a42e588c7dd9eac46c7239b101348f86d73192cfe8be0b6381e622",
+      "template": "NIGHT_SHIFT",
+      "lens": "DIGNITY",
+      "sourceOfferDigest": "sha256:88a5a13217182496ddbf1a787a86ceb8e8d4bc634def10f4af9c067ed9a68413"
+    }
+  ],
+  "recipe": "WORKER_VOICE_PASSAGE",
+  "decisions": [
+    {
+      "worldId": "world-f2d42d92c118561",
+      "choice": "YES"
+    },
+    {
+      "worldId": "world-e7cb82555224f93",
+      "choice": "YES"
+    }
+  ],
+  "childId": "world-d11e2702d03f54a",
+  "addedMechanic": "LISTEN + AUDIT before BUILD, followed by an explicit RELAY",
+  "originalNativeOwnerSteps": [
+    "Inspect the disputed 42 / 39 WOOD claim",
+    "Hold a fictional listening circle",
+    "Invite the Little Yes for Millford–Bridgeport",
+    "Forge rail",
+    "Build the proposed line",
+    "Record the separate cross-world relay choice"
+  ],
+  "progress": {
+    "audit": true,
+    "circle": true,
+    "route": true,
+    "relay": true,
+    "complete": true,
+    "steps": [
+      {
+        "id": "AUDIT",
+        "done": true
+      },
+      {
+        "id": "LISTEN",
+        "done": true
+      },
+      {
+        "id": "BUILD",
+        "done": true
+      },
+      {
+        "id": "RELAY",
+        "done": true
+      }
+    ],
+    "charter": "The derived combination requires listening and an integrity audit before a physical game route may be built."
+  },
+  "checks": {
+    "nativeAtlasReplay": true,
+    "sourceCandidateReconstruction": true,
+    "localIndependentVotes": true,
+    "realWorldEffects": 0
+  },
+  "caveat": "Local fictional worlds only; digest checks do not authenticate human consent or actual construction."
+}

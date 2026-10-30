@@ -1,0 +1,47 @@
+name: Static Field 011 — World Breeder
+on:
+  push:
+    branches: [experiment/world-breeder-011]
+  pull_request:
+    paths:
+      - 'experiments/world-breeder-011/**'
+      - 'experiments/living-world-atlas-010/**'
+      - 'experiments/expansion-forge-009/**'
+      - 'experiments/little-yes-field-008/rail/**'
+      - '.github/workflows/world-breeder-011.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inherited-and-new:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original native engine tests and new source-linked breeding tests
+        run: |
+          node --test experiments/little-yes-field-008/rail/game.test.mjs experiments/little-yes-field-008/kingdom/kingdom.test.mjs experiments/expansion-forge-009/tests/forge.test.mjs experiments/living-world-atlas-010/tests/atlas.test.mjs experiments/world-breeder-011/tests/breeder.test.mjs
+      - name: Twice-built offline game must be deterministic
+        run: |
+          node experiments/world-breeder-011/build.mjs
+          cp experiments/world-breeder-011/index.html /tmp/field-011-1.html
+          node experiments/world-breeder-011/build.mjs
+          cmp /tmp/field-011-1.html experiments/world-breeder-011/index.html
+      - name: Independent deterministic source-owned proof
+        run: |
+          node experiments/world-breeder-011/proof.mjs
+          cp experiments/world-breeder-011/examples/third-world-proof.json /tmp/field-011-1.json
+          node experiments/world-breeder-011/proof.mjs
+          cmp /tmp/field-011-1.json experiments/world-breeder-011/examples/third-world-proof.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: static-field-world-breeder-011-offline
+          path: |
+            experiments/world-breeder-011/index.html
+            experiments/world-breeder-011/examples/third-world-proof.json
+          retention-days: 14
