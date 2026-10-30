@@ -1,0 +1,595 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>STATIC FIELD — The Expansion Forge 009</title>
+<style>
+:root{color-scheme:dark;--bg:#131a1d;--panel:#1d2b2c;--panel2:#293537;--line:#596b63;--cream:#f3ebd8;--quiet:#c1cbbc;--gold:#e7c17a;--mint:#afd7c6;--rust:#dd9b80;--good:#bcddaa;font:16px/1.5 system-ui,-apple-system,sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--cream);background:radial-gradient(ellipse 130% 550px at 20% -15%,#506453 0%,transparent 67%),repeating-linear-gradient(125deg,transparent 0px,transparent 37px,#172227 38px,#172227 39px),var(--bg)}a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid white;outline-offset:3px}.shell{max-width:1240px;margin:auto;padding:28px 20px 70px}.ribbon{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:.73rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold)}.pill{padding:6px 12px;border-radius:20px;border:1px solid #8c9a83}.hero{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:center;padding:30px 0}.hero h1{font:normal clamp(3.0rem,7vw,6.7rem)/.92 Georgia,serif;letter-spacing:-.055em;margin:12px 0 20px}.hero h1 em{font-style:normal;color:var(--gold)}.hero p{font-size:1.1rem;max-width:700px;color:#d5dfd2}.seal{aspect-ratio:1;border:3px double #bdaa7b;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;background:#24342f;transform:rotate(-5deg);box-shadow:0 8px 40px #0006}.seal .train{font-size:4.6rem;line-height:1.2}.seal b{font:normal 1.4rem Georgia,serif}.seal small{color:var(--gold)}.rule{border:1px solid #718276;border-radius:15px;padding:18px;background:#172726;display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap;margin:4px 0 22px}.rule p{margin:2px 0;color:var(--quiet);max-width:920px}.columns{display:grid;grid-template-columns:300px 1fr;gap:18px}.panel{border:1px solid var(--line);border-radius:17px;background:linear-gradient(153deg,#263937,#192729);padding:20px;margin-bottom:18px}.panel h2{font:normal 1.75rem Georgia,serif;margin:5px 0 10px}.eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}.muted{color:var(--quiet);font-size:.9rem}.block{display:flex;flex-direction:column;gap:10px}.btn{background:var(--gold);border:1px solid var(--gold);border-radius:10px;color:#202623;padding:11px 15px;font-weight:750;text-align:center}.btn.alt{background:transparent;color:var(--cream);border-color:#84978a}.btn.dark{background:#476660;color:#fff;border-color:#7fa795}.btn.danger{background:transparent;border-color:var(--rust);color:var(--rust)}.btn.tiny{padding:6px 9px;font-size:.83rem}.btn:hover:not(:disabled){filter:brightness(1.1)}.file{display:block;border:1px dashed var(--mint);border-radius:10px;padding:10px;text-align:center;cursor:pointer}.file input{display:none}.divider{border:0;border-top:1px solid #63766b;margin:18px 0}.main{min-width:0}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{border:1px solid #8d956f;background:linear-gradient(#41413a,#242d2b);border-radius:14px;padding:17px;position:relative;min-height:300px;display:flex;flex-direction:column}.card:nth-child(2){border-color:#9e786f;background:linear-gradient(#403a39,#262729)}.card:nth-child(3){border-color:#719a91;background:linear-gradient(#29423e,#22302f)}.card h3{font:normal 1.6rem/1.1 Georgia,serif;margin:16px 0 8px}.card .tag{color:#ffe0a8;font-size:.65rem;letter-spacing:.12em}.card .btn{margin-top:auto}.card p{font-size:.88rem}.seed{border-left:3px solid var(--gold);padding-left:10px;margin:12px 0;font-size:.84rem;line-height:1.4;color:#e6e0c7}.status{border:1px solid #8caa92;border-radius:10px;background:#213a32;padding:12px 14px;margin:13px 0;color:#e3efdf}.status.hold{border-color:#b99e70;background:#393326}.status.fail{border-color:var(--rust);background:#3b2725}.play{margin-top:16px;border:2px solid #9dab80;border-radius:18px;background:linear-gradient(145deg,#293b33,#1a2828);padding:21px}.play h3{font:normal 2.1rem Georgia,serif;margin:5px 0 9px}.badge{display:inline-block;padding:4px 9px;font-size:.67rem;letter-spacing:.12em;border:1px solid var(--gold);border-radius:5px;color:var(--gold);margin-right:5px}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.chip{border-radius:20px;border:1px solid #829489;padding:6px 9px;font-size:.78rem;background:#192c29}.checks{list-style:none;padding:0;margin:10px 0}.checks li{padding:9px 0;border-bottom:1px solid #516358;font-size:.92rem}.done{color:var(--good)}.pending{color:#f1d1a0}.advice{border:1px solid #9cae7e;border-left:5px solid var(--gold);padding:15px;border-radius:10px;background:#314038}.advice b{color:#ffdc91}.advice p{margin:6px 0 12px;color:#d7ddc9}.actions{display:flex;flex-wrap:wrap;gap:8px}.log{max-height:170px;overflow-y:auto;padding:8px;border-radius:8px;background:#132220;border:1px solid #5a6d62}.log p{margin:5px 0;font-size:.82rem}.digest{font: .76rem ui-monospace,monospace;color:#aaccb6;overflow-wrap:anywhere}select{width:100%;padding:9px;background:#21312f;border:1px solid #7c988a;color:#f2ead9;border-radius:9px;margin:5px 0 10px}.details summary{cursor:pointer;color:var(--gold);margin-bottom:10px}.footnote{color:#b1c3b9;font-size:.8rem;border-top:1px solid #546d60;padding-top:14px;margin-top:20px}#toast{min-height:20px}#sources{margin-top:8px}pre{white-space:pre-wrap;font-size:.8rem;max-height:180px;overflow:auto}button a{color:inherit}@media(max-width:1000px){.hero{grid-template-columns:1fr 180px}.cards{grid-template-columns:1fr}.card{min-height:230px}.columns{grid-template-columns:260px 1fr}}@media(max-width:720px){.shell{padding:18px 12px 50px}.hero{grid-template-columns:1fr}.seal{display:none}.columns{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.play h3{font-size:1.75rem}}@media print{body{background:white;color:black}.shell{max-width:none}.ribbon,.hero .seal,.actions,.file,.btn,.left,footer{display:none!important}.columns{display:block}.panel,.card,.play{background:white!important;color:black!important;border:1px solid black}.muted,.eyebrow,.seed,.status,.digest{color:black!important}.cards{grid-template-columns:repeat(3,1fr)}}
+</style></head><body><div class="shell">
+<header class="ribbon"><span>STATIC FIELD // THE FELLOWSHIP TABLE</span><span class="pill">FIELD EXPERIMENT 009 · OFFLINE · UNVERIFIED PLAY</span></header>
+<section class="hero"><div><div class="eyebrow">A GAME THAT MAKES MORE GAMES</div><h1>The <em>Expansion</em><br>Forge.</h1><p>A railway party leaves an unexpected question. The forge reads the actual fictional party history, offers three new cooperative rule sets, and lets the table choose which world to try next. Nobody has to say yes.</p></div><div class="seal" aria-hidden="true"><div class="train">✦</div><b>OFFICE OF<br>UNFINISHED<br>WORLDS</b><small>postmarked nowhere</small></div></section>
+<div class="rule"><p><strong>THE ONE RULE:</strong> A prior game event may inspire a new game. It cannot become a real deed, worker's assent, spendable wood, or sovereign authority. Original game histories remain untouched.</p><span class="pill">RETURN ≠ ADMISSION</span></div>
+<div class="columns"><aside class="left"><section class="panel"><div class="eyebrow">01 / CHOOSE THE MEMORY</div><h2>What happened at the table?</h2><p class="muted">Try a generated source-owned game history, or import an exported record from 007 / 008.</p><div class="block"><button id="demoRail" class="btn">Railway demonstration</button><button id="demoKingdom" class="btn alt">Earth Remembers demonstration</button><label class="file">Import a party record (.json)<input id="sourceFile" type="file" accept=".json,application/json"></label><label class="file">Receive a portable expansion (.json)<input id="packetFile" type="file" accept=".json,application/json"></label></div><div id="sourceStatus" class="status hold" role="status" aria-live="polite">Choose a fictional episode.</div><div id="sourceDigest" class="digest"></div></section><section class="panel"><div class="eyebrow">WHO OWNS THE DOOR?</div><h2>The table does.</h2><p class="muted">The conductor proposes. The players decide. Exported cartridges are readable files—not executable plugins, authenticated identities, NFTs, or consent.</p><div class="block"><button id="print" class="btn alt">Print the three cards</button><a class="btn alt" href="../little-yes-field-008/index.html">Back to expansion shelf</a></div></section></aside><main class="main">
+<section class="panel"><div class="eyebrow">02 / THREE POSSIBLE FUTURES</div><h2>Choose what deserves another turn.</h2><p class="muted">These are distinct rule sets selected from the actual reported game events. A candidate remains held until a player explicitly forks a new game.</p><div id="candidates" class="cards" aria-live="polite"><p class="muted">No source history yet.</p></div><p id="toast" role="status" aria-live="polite"></p></section>
+<section id="playPanel" class="play" hidden><div class="eyebrow">03 / YOUR NEW GAME</div><span class="badge">FRESH BOARD</span><span class="badge">SOURCE-OWNED 007 ENGINE</span><h3 id="chosenName"></h3><p id="chosenGoal" class="muted"></p><div id="inventory" class="chips"></div><div id="progress" aria-live="polite"></div><div class="advice"><div class="eyebrow">CONDUCTOR'S SUGGESTION</div><b id="suggestionTitle"></b><p id="suggestionReason"></p><div class="actions"><button id="suggestionAction" class="btn">Try that move</button><button id="skip" class="btn alt">Not now</button></div></div><details class="details"><summary>Try a different game move</summary><select id="manualMove"></select><button id="manualAction" class="btn alt">Try selected move</button></details><h4>Game-only return receipts</h4><div id="playLog" class="log"></div><div class="actions" style="margin-top:13px"><button id="exportReturn" class="btn alt">Export unsent return</button><button id="recurse" class="btn dark">Forge another generation ↻</button><button id="exportCandidate" class="btn alt">Export expansion cartridge</button></div><p id="lineage" class="digest"></p></section>
+</main></div><footer class="footnote">All characters, towns, labor agreements, capacities and movements in these demos are fictional. 007 and 008 exports are unverified browser files. A SHA-256 digest proves only content consistency, never historical truth. No personal data, real work, NFT mint, external messages, card issuance, or backend calls occur. Source lineage: Static Field Living Deck × Little Yes Express 007 × Earth Remembers 008.</footer></div>
+<script>
+const RAIL=(()=>{
+// LITTLE YES EXPRESS / REALITY.2 × GROOVETOWN-007 — cooperative fictional tabletop engine.
+// No actual land, materials, people, currency, blockchain mints, permissions or physical acts.
+const VERSION = 'LITTLE-YES-EXPRESS-007/v1';
+const TOWNS = [
+  {id:'millford',name:'Millford',resource:'wood',number:8,stock:7,x:94,y:185,kind:'Woodlands'},
+  {id:'bridgeport',name:'Bridgeport',resource:'ore',number:6,stock:7,x:273,y:118,kind:'Quarry'},
+  {id:'ovenham',name:'Ovenham',resource:'idea',number:9,stock:5,x:472,y:125,kind:'Workshop'},
+  {id:'lantern',name:'Lantern Town',resource:'idea',number:5,stock:4,x:666,y:198,kind:'Community Hearth'},
+  {id:'cedar',name:'Cedar Junction',resource:'food',number:7,stock:7,x:200,y:345,kind:'Garden'},
+  {id:'hearthside',name:'Hearthside',resource:'wood',number:10,stock:5,x:484,y:347,kind:'Commons'}
+];
+const LINKS = [
+  {id:'mb',a:'millford',b:'bridgeport',cost:1,name:'Millford–Bridgeport'},
+  {id:'bo',a:'bridgeport',b:'ovenham',cost:1,name:'Bridgeport–Ovenham'},
+  {id:'ol',a:'ovenham',b:'lantern',cost:2,name:'Ovenham–Lantern'},
+  {id:'mc',a:'millford',b:'cedar',cost:1,name:'Millford–Cedar'},
+  {id:'cb',a:'cedar',b:'bridgeport',cost:1,name:'Cedar–Bridgeport'},
+  {id:'ch',a:'cedar',b:'hearthside',cost:1,name:'Cedar–Hearthside'},
+  {id:'hl',a:'hearthside',b:'lantern',cost:2,name:'Hearthside–Lantern'},
+  {id:'bh',a:'bridgeport',b:'hearthside',cost:2,name:'Bridgeport–Hearthside'},
+  {id:'oh',a:'ovenham',b:'hearthside',cost:1,name:'Ovenham–Hearthside'}
+];
+const ROLES = [
+  {name:'The Engineer',task:'Ask what one rail connection could make possible.'},
+  {name:'The Hearthkeeper',task:'Protect warmth without confusing game fuel with safe physical heating.'},
+  {name:'The Gardener',task:'Connect the food supply to the town that needs it.'},
+  {name:'The Witness',task:'Keep claims distinct from observations and receipts.'},
+  {name:'The Mail Carrier',task:'Carry proposals, not obligations, between towns.'},
+  {name:'The Inventor',task:'Find useful shared infrastructure instead of redundant projects.'}
+];
+const RECIPES = [
+  {id:'rail',name:'Forge two rail segments',inputs:{wood:1,ore:1},outputs:{rail:2},at:'commons',flavor:'Shared material capability unlocks a new line.'},
+  {id:'firewood',name:'Craft two firewood tokens',inputs:{wood:1},outputs:{firewood:2},at:'millford',flavor:'Fictional material card; NOT real burning or heating guidance.'},
+  {id:'blueprint',name:'Compose a reusable blueprint',inputs:{idea:1,ore:1},outputs:{blueprint:1},at:'commons',flavor:'An idea token is non-physical, not an authenticated construction plan.'}
+];
+const copy = x => JSON.parse(JSON.stringify(x));
+const must = (condition,msg)=>{ if(!condition)throw Error(msg); };
+const safeInt=(x,low,high)=>Number.isSafeInteger(x)&&x>=low&&x<=high;
+function makeGame(size=4, seed=317){
+  must(safeInt(size,2,6),'Party supports 2–6 seats');
+  must(safeInt(seed,1,2147483646),'Invalid seed');
+  return {version:VERSION,mode:'SYNTHETIC_OFFLINE_PARTY',size,seed,random:seed,round:1,maxRounds:9,
+    actionsLeft:size,activeSeat:0,pressure:0,phase:'PLAYING',resources:{wood:2,ore:2,food:0,idea:1,rail:0,firewood:0,blueprint:0},
+    stock:Object.fromEntries(TOWNS.map(t=>[t.id,t.stock])),consents:[],built:[],delivered:{food:0,firewood:0},
+    claim:{item:'WOOD',claimed:42,observed:39,authority:'DISPUTED_NO_STOCK',audited:false},
+    relics:[],history:[{type:'START',text:'Six fictional towns form a cooperative table. Everything on this board is play.'}],
+    lastEvent:'The train waits for the first Little Yes.',lastRoll:0};
+}
+function connected(state,origin,destination){
+  if(origin===destination)return true;
+  const seen=new Set([origin]),stack=[origin];
+  while(stack.length){const current=stack.pop();for(const e of LINKS){if(!state.built.includes(e.id))continue;
+    const next=e.a===current?e.b:e.b===current?e.a:null;
+    if(next&&!seen.has(next)){if(next===destination)return true;seen.add(next);stack.push(next);}
+  }}return false;
+}
+function shortestPlan(state,origin,destination){
+  // Weighted path by absent route consent/build actions plus rail segments required; deterministic tie-break.
+  const paths=[{at:origin,via:[],cost:0}],best=new Map();
+  while(paths.length){paths.sort((a,b)=>a.cost-b.cost||a.via.join(',').localeCompare(b.via.join(',')));
+    const p=paths.shift();if(best.has(p.at)&&best.get(p.at)<=p.cost)continue;best.set(p.at,p.cost);
+    if(p.at===destination)return p;
+    for(const edge of LINKS){const to=edge.a===p.at?edge.b:edge.b===p.at?edge.a:null;if(!to||p.via.some(id=>id===edge.id))continue;
+      const missing=state.built.includes(edge.id)?0:(state.consents.includes(edge.id)?1:2);
+      paths.push({at:to,via:[...p.via,edge.id],cost:p.cost+missing+(state.built.includes(edge.id)?0:edge.cost*.1)});
+    }
+  }return null;
+}
+function goals(state){return {
+  railway:connected(state,'millford','lantern'),
+  warmth:state.delivered.firewood>=2,
+  food:state.delivered.food>=2
+};}
+function offer(state){
+  if(state.phase!=='PLAYING')return {title:state.phase==='WON'?'The towns did it together.':'Try another railway.',reason:'This is a finished fictional game, not an actual field receipt.'};
+  const g=goals(state);
+  if(!g.railway){const p=shortestPlan(state,'millford','lantern');
+    const missing=p?.via.map(id=>LINKS.find(x=>x.id===id)).find(e=>!state.built.includes(e.id));
+    if(missing){if(!state.consents.includes(missing.id))return {title:`Ask for the Little Yes: ${missing.name}`,reason:'Both fictional endpoints must be willing before a route enters play.',suggested:{kind:'agree',id:missing.id}};
+      if(state.resources.rail<missing.cost)return materialOffer(state,`To construct ${missing.name}, the table needs ${missing.cost} rail segment${missing.cost===1?'':'s'}.`);
+      return {title:`Build ${missing.name}`,reason:`A new route can connect the shared network; this one consumes ${missing.cost} rail.`,suggested:{kind:'build',id:missing.id}};
+    }
+  }
+  if(!g.warmth){if(state.resources.firewood<2){if(state.resources.wood<1)return gatherOffer(state,'wood','millford','Firewood tokens require one wood token first.');
+      return {title:'Craft two firewood tokens',reason:'A modeled warmth need requires a prepared material card; no physical heating is authorized.',suggested:{kind:'craft',id:'firewood'}};}
+    if(!connected(state,'millford','lantern'))return {title:'Connect Millford to Lantern Town',reason:'The simulated cargo needs a built route before the handoff.'};
+    return {title:'Send two firewood tokens to Lantern Town',reason:'One modeled handoff can now satisfy the warmth objective.',suggested:{kind:'ship',id:'firewood'}};
+  }
+  if(!g.food){if(state.resources.food<2)return gatherOffer(state,'food','cedar','The garden can contribute food tokens, while its source remains fictional.');
+    if(!connected(state,'cedar','lantern')){const p=shortestPlan(state,'cedar','lantern'),m=p?.via.map(id=>LINKS.find(x=>x.id===id)).find(x=>!state.built.includes(x.id));
+      if(m){if(!state.consents.includes(m.id))return {title:`Ask to connect ${m.name}`,reason:'The shared meal needs an actual built path in the game.',suggested:{kind:'agree',id:m.id}};
+        if(state.resources.rail<m.cost)return materialOffer(state,'One more rail connection could open the garden delivery.');
+        return {title:`Build ${m.name}`,reason:'This connects a missing segment in the shortest modeled route.',suggested:{kind:'build',id:m.id}};
+      }}
+    return {title:'Send two food tokens to Lantern Town',reason:'The garden is now connected to the destination.',suggested:{kind:'ship',id:'food'}};
+  }
+  return {title:'Try a town laboratory experiment',reason:'Check whether a new shared capability unlocks more than one downstream goal.'};
+}
+function gatherOffer(state,resource,town,why){return {title:`Gather ${resource} at ${TOWNS.find(t=>t.id===town).name}`,reason:why,suggested:{kind:'gather',id:town}};}
+function materialOffer(state,why){const r=RECIPES[0];if(state.resources.wood>=1&&state.resources.ore>=1)return {title:'Forge two new rail segments',reason:why,suggested:{kind:'craft',id:'rail'}};
+  const want=state.resources.wood<1?'wood':'ore',at=want==='wood'?'millford':'bridgeport';return gatherOffer(state,want,at,why);
+}
+function nextRandom(n){return (n*48271)%2147483647;}
+function nextRound(s){
+  s.round++;
+  s.actionsLeft=s.size;s.activeSeat=0;
+  s.random=nextRandom(s.random);const one=s.random%6+1;
+  s.random=nextRandom(s.random);const two=s.random%6+1;
+  s.lastRoll=one+two;
+  const tile=TOWNS.find(t=>t.number===s.lastRoll);
+  let production='No matching town produced this round.';
+  if(tile&&s.stock[tile.id]>0){s.stock[tile.id]--;s.resources[tile.resource]++;production=`${tile.name} produced one fictional ${tile.resource} token.`;}
+  const effects=[{text:'A gust rattles the stations. Pressure rises.',pressure:1},
+   {text:'A shared supper brings encouragement. Pressure eases.',pressure:-1},
+   {text:'A helpful question arrives. Gain one idea token.',idea:1},
+   {text:'A winter front approaches. Pressure rises.',pressure:1},
+   {text:'An old track is inspected. No automatic damage or credit.',pressure:0},
+   {text:'Cedar Junction finds one additional game-food token.',food:1},
+   {text:'A doubtful claim remains disputed; it cannot be spent.',pressure:0},
+   {text:'The neighbors make time for the commons. Pressure eases.',pressure:-1}];
+  const ev=effects[(s.round-2)%effects.length];s.pressure=Math.max(0,s.pressure+(ev.pressure||0));if(ev.idea)s.resources.idea+=ev.idea;if(ev.food)s.resources.food+=ev.food;
+  s.lastEvent=`Roll ${s.lastRoll}. ${production} ${ev.text}`;s.history.push({type:'ROUND',text:`Round ${s.round}: ${s.lastEvent}`});
+  if(s.round>s.maxRounds||s.pressure>=5)s.phase='LOST';
+}
+const resourceCheck=(s,inputs)=>Object.entries(inputs).every(([k,v])=>s.resources[k]>=v);
+function addRelic(s,type,title,details){
+  const serial=s.relics.length+1;
+  s.relics.push({id:`GAME-${String(serial).padStart(3,'0')}`,title,type,details,round:s.round,mode:'SYNTHETIC_PLAY_ONLY',transferable:'AS_A_FILE_ONLY',monetaryValue:null,blockchainMint:false});
+}
+function step(state,action){
+  must(state&&state.version===VERSION,'Unknown game state');
+  must(state.phase==='PLAYING','Game is finished');
+  must(safeInt(state.actionsLeft,1,6),'No actions left');
+  must(action&&typeof action.kind==='string','Missing action');
+  const s=copy(state),a=action;
+  let message='';
+  if(a.kind==='gather'){
+    const t=TOWNS.find(t=>t.id===a.id);must(t,'Unknown town');must(s.stock[t.id]>0,`${t.name} has no remaining fictional stock`);
+    s.stock[t.id]--;s.resources[t.resource]++;message=`Gathered one ${t.resource} token from ${t.name}.`;
+  }else if(a.kind==='agree'){
+    const e=LINKS.find(x=>x.id===a.id);must(e,'Unknown link');must(!s.consents.includes(a.id),'This link has already received its fictional Little Yes');
+    must(!s.built.includes(a.id),'This route already exists');s.consents.push(a.id);
+    message=`The table recorded a fictional Little Yes for ${e.name}. This is not real consent.`;
+  }else if(a.kind==='build'){
+    const e=LINKS.find(x=>x.id===a.id);must(e,'Unknown link');must(s.consents.includes(a.id),'A fictional Little Yes is required first');
+    must(!s.built.includes(a.id),'Route already built');must(s.resources.rail>=e.cost,`Need ${e.cost} rail tokens`);
+    s.resources.rail-=e.cost;s.built.push(a.id);message=`Built ${e.name} on the fictional board.`;
+    addRelic(s,'RAIL_TICKET',`Route: ${e.name}`,{routeId:e.id,cost:e.cost});
+  }else if(a.kind==='craft'){
+    const r=RECIPES.find(x=>x.id===a.id);must(r,'Unknown recipe');must(resourceCheck(s,r.inputs),`Missing materials for ${r.name}`);
+    for(const [k,n] of Object.entries(r.inputs))s.resources[k]-=n;
+    for(const [k,n] of Object.entries(r.outputs))s.resources[k]+=n;
+    message=`Crafted ${r.name.toLowerCase()}.`;
+    addRelic(s,'CRAFT_TOKEN',r.name,{recipeId:r.id,inputs:r.inputs,outputs:r.outputs});
+  }else if(a.kind==='ship'){
+    const isFood=a.id==='food',isWood=a.id==='firewood';must(isFood||isWood,'Unknown shipment');
+    const origin=isFood?'cedar':'millford';must(connected(s,origin,'lantern'),`No built route from ${origin} to Lantern Town`);
+    const item=a.id;must(s.resources[item]>=2,`Need 2 ${item} tokens`);must(s.delivered[item]<2,'Objective already served');
+    s.resources[item]-=2;s.delivered[item]+=2;message=`Handed off two fictional ${item} tokens to Lantern Town.`;
+    addRelic(s,'ARRIVAL_CARD',`${isFood?'Community meal':'Warm hearth'} arrival`,{from:origin,to:'lantern',material:item,quantity:2});
+  }else if(a.kind==='audit'){
+    must(!s.claim.audited,'Claim already examined');s.claim.audited=true;
+    s.resources.idea++;message='The table noticed the 42-vs-39 WOOD discrepancy. The claim remains disputed, and zero stock was credited. One idea token was earned for asking a better question.';
+    addRelic(s,'QUESTION_CARD','42 WOOD / 39 observed',{finding:'DISPUTED',spendableStockCredited:0});
+  }else throw Error('Unknown action');
+  s.history.push({type:a.kind.toUpperCase(),seat:s.activeSeat+1,round:s.round,text:message});
+  s.actionsLeft--;s.activeSeat=(s.activeSeat+1)%s.size;
+  if(Object.values(goals(s)).every(Boolean)){s.phase='WON';s.lastEvent='The three cooperative objectives were accomplished in the fictional game.';
+    addRelic(s,'COMMONS_EDITION','A railway that could carry care',{goals:goals(s),newPhysicalDeeds:0});
+  }else if(s.actionsLeft===0){if(s.round===s.maxRounds)s.phase='LOST';else nextRound(s);}
+  return {state:s,message};
+}
+function exportRecord(state){must(state&&state.version===VERSION,'Invalid state');
+  return {schema:'reality2-party-record-v1',fictional:true,authority:'NO_REAL_WORLD_CLAIMS',game:VERSION,
+    scores:{phase:state.phase,round:state.round,goals:goals(state),pressure:state.pressure},
+    relics:state.relics,history:state.history,board:{built:state.built,consents:state.consents},
+    boundaries:['Claim != inventory','Play agreement != human consent','Receipt != deed','NFT card != cryptocurrency','No real rail, firewood, construction or shipping authorized']};}
+
+return {makeGame,step,offer,exportRecord,connected,goals,LINKS,TOWNS,RECIPES};
+})();
+const KINGDOM=(()=>{
+// THE EARTH REMEMBERS / WHO BUILT YOUR KINGDOM? — scenario extension for Little Yes Express 007
+// Original 007 rules remain source-owned; this wrapper never creates real people, rights, wages or proof.
+const {makeGame,step:railStep,goals:railGoals,offer:railOffer,exportRecord,VERSION:RAIL_VERSION,TOWNS,LINKS,RECIPES}=RAIL;
+const VERSION='WHO-BUILT-YOUR-KINGDOM-008/experimental-v1';
+const WORK = Object.freeze({
+  forest:{title:'Forest stewards',text:'Consent to land use; equipment and weather safety; time to rest; a named or anonymous credit choice.',line:'The hands in the dust.'},
+  quarry:{title:'Quarry workers',text:'Protective equipment; a safe schedule; clear compensation terms; independent refusal.',line:'Who carried your stone?'},
+  fields:{title:'Field workers',text:'Recorded compensation; safe hours; food and water; public credit only with permission.',line:'Who fed your children?'},
+  workshop:{title:'Inventors & craft workers',text:'Credit for contributions; safety; voluntary terms for labor and reuse of designs.',line:'Measuring tomorrow with cracked fingers.'},
+  builders:{title:'Rail builders',text:'No build before safe working terms, transparent pay, rest, and workers’ own voice.',line:'Who built your kingdom?'},
+  drivers:{title:'Carriers',text:'Reasonable route, rest, safe transport, agreed compensation and freedom to decline.',line:'Every border wearing a different uniform.'},
+  cleaners:{title:'Night cleaners',text:'Invisible maintenance made visible: safe hours, credited work if chosen, and fair terms.',line:'They disappear before the guests awaken.'}
+});
+const clone=x=>JSON.parse(JSON.stringify(x));
+const roleFor=(s,a)=>{
+ if(a.kind==='gather'){
+  const town=TOWNS.find(t=>t.id===a.id);
+  if(!town)return null;
+  return town.resource==='wood'?'forest':town.resource==='ore'?'quarry':town.resource==='food'?'fields':'workshop';
+ }
+ if(a.kind==='craft')return 'workshop';
+ if(a.kind==='build')return 'builders';
+ if(a.kind==='ship')return 'drivers';
+ return null;
+};
+function createParty(size=4,seed=317){
+ const game=makeGame(size,seed);
+ return {version:VERSION,fictional:true,rail:game,treasury:7,careReserve:0,
+  agreements:{},cases:[],laborHistory:[],shadowLedger:[],decisionCount:0,
+  scene:'INTRO',note:'The stones remember. Before we build, ask whose work makes building possible.'};
+}
+function caseFor(s,role){return s.cases.find(c=>c.role===role);}
+function awaken(s,role){let c=caseFor(s,role);if(c)return c;
+ c={role,terms:WORK[role].text,status:'NEEDS_TERMS',source:'SCRIPTED_FICTIONAL_CHARACTER',refusalAllowed:true};
+ s.cases.push(c);s.shadowLedger.push({type:'UNSEEN_WORK_REVEALED',role,claim:'A modeled task relies on labor not represented by material tokens.',realWorkers:0});
+ s.laborHistory.push(`${WORK[role].title} become visible; their conditions are not optional decorations.`);
+ return c;
+}
+function status(s){
+ const g=railGoals(s.rail),complete=Object.values(g).every(Boolean);
+ const unresolved=s.cases.filter(x=>x.status!=='SCRIPTED_YES');
+ return {rail:g,railPhase:s.rail.phase,unresolved:unresolved.map(c=>({role:c.role,status:c.status})),
+  ready:complete&&unresolved.length===0&&s.rail.phase==='WON',
+  declaration:complete&&unresolved.length?'HOLD_UNSETTLED_WORK':s.rail.phase==='WON'&&unresolved.length===0?'FICTIONAL_COMMONS_SUCCESS':s.rail.phase==='LOST'?'TRY_DIFFERENT_PATH':'IN_PROGRESS',
+  claim:'This game cannot determine a fair wage, validate real safety, or grant anyone consent.'};
+}
+function director(s){
+ const pending=s.cases.find(x=>x.status==='NEEDS_TERMS');
+ if(pending)return {title:`Listen to ${WORK[pending.role].title}`,reason:`Before using this capability: ${pending.terms}`,action:{kind:'honor',role:pending.role}};
+ if(s.cases.find(x=>x.status==='REFUSED'))return {title:'A worker has refused',reason:'Respect the refusal. Select a different fictional plan; nobody is spent or coerced.'};
+ const core=railOffer(s.rail);
+ return {title:core.title,reason:core.reason,action:core.suggested?{kind:'rail',move:core.suggested}:null};
+}
+function takeTurn(raw,action){
+ if(!raw||raw.version!==VERSION)throw Error('Unknown expansion state');
+ if(!action||typeof action.kind!=='string')throw Error('Invalid action');
+ const s=clone(raw);let message='';
+ if(action.kind==='honor'){
+  const c=caseFor(s,action.role);
+  if(!c||c.status!=='NEEDS_TERMS')throw Error('There is no open labor-terms conversation for this role');
+  if(s.treasury<1)throw Error('No proposed funding remaining. HOLD; not permission to demand unpaid work.');
+  s.treasury-=1;s.careReserve+=1;c.status='SCRIPTED_YES';
+  s.laborHistory.push(`The table reserves one fictional funding unit and records the scripted ${WORK[c.role].title} agreement. This is NOT actual assent.`);
+  message=`${WORK[c.role].title}: fictional terms now honored. The reserve is a prerequisite, not the value of a person.`;
+ }else if(action.kind==='refuse'){
+  const c=caseFor(s,action.role);
+  if(!c||c.status!=='NEEDS_TERMS')throw Error('No current fictional invitation can be refused');
+  c.status='REFUSED';s.laborHistory.push(`${WORK[c.role].title} refused. No work or penalty follows.`);
+  message=`${WORK[c.role].title} refused. This branch stays closed.`;
+ }else if(action.kind==='rail'){
+  const move=action.move;
+  if(!move||typeof move.kind!=='string')throw Error('Rail move missing');
+  const role=roleFor(s,move);
+  if(role){const c=awaken(s,role);
+   if(c.status!=='SCRIPTED_YES'){
+    message=c.status==='REFUSED'?'REFUSE: the relevant worker role declined. No action taken.':`HOLD: ask ${WORK[role].title} for scripted terms before ${move.kind}.`;
+    s.scene='THE SCALES';s.note=message;s.decisionCount++;return {state:s,message,blocked:true};
+   }}
+  const {state:next,message:railMessage}=railStep(s.rail,move);
+  s.rail=next;message=railMessage;
+  s.laborHistory.push(`Fictional ${move.kind} completed under scripted ${role||'table'} conditions.`);
+  // Make an often-hidden occupation visible after the first delivery; it cannot be erased by completing the rail goals.
+  if(move.kind==='ship'&&!caseFor(s,'cleaners')){
+    awaken(s,'cleaners');message+=' Maintenance workers appear in the ledger: the hidden nighttime shift still needs terms.';
+  }
+ }else throw Error('Unknown expansion action');
+ s.decisionCount++;
+ const state=status(s);
+ s.scene=state.declaration==='FICTIONAL_COMMONS_SUCCESS'?'EARTH REMEMBERS':s.cases.length>=4?'BRING OUT THE SCALES':s.cases.length>=2?'WHO BUILT YOUR KINGDOM?':'HANDS IN THE DUST';
+ s.note=message;
+ return {state:s,message,blocked:false};
+}
+function portableRecord(s){
+ const original=exportRecord(s.rail);
+ return {format:'THE-EARTH-REMEMBERS-008/party-record',fictional:true,sourceGame:RAIL_VERSION,rightsClaim:'NONE',physicalDeeds:0,realWorkerConsents:0,workerIdentities:[],
+  rail:original,terms:s.cases.map(c=>({role:c.role,status:c.status,terms:c.terms,source:c.source})),
+  repairs:s.laborHistory,treasury:{unallocated:s.treasury,designated:s.careReserve},outcome:status(s),
+  warnings:['Fictional worker YES is not actual consent','Funding units do not measure human dignity','No real wage, safe job, receipt, claim, NFT or labor right is created']};
+}
+
+return {createParty,takeTurn,portableRecord};
+})();
+const FORGE=(()=>{
+// STATIC FIELD: EXPANSION FORGE 009 — source-bound cooperative expansion candidates.
+// A synthetic party-record is UNVERIFIED data, not a source signature, human event or real authorization.
+const {makeGame,step:railwayStep,offer:railwayOffer,LINKS,exportRecord:railwayExport}=RAIL;
+const FORGE_VERSION='static-field.expansion-forge/009';
+const RECORD_SCHEMA='static-field.expansion-proposal/009';
+const copy=x=>JSON.parse(JSON.stringify(x));
+const err=(code)=>{throw Error(code)};
+const ensure=(p,c)=>{if(!p)err(c)};
+const string=(x,max=160)=>typeof x==='string'&&x.length>0&&x.length<=max;
+const allowedTypes=new Set(['START','ROUND','GATHER','AGREE','BUILD','CRAFT','SHIP','AUDIT']);
+const relicTypes=new Set(['RAIL_TICKET','CRAFT_TOKEN','ARRIVAL_CARD','QUESTION_CARD','COMMONS_EDITION']);
+const schemas=['reality2-party-record-v1','THE-EARTH-REMEMBERS-008/party-record'];
+const validRoute=id=>LINKS.some(r=>r.id===id);
+function sortedCanonical(value){if(Array.isArray(value))return '['+value.map(sortedCanonical).join(',')+']';
+ if(value&&typeof value==='object')return '{'+Object.keys(value).sort().map(k=>JSON.stringify(k)+':'+sortedCanonical(value[k])).join(',')+'}';
+ return JSON.stringify(value);
+}
+function toHex(bytes){return Array.from(bytes,x=>x.toString(16).padStart(2,'0')).join('');}
+async function hash(value){
+ const data=new TextEncoder().encode(sortedCanonical(value));
+ const digest=await globalThis.crypto.subtle.digest('SHA-256',data);
+ return 'sha256:'+toHex(new Uint8Array(digest));
+}
+function extractRecord(raw){
+ ensure(raw&&typeof raw==='object'&&!Array.isArray(raw),'INVALID_RECORD');
+ ensure(JSON.stringify(raw).length<180000,'OVERSIZED_RECORD');
+ ensure(schemas.includes(raw.schema||raw.format),'UNKNOWN_RECORD_SCHEMA');
+ const kingdom=raw.format===schemas[1];
+ const rail=kingdom?raw.rail:raw;
+ ensure(rail&&rail.schema===schemas[0]&&rail.fictional===true&&rail.authority==='NO_REAL_WORLD_CLAIMS','NOT_FICTIONAL_RAIL_PROOF');
+ ensure(Array.isArray(rail.history)&&rail.history.length>=1&&rail.history.length<=140,'INVALID_HISTORY');
+ ensure(Array.isArray(rail.relics)&&rail.relics.length<=140,'INVALID_RELICS');
+ ensure(rail.board&&Array.isArray(rail.board.built)&&rail.board.built.length<=9,'INVALID_BOARD');
+ ensure(rail.board.built.every(validRoute),'INVALID_ROUTE');
+ const history=rail.history.map((h,i)=>{
+   ensure(h&&allowedTypes.has(h.type)&&string(h.text,500),'INVALID_HISTORY_EVENT');
+   return {index:i,type:h.type,text:h.text.slice(0,170)};
+ });
+ const relics=rail.relics.map((r,i)=>{
+   ensure(r&&relicTypes.has(r.type)&&string(r.title,160)&&string(r.id,70),'INVALID_RELIC');
+   return {index:i,type:r.type,title:r.title};
+ });
+ const worker=kingdom?raw.terms:[];
+ ensure(!kingdom||Array.isArray(worker)&&worker.length<=10,'INVALID_LABOR_TERMS');
+ const terms=(worker||[]).map((w,i)=>{
+  ensure(w&&['forest','quarry','fields','workshop','builders','drivers','cleaners'].includes(w.role)&&['NEEDS_TERMS','SCRIPTED_YES','REFUSED'].includes(w.status),'INVALID_LABOR_TERM');
+  return {index:i,role:w.role,status:w.status};
+ });
+ return {format:kingdom?'008':'007',history,relics,terms,built:[...new Set(rail.board.built)].sort(),
+  // A ref copied from a browser file is not authenticated evidence, even when the digest matches.
+  claim:'SYNTHETIC_PARTY_RECORD_UNVERIFIED',externalAuthority:'NONE'};
+}
+function minimizeRecord(raw){
+ const summary=extractRecord(raw);
+ const rail={schema:'reality2-party-record-v1',fictional:true,authority:'NO_REAL_WORLD_CLAIMS',
+  history:summary.history.map(x=>({type:x.type,text:x.text})),
+  relics:summary.relics.map(x=>({id:`SYNTHETIC-${x.index+1}`,type:x.type,title:x.title})),
+  board:{built:summary.built}};
+ return summary.format==='008'?{format:'THE-EARTH-REMEMBERS-008/party-record',rail,
+   terms:summary.terms.map(x=>({role:x.role,status:x.status}))}:rail;
+}
+function eventsOf(summary){
+ const events=[];
+ for(const h of summary.history){if(['BUILD','CRAFT','SHIP','AUDIT'].includes(h.type))events.push({type:h.type,label:h.text,at:`history:${h.index}`});}
+ for(const r of summary.relics){if(['RAIL_TICKET','ARRIVAL_CARD','QUESTION_CARD'].includes(r.type))events.push({type:r.type,label:r.title,at:`relic:${r.index}`});}
+ for(const t of summary.terms)events.push({type:t.status==='REFUSED'?'REFUSAL':'LABOR',label:`${t.role}: ${t.status}`,at:`term:${t.index}`});
+ return events;
+}
+const TEMPLATES={
+ 'SECOND_TRACK':{title:'THE SECOND TRACK',lens:'CONNECTION',subtitle:'Build one link the originating table never built.',goal:'Construct the indicated route on a NEW fictional board.',kind:'route'},
+ 'HEARTH_CIRCLE':{title:'THE HEARTH CIRCLE',lens:'CARE',subtitle:'Warmth needs both resources and a circle of care.',goal:'Make two firewood tokens and explicitly hold a game-only care circle.',kind:'firewood'},
+ 'NIGHT_SHIFT':{title:'THE NIGHT SHIFT HAS A VOICE',lens:'DIGNITY',subtitle:'Maintenance becomes a visible dependency, not an invisible person-token.',goal:'Audit the disputed claim, create a blueprint, and hold a game-only listening circle.',kind:'dignity'},
+ 'LEDGER_DAY':{title:'THE LEDGER DOES NOT LIE',lens:'WITNESS',subtitle:'A disputed count must stay disputed even after reflection.',goal:'Audit 42/39 WOOD, then hold a listening circle that credits zero real stock.',kind:'witness'},
+ 'GARDEN_ROUTE':{title:'THE GARDEN TAKES THE TRAIN',lens:'NOURISH',subtitle:'Connect the garden to the hearth and keep food available.',goal:'Build Cedar–Hearthside and gather two fictional food tokens.',kind:'garden'},
+ 'COMMONS_BLUEPRINT':{title:'THE COMMONS BLUEPRINT',lens:'INVENTION',subtitle:'An idea becomes useful only when it names a supported next step.',goal:'Craft a blueprint and build a voluntary game rail connection.',kind:'blueprint'}
+};
+function newRoute(built){return LINKS.find(x=>!built.includes(x.id) && (x.a==='millford'||x.b==='millford'))?.id||LINKS.find(x=>!built.includes(x.id))?.id||'mb';}
+function recipeFor(template,summary){
+ if(template==='SECOND_TRACK')return [{type:'RAIL',id:newRoute(summary.built)}];
+ if(template==='HEARTH_CIRCLE')return [{type:'RESOURCE',id:'firewood',n:2},{type:'CIRCLE'}];
+ if(template==='NIGHT_SHIFT')return [{type:'AUDIT'},{type:'RESOURCE',id:'blueprint',n:1},{type:'CIRCLE'}];
+ if(template==='LEDGER_DAY')return [{type:'AUDIT'},{type:'CIRCLE'}];
+ if(template==='GARDEN_ROUTE')return [{type:'RAIL',id:'ch'},{type:'RESOURCE',id:'food',n:2}];
+ return [{type:'RESOURCE',id:'blueprint',n:1},{type:'RAIL',id:newRoute(summary.built)}];
+}
+function chooseRecipes(events){
+ const map={RAIL_TICKET:'SECOND_TRACK',BUILD:'SECOND_TRACK',CRAFT:'COMMONS_BLUEPRINT',SHIP:'HEARTH_CIRCLE',ARRIVAL_CARD:'GARDEN_ROUTE',AUDIT:'LEDGER_DAY',QUESTION_CARD:'LEDGER_DAY',LABOR:'NIGHT_SHIFT',REFUSAL:'NIGHT_SHIFT'};
+ const uniques=[];
+ // Newest event is most relevant to the group's last decision; preserve distinct mechanics.
+ for(const ev of [...events].reverse()){const template=map[ev.type];if(template&&!uniques.some(x=>x.template===template))uniques.push({template,event:ev});}
+ const options=['SECOND_TRACK','NIGHT_SHIFT','COMMONS_BLUEPRINT','LEDGER_DAY','GARDEN_ROUTE','HEARTH_CIRCLE'];
+ for(const template of options){if(uniques.length>=3)break;if(!uniques.some(x=>x.template===template))uniques.push({template,event:events.at(-1)});}
+ return uniques.slice(0,3);
+}
+async function forge(raw){
+ const source=extractRecord(raw),events=eventsOf(source);
+ if(!events.length)return {status:'HOLD_NO_COMPLETED_GAME_EVENT',needed:'Play a construction, crafting, arrival, audit, or worker-voice event before minting a fictional candidate.',authority:'NONE',candidates:[]};
+ const sourceDigest=await hash(source);
+ const chosen=chooseRecipes(events);
+ const candidates=[];
+ for(const {template,event} of chosen){
+  const t=TEMPLATES[template];const result={schema:RECORD_SCHEMA,version:FORGE_VERSION,kind:'HELD_GAME_VARIANT',
+   template,sourceDigest,sourceSummary:source,seedEvent:event,
+   title:t.title,subtitle:t.subtitle,goal:t.goal,lens:t.lens,
+   requirements:recipeFor(template,source),
+   authority:'NONE',realWorldActionsAuthorized:0,physicalDeeds:0,realWorkerConsents:0,
+   acceptance:'REQUIRES_EXPLICIT_LOCAL_PLAYER_SELECTION',
+   warnings:['Fictional party record is not authenticated evidence','No automatic import into Static Field canon','No real labor assent or token mint','Digest proves only file integrity, not truth']};
+  result.digest=await hash(result);candidates.push(result);
+ }
+ return {status:'HOLD_PLAYER_CHOICE',sourceDigest,source,candidates,authority:'NONE'};
+}
+async function receive(rawCandidate,record,decision='HOLD'){
+ if(!['HOLD','ADMIT','REFUSE'].includes(decision))err('INVALID_DECISION');
+ if(!rawCandidate||rawCandidate.schema!==RECORD_SCHEMA)return {status:'REFUSE_UNSUPPORTED_PACKET'};
+ try{
+  const regenerated=await forge(record);
+  if(regenerated.status!=='HOLD_PLAYER_CHOICE')return {status:'REFUSE_NO_SOURCE_EVENTS'};
+  const exact=regenerated.candidates.find(x=>x.digest===rawCandidate.digest);
+  if(!exact||sortedCanonical(exact)!==sortedCanonical(rawCandidate))return {status:'REFUSE_TAMPERED_OR_UNAUTHORIZED_RECIPE'};
+  return {status:decision==='ADMIT'?'ADMIT_LOCAL_FICTION_ONLY':decision==='REFUSE'?'REFUSE_PLAYER_CHOICE':'HOLD_PLAYER_CHOICE',candidate:exact,
+   localPlayAllowed:decision==='ADMIT',externalAuthority:'NONE',realWorldActionsAuthorized:0};
+ }catch{return {status:'REFUSE_INVALID_SOURCE_RECORD'};}
+}
+function startVariant(received,size=4){
+ ensure(received?.status==='ADMIT_LOCAL_FICTION_ONLY'&&received.candidate?.schema===RECORD_SCHEMA,'NOT_LOCALLY_ADMITTED');
+ ensure(Number.isSafeInteger(size)&&size>=2&&size<=6,'BAD_PARTY_SIZE');
+ const seed=(parseInt(received.candidate.digest.slice(7,15),16)%2147483645)+1;
+ return {format:'static-field.expansion-variant-play/009',candidate:copy(received.candidate),rail:makeGame(size,seed),circleHeld:false,
+  localHistory:[{type:'START',text:'A NEW fictional board begins. Prior inventory and authority were not copied.'}],phase:'PLAYING'};
+}
+function progress(s){
+ const steps=s.candidate.requirements.map(r=>{
+  if(r.type==='RAIL')return {...r,done:s.rail.built.includes(r.id)};
+  if(r.type==='RESOURCE')return {...r,done:s.rail.resources[r.id]>=r.n};
+  if(r.type==='AUDIT')return {...r,done:s.rail.claim.audited};
+  if(r.type==='CIRCLE')return {...r,done:s.circleHeld};
+  err('UNKNOWN_RECIPE_OPERATION');
+ });
+ return {steps,complete:steps.every(x=>x.done),sourceEvent:s.candidate.seedEvent,phase:s.rail.phase};
+}
+function suggest(s){
+ const missing=progress(s).steps.find(x=>!x.done);
+ if(!missing)return {title:'Expansion objective complete',reason:'Export a game-only return ticket. No physical achievement is credited.',action:null};
+ if(missing.type==='CIRCLE')return {title:'Hold the circle',reason:'Make room for voices at the table; this does not represent outside consent.',action:{kind:'circle'}};
+ if(missing.type==='AUDIT')return {title:'Inspect the disputed 42 / 39 WOOD claim',reason:'The difference is never credited as stock.',action:{kind:'rail',move:{kind:'audit'}}};
+ if(missing.type==='RAIL'){
+  if(!s.rail.consents.includes(missing.id))return {title:'Invite the Little Yes for '+LINKS.find(e=>e.id===missing.id).name,action:{kind:'rail',move:{kind:'agree',id:missing.id}},reason:'Fictional counterparties must agree before a new route is built.'};
+  const cost=LINKS.find(e=>e.id===missing.id).cost;
+  if(s.rail.resources.rail<cost){
+   if(s.rail.resources.wood<1)return {title:'Gather wood',action:{kind:'rail',move:{kind:'gather',id:'millford'}},reason:'Rail crafting needs one wood token.'};
+   if(s.rail.resources.ore<1)return {title:'Gather ore',action:{kind:'rail',move:{kind:'gather',id:'bridgeport'}},reason:'Rail crafting needs one ore token.'};
+   return {title:'Forge rail',action:{kind:'rail',move:{kind:'craft',id:'rail'}},reason:'Craft source-owned rail tokens.'};
+  }
+  return {title:'Build the proposed line',action:{kind:'rail',move:{kind:'build',id:missing.id}},reason:'It is now possible inside the fictional model.'};
+ }
+ if(missing.type==='RESOURCE'){
+  if(missing.id==='food')return {title:'Gather from Cedar Junction',action:{kind:'rail',move:{kind:'gather',id:'cedar'}},reason:'Only fictional food tokens.'};
+  if(missing.id==='firewood')return s.rail.resources.wood>=1?{title:'Craft firewood',action:{kind:'rail',move:{kind:'craft',id:'firewood'}},reason:'Not physical fuel.'}:{title:'Gather fictional wood',action:{kind:'rail',move:{kind:'gather',id:'millford'}},reason:'No disputed stock is spendable.'};
+  if(missing.id==='blueprint'){
+   if(s.rail.resources.ore<1)return {title:'Gather ore',action:{kind:'rail',move:{kind:'gather',id:'bridgeport'}},reason:'Blueprint resource cost.'};
+   if(s.rail.resources.idea<1)return {title:'Gather an idea',action:{kind:'rail',move:{kind:'gather',id:'ovenham'}},reason:'Model creativity.'};
+   return {title:'Craft the blueprint',action:{kind:'rail',move:{kind:'craft',id:'blueprint'}},reason:'A game token, not validated engineering.'};
+  }
+ }
+ return railwayOffer(s.rail);
+}
+function playVariant(raw,action){
+ ensure(raw&&raw.format==='static-field.expansion-variant-play/009','INVALID_VARIANT');
+ ensure(raw.phase==='PLAYING','VARIANT_FINISHED');
+ const s=copy(raw);
+ if(action?.kind==='circle'){
+   ensure(!s.circleHeld,'CIRCLE_ALREADY_HELD');
+   s.circleHeld=true;
+   s.localHistory.push({type:'CIRCLE',text:'Fictional table listens. No real-world worker was consulted or committed.'});
+ } else if(action?.kind==='rail'){
+   const outcome=railwayStep(s.rail,action.move);
+   s.rail=outcome.state;
+   s.localHistory.push({type:'RAIL',text:outcome.message});
+ } else err('UNKNOWN_VARIANT_ACTION');
+ if(progress(s).complete){s.phase='LOCAL_VARIANT_GOAL_MET';s.localHistory.push({type:'END',text:'Optional game objective completed. No real-world claim.'});}
+ else if(s.rail.phase!=='PLAYING')s.phase='LOCAL_VARIANT_CLOSED_WITH_UNMET_GOAL';
+ return {state:s,status:s.phase,progress:progress(s)};
+}
+function variantReturn(s){ensure(s?.format==='static-field.expansion-variant-play/009','INVALID_VARIANT');
+ return {schema:'static-field.expansion-return-unsent/009',authority:'NONE',status:'FICTIONAL_UNVERIFIED',
+  sourceDigest:s.candidate.sourceDigest,candidateDigest:s.candidate.digest,template:s.candidate.template,goal:s.candidate.goal,
+  result:s.phase,progress:progress(s),originalGame:railwayExport(s.rail),history:s.localHistory,
+  realWorldActionsAuthorized:0,realWorkerConsents:0,physicalDeeds:0,blockchainMints:0,
+  nextQuestion:'Which specific, permissioned and independently verifiable real-world question is worth investigating?'};
+}
+
+return {forge,receive,minimizeRecord,startVariant,playVariant,progress,suggest,variantReturn};
+})();
+const q=id=>document.getElementById(id);
+let source=null, forged=null, active=null, lineage=[],chosen=null;
+function say(msg,error=false){q('toast').textContent=msg;q('toast').style.color=error?'#eea58d':'#c4e1d0'}
+function downloadJSON(name,value){const blob=new Blob([JSON.stringify(value,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);}
+function node(tag,text,className){const x=document.createElement(tag);if(text!==undefined)x.textContent=text;if(className)x.className=className;return x;}
+function demoRail(){let g=RAIL.makeGame(4);for(const a of [{kind:'audit'},{kind:'agree',id:'mb'},{kind:'craft',id:'rail'},{kind:'build',id:'mb'}])g=RAIL.step(g,a).state;return RAIL.exportRecord(g);}
+function demoKingdom(){let s=KINGDOM.createParty(4);s=KINGDOM.takeTurn(s,{kind:'rail',move:{kind:'gather',id:'millford'}}).state;s=KINGDOM.takeTurn(s,{kind:'refuse',role:'forest'}).state;return KINGDOM.portableRecord(s);}
+async function loadSource(record,label){
+ source=record;active=null;chosen=null;q('playPanel').hidden=true;
+ try{forged=await FORGE.forge(record);}catch(err){forged=null;q('candidates').replaceChildren(node('p','Source held: '+err.message,'muted'));q('sourceStatus').textContent='REFUSE / INVALID SOURCE';q('sourceStatus').className='status fail';return;}
+ const status=forged.status==='HOLD_PLAYER_CHOICE'?'3 candidate expansion rules offered':'No completed source event yet';
+ q('sourceStatus').textContent=label+' · '+status;
+ q('sourceStatus').className='status '+(forged.candidates.length?'':'hold');
+ q('sourceDigest').textContent='Source: '+(forged.sourceDigest||'not established');
+ showCandidates();say(forged.candidates.length?'The mail carrier delivered three proposals. None has been admitted.':'Play a game action before composing a successor.',!forged.candidates.length);
+}
+function showCandidates(){
+ const holder=q('candidates');holder.replaceChildren();
+ if(!forged||!forged.candidates.length){holder.append(node('p','No admissible game history to build on yet.','muted'));return;}
+ forged.candidates.forEach((c,i)=>{
+  const card=node('article',undefined,'card');
+  card.append(node('div','0'+(i+1)+' / '+c.lens,'tag'),node('h3',c.title),node('p',c.subtitle),node('div','SOURCE EVENT · '+c.seedEvent.at+'\n'+c.seedEvent.label,'seed'));
+  const requirements=c.requirements.map(r=>r.type==='RAIL'?'Build route '+r.id:r.type==='RESOURCE'?'Collect '+r.n+' '+r.id:r.type==='AUDIT'?'Audit disputed wood':'Hold a fictional listening circle').join(' · ');
+  card.append(node('p',requirements,'muted'));
+  const btn=node('button','Choose this future ↗','btn');btn.addEventListener('click',()=>admit(i));card.append(btn);
+  holder.append(card);
+ });
+}
+async function admit(index){
+ const c=forged?.candidates[index];if(!c)return;
+ const rx=await FORGE.receive(c,source,'ADMIT');
+ if(!rx.localPlayAllowed){say('Receiver refused: '+rx.status,true);return;}
+ chosen=c;active=FORGE.startVariant(rx,4);
+ lineage.push({sourceDigest:c.sourceDigest,candidateDigest:c.digest,title:c.title});
+ q('playPanel').hidden=false;
+ q('chosenName').textContent=c.title;q('chosenGoal').textContent=c.goal;
+ say('One local game was accepted by an explicit player click. The source history is unchanged.');renderPlay();
+ q('playPanel').scrollIntoView({block:'start',behavior:'smooth'});
+}
+function labelRequirement(r){if(r.type==='RAIL'){const e=RAIL.LINKS.find(x=>x.id===r.id);return 'Build '+(e?e.name:r.id);}
+ if(r.type==='RESOURCE')return 'Hold '+r.n+' fictional '+r.id+' token'+(r.n===1?'':'s');
+ if(r.type==='AUDIT')return 'Audit 42 claimed / 39 observed WOOD (no stock credited)';
+ if(r.type==='CIRCLE')return 'Hold a voluntary, fictional table listening circle';
+ return 'Unrecognized rule';}
+function allMoves(){const moves=[{kind:'circle'}];const g=active.rail;
+ for(const t of RAIL.TOWNS){if(g.stock[t.id]>0)moves.push({kind:'rail',move:{kind:'gather',id:t.id}});}
+ if(!g.claim.audited)moves.push({kind:'rail',move:{kind:'audit'}});
+ for(const edge of RAIL.LINKS){if(!g.consents.includes(edge.id)&&!g.built.includes(edge.id))moves.push({kind:'rail',move:{kind:'agree',id:edge.id}});
+ if(g.consents.includes(edge.id)&&!g.built.includes(edge.id)&&g.resources.rail>=edge.cost)moves.push({kind:'rail',move:{kind:'build',id:edge.id}});}
+ for(const recipe of RAIL.RECIPES)if(Object.entries(recipe.inputs).every(([name,amount])=>g.resources[name]>=amount))moves.push({kind:'rail',move:{kind:'craft',id:recipe.id}});
+ for(const id of ['firewood','food'])if(g.resources[id]>=2&&g.delivered[id]<2)moves.push({kind:'rail',move:{kind:'ship',id}});
+ return moves;
+}
+function renderPlay(){if(!active)return;
+ const p=FORGE.progress(active),g=active.rail;
+ const status=p.complete?'✓ Expansion win recorded':active.phase==='PLAYING'?'Episode in progress · round '+g.round+' · '+g.actionsLeft+' shared turns left':'Episode ended; optional goal remains unresolved';
+ q('inventory').replaceChildren(...Object.entries(g.resources).map(([k,n])=>node('span',k.toUpperCase()+' '+n,'chip')),node('span','ROUND '+g.round+' / '+g.maxRounds,'chip'),node('span',status,'chip'));
+ const list=node('ul',undefined,'checks');for(const r of p.steps){const li=node('li',(r.done?'✓ ':'○ ')+labelRequirement(r),r.done?'done':'pending');list.append(li)}q('progress').replaceChildren(list);
+ const tip=FORGE.suggest(active);q('suggestionTitle').textContent=tip.title;q('suggestionReason').textContent=tip.reason||'';
+ q('suggestionAction').disabled=active.phase!=='PLAYING'||!tip.action;
+ q('suggestionAction').textContent=tip.action?.kind==='circle'?'Hold the fictional circle':'Try suggested game move';
+ q('skip').disabled=active.phase!=='PLAYING';
+ q('manualAction').disabled=active.phase!=='PLAYING';
+ const sel=q('manualMove');sel.replaceChildren();for(const m of allMoves()){
+  const label=m.kind==='circle'?'Hold listening circle':m.move.kind+' · '+(RAIL.TOWNS.find(x=>x.id===m.move.id)?.name||RAIL.LINKS.find(x=>x.id===m.move.id)?.name||m.move.id||'disputed 42/39');
+  const op=node('option',label);op.value=JSON.stringify(m);sel.append(op);
+ }
+ const log=q('playLog');log.replaceChildren(...active.localHistory.slice(-11).map(x=>node('p',x.type+' · '+x.text)));
+ q('lineage').textContent='Source → '+active.candidate.sourceDigest+'\nChosen future → '+active.candidate.digest+'\nGenerations at this table → '+lineage.length;
+}
+function play(action){if(!active)return;
+ if(active.phase!=='PLAYING'){say('This branch is finished; export it or forge a new one.',true);return;}
+ try{const r=FORGE.playVariant(active,action);active=r.state;renderPlay();say(r.status==='LOCAL_VARIANT_GOAL_MET'?'A new fictional game reached its optional goal. Try forging its next generation.':'One fictional game move recorded. The conductor is offering the next step.');}
+ catch(err){say('HOLD / '+err.message,true);}
+}
+q('demoRail').addEventListener('click',()=>loadSource(demoRail(),'007 synthetic rail episode'));
+q('demoKingdom').addEventListener('click',()=>loadSource(demoKingdom(),'008 synthetic worker refusal'));
+q('suggestionAction').addEventListener('click',()=>play(FORGE.suggest(active).action));
+q('manualAction').addEventListener('click',()=>{try{play(JSON.parse(q('manualMove').value))}catch(err){say('Invalid game action',true)}});
+q('skip').addEventListener('click',()=>say('No action was taken. Not now is a valid choice.'));
+q('print').addEventListener('click',()=>window.print());
+q('exportReturn').addEventListener('click',()=>{if(!active)return;downloadJSON('static-field-unsent-expansion-return.json',FORGE.variantReturn(active));say('Exported a fictional return. Nothing was submitted or credited.')});
+q('recurse').addEventListener('click',async()=>{
+ if(!active)return;const record=FORGE.variantReturn(active).originalGame;
+ await loadSource(record,'009 successor · from the actual previous game state');
+ say('The next generation is derived from an actual fictional game history. Source history and authority are not inherited.');
+});
+q('exportCandidate').addEventListener('click',()=>{if(!active||!source)return;
+ const packet={format:'static-field.expansion-cartridge/009',status:'HELD_UNVERIFIED',version:1,
+  sourceRecord:FORGE.minimizeRecord(source),candidate:active.candidate,realWorldAuthority:'NONE',
+  warning:'The receiver must independently regenerate and compare this proposal. This is a game-only file.'};
+ downloadJSON('static-field-expansion-cartridge-009.json',packet);say('Exported a minimized, unverified cartridge. It contains no private extra fields.');
+});
+async function readFile(file){if(!file)return null;if(file.size>180000)throw Error('Maximum file is 180 KB');return JSON.parse(await file.text());}
+q('sourceFile').addEventListener('change',async e=>{try{const data=await readFile(e.target.files[0]);if(data)await loadSource(data,'Imported local party record')}catch(err){say('REFUSE: '+err.message,true)}finally{e.target.value=''}});
+q('packetFile').addEventListener('change',async e=>{try{const packet=await readFile(e.target.files[0]);if(!packet||packet.format!=='static-field.expansion-cartridge/009')throw Error('Unknown cartridge format');
+ const rx=await FORGE.receive(packet.candidate,packet.sourceRecord,'HOLD');if(rx.status!=='HOLD_PLAYER_CHOICE')throw Error(rx.status);
+ await loadSource(packet.sourceRecord,'Verified content-consistency of imported fictional cartridge');
+ if(!forged.candidates.some(c=>c.digest===packet.candidate.digest))throw Error('Source/candidate mismatch');
+ say('Source and proposal match; player approval still required. Select the corresponding card.');
+ }catch(err){say('REFUSE / '+err.message,true)}finally{e.target.value=''}});
+loadSource(demoRail(),'007 synthetic rail episode');
+
+</script></body></html>
