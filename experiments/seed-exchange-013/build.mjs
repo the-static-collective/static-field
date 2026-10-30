@@ -11,6 +11,8 @@ atlas='const {forge,receive,minimizeRecord,startVariant,playVariant,progress,sug
 let breeder=unexport(read('../world-breeder-011/breeder.mjs'));breeder=breeder.replace(/^import .*?;\s*\n/gm,'');breeder='const ATLAS=ATLAS_WORLD;\nconst {suggest:forgeSuggest}=FORGE;\n'+breeder;
 let garden=unexport(read('../world-garden-012/garden.mjs'));garden=garden.replace(/^import .*?;\s*\n/gm,'');garden='const A=ATLAS_WORLD,B=BREEDER;\n'+garden;
 let exchange=unexport(read('./exchange.mjs'));exchange=exchange.replace(/^import .*?;\s*\n/gm,'');
+// Normalize transport-only terminal whitespace in independently owned 010 source.
+atlas=atlas.trimEnd();
 const parts={
  '/*__RAIL__*/':`const RAIL=(()=>{\n${rail}\nreturn {makeGame,step,offer,exportRecord,LINKS};\n})();`,
  '/*__FORGE__*/':`const FORGE=(()=>{\n${forge}\nreturn {forge,receive,minimizeRecord,startVariant,playVariant,progress,suggest,variantReturn};\n})();`,
