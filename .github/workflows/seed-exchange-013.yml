@@ -1,0 +1,51 @@
+name: Static Field 013 - Seed Exchange
+on:
+  push:
+    branches: [experiment/seed-exchange-013]
+  pull_request:
+    paths:
+      - 'experiments/seed-exchange-013/**'
+      - 'experiments/world-garden-012/**'
+      - 'experiments/world-breeder-011/**'
+      - 'experiments/living-world-atlas-010/**'
+      - 'experiments/expansion-forge-009/**'
+      - 'experiments/little-yes-field-008/rail/**'
+      - '.github/workflows/seed-exchange-013.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-native-replay-and-offline-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run source-native inherited and new 013 engine tests
+        run: |
+          node --test experiments/little-yes-field-008/rail/game.test.mjs experiments/little-yes-field-008/kingdom/kingdom.test.mjs experiments/expansion-forge-009/tests/forge.test.mjs experiments/living-world-atlas-010/tests/atlas.test.mjs experiments/world-breeder-011/tests/breeder.test.mjs experiments/world-garden-012/tests/garden.test.mjs experiments/seed-exchange-013/tests/exchange.test.mjs
+      - name: Rebuild standalone offline party surface twice and compare
+        run: |
+          node experiments/seed-exchange-013/build.mjs
+          cp experiments/seed-exchange-013/index.html /tmp/seed-exchange-first.html
+          node experiments/seed-exchange-013/build.mjs
+          cmp /tmp/seed-exchange-first.html experiments/seed-exchange-013/index.html
+          git diff --exit-code -- experiments/seed-exchange-013/index.html
+      - name: Independently regenerate the same four-table proof
+        run: |
+          node experiments/seed-exchange-013/proof.mjs
+          cp experiments/seed-exchange-013/examples/four-stations.json /tmp/seed-exchange-first.json
+          node experiments/seed-exchange-013/proof.mjs
+          cmp /tmp/seed-exchange-first.json experiments/seed-exchange-013/examples/four-stations.json
+          git diff --exit-code -- experiments/seed-exchange-013/examples/four-stations.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: static-field-013-seed-exchange-offline-and-proof
+          path: |
+            experiments/seed-exchange-013/index.html
+            experiments/seed-exchange-013/examples/four-stations.json
+          retention-days: 14
