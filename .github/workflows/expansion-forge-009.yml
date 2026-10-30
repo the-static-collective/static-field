@@ -1,0 +1,39 @@
+name: Expansion Forge 009 — original game engine, held game variants, replay
+on:
+  push:
+    branches: [experiment/expansion-forge-009]
+  pull_request:
+    paths:
+      - experiments/expansion-forge-009/**
+      - experiments/little-yes-field-008/**
+      - .github/workflows/expansion-forge-009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-forge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Source-native inherited 007 and 008 plus 009 hostile unit tests
+        run: |
+          node --test experiments/little-yes-field-008/rail/game.test.mjs \
+            experiments/little-yes-field-008/kingdom/kingdom.test.mjs \
+            experiments/expansion-forge-009/tests/forge.test.mjs
+      - name: Rebuild standalone distribution, check exact committed output
+        run: |
+          node experiments/expansion-forge-009/build.mjs
+          git diff --exit-code -- experiments/expansion-forge-009/index.html
+          node --check experiments/expansion-forge-009/forge.mjs
+      - name: Review-only artifact with no credentials, server or effect
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-field-expansion-forge-009-offline-review
+          path: |
+            experiments/expansion-forge-009/index.html
+            experiments/expansion-forge-009/README.md
+          retention-days: 14
