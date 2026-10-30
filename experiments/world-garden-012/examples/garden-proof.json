@@ -1,0 +1,44 @@
+{
+  "schema": "static-field.world-garden-evidence/012",
+  "sourceOwnerChain": [
+    "007",
+    "009",
+    "010",
+    "011",
+    "012"
+  ],
+  "fictional": true,
+  "authority": "NONE",
+  "sender": {
+    "seedCount": 2,
+    "worlds": 4,
+    "status": "FICTIONAL_BLUEPRINT_READY",
+    "events": 17
+  },
+  "cartridge": {
+    "schema": "static-field.garden-pollen/012",
+    "originGarden": "garden-a",
+    "title": "The Witnessed Station",
+    "originSeedDigests": [
+      "sha256:1a9fcca64324393b3e6efc83f5783ff9dfff3a812f4c72686caf8a4044d6ca4c",
+      "sha256:2e0f36fa21988c9db85cc079f875e02365f366aed5983e6d9bedb30b2a336042"
+    ],
+    "native011CrossingDigest": "sha256:2e0f36fa21988c9db85cc079f875e02365f366aed5983e6d9bedb30b2a336042",
+    "gameOnly": true,
+    "localClaims": {
+      "physicalResources": 0,
+      "verifiedLaborConsent": false,
+      "authenticatedSender": false,
+      "externalAuthority": "NONE"
+    },
+    "destinationRule": "HOLD_UNTIL_LOCAL_RECEIVER_CHOICE",
+    "digest": "sha256:7f34f4403328387657f6ebeaae042f6b8f581e289655bcf689f19797504fd750"
+  },
+  "receiving": {
+    "held": "HOLD",
+    "decision": "REFUSE",
+    "worldsUnchanged": true,
+    "verified": true
+  },
+  "boundary": "Deterministic fictional model and independent receiver decision, not authentic sender identity or physical permission."
+}
