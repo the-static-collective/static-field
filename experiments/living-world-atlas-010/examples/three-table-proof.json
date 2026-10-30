@@ -1,0 +1,411 @@
+{
+  "schema": "static-field.atlas-proof/010",
+  "fixture": "FICTION_ONLY",
+  "proofs": {
+    "samePacketTwoReceivers": "sha256:9632ff21dfc11bf5fcc93ed6c359a9eff75ade062737381c576c0f99fca8b4d2",
+    "bDecision": "ADMIT",
+    "cDecision": "REFUSE",
+    "aReturnedWorlds": 1,
+    "bForkedWorlds": 2,
+    "cWorlds": 0,
+    "firstGameCompleted": true,
+    "forkIndependentInventory": true,
+    "twoWorldOverlayCreated": true,
+    "tablesValid": true
+  },
+  "views": {
+    "A": {
+      "schema": "static-field.atlas-inspection/010",
+      "tableId": "A",
+      "worlds": [
+        {
+          "id": "world-b126291b5efac72",
+          "label": "Returned Railway",
+          "ancestors": [
+            "world-0d2b126a1abc554"
+          ],
+          "template": "LEDGER_DAY",
+          "progress": {
+            "steps": [
+              {
+                "type": "AUDIT",
+                "done": false
+              },
+              {
+                "type": "CIRCLE",
+                "done": false
+              }
+            ],
+            "complete": false,
+            "sourceEvent": {
+              "type": "QUESTION_CARD",
+              "label": "42 WOOD / 39 observed",
+              "at": "relic:0"
+            },
+            "phase": "PLAYING"
+          },
+          "phase": "PLAYING",
+          "suggestion": {
+            "title": "Inspect the disputed 42 / 39 WOOD claim",
+            "reason": "The difference is never credited as stock.",
+            "action": {
+              "kind": "rail",
+              "move": {
+                "kind": "audit"
+              }
+            }
+          }
+        }
+      ],
+      "inbox": [
+        {
+          "id": "mail-6073d83a7554c271",
+          "origin": "B",
+          "title": "THE LEDGER DOES NOT LIE",
+          "status": "ADMIT"
+        }
+      ],
+      "compositions": [],
+      "caveat": "Independent local fictional worlds; SHA-256 is not an identity proof. No execution or physical credit."
+    },
+    "B": {
+      "schema": "static-field.atlas-inspection/010",
+      "tableId": "B",
+      "worlds": [
+        {
+          "id": "world-0d2b126a1abc554",
+          "label": "Lamplight Line",
+          "ancestors": [],
+          "template": "LEDGER_DAY",
+          "progress": {
+            "steps": [
+              {
+                "type": "AUDIT",
+                "done": true
+              },
+              {
+                "type": "CIRCLE",
+                "done": true
+              }
+            ],
+            "complete": true,
+            "sourceEvent": {
+              "type": "QUESTION_CARD",
+              "label": "42 WOOD / 39 observed",
+              "at": "relic:0"
+            },
+            "phase": "PLAYING"
+          },
+          "phase": "LOCAL_VARIANT_GOAL_MET",
+          "suggestion": null
+        },
+        {
+          "id": "world-e72e53e4d917a36",
+          "label": "Alternative Tomorrow",
+          "ancestors": [
+            "world-0d2b126a1abc554"
+          ],
+          "template": "LEDGER_DAY",
+          "progress": {
+            "steps": [
+              {
+                "type": "AUDIT",
+                "done": false
+              },
+              {
+                "type": "CIRCLE",
+                "done": false
+              }
+            ],
+            "complete": false,
+            "sourceEvent": {
+              "type": "QUESTION_CARD",
+              "label": "42 WOOD / 39 observed",
+              "at": "relic:0"
+            },
+            "phase": "PLAYING"
+          },
+          "phase": "PLAYING",
+          "suggestion": {
+            "title": "Inspect the disputed 42 / 39 WOOD claim",
+            "reason": "The difference is never credited as stock.",
+            "action": {
+              "kind": "rail",
+              "move": {
+                "kind": "audit"
+              }
+            }
+          }
+        }
+      ],
+      "inbox": [
+        {
+          "id": "mail-9632ff21dfc11bf5",
+          "origin": "unspecified",
+          "title": "THE LEDGER DOES NOT LIE",
+          "status": "ADMIT"
+        }
+      ],
+      "compositions": [
+        {
+          "schema": "static-field.constellation/010",
+          "id": "constellation-070632d86721164",
+          "label": "Two Independent Futures",
+          "worlds": [
+            "world-0d2b126a1abc554",
+            "world-e72e53e4d917a36"
+          ],
+          "status": "LOCAL_OVERLAY_ONLY",
+          "requirements": [
+            {
+              "worldId": "world-0d2b126a1abc554",
+              "candidateDigest": "sha256:46ea512d747c2009adb395ff94acf934a43697099ed26de972e95d7b1783ce98",
+              "goal": "Audit 42/39 WOOD, then hold a listening circle that credits zero real stock."
+            },
+            {
+              "worldId": "world-e72e53e4d917a36",
+              "candidateDigest": "sha256:46ea512d747c2009adb395ff94acf934a43697099ed26de972e95d7b1783ce98",
+              "goal": "Audit 42/39 WOOD, then hold a listening circle that credits zero real stock."
+            }
+          ],
+          "authority": "NONE",
+          "sharedInventory": false,
+          "sourceOwnerApprovals": false,
+          "realWorldActionsAuthorized": 0,
+          "complete": false
+        }
+      ],
+      "caveat": "Independent local fictional worlds; SHA-256 is not an identity proof. No execution or physical credit."
+    },
+    "C": {
+      "schema": "static-field.atlas-inspection/010",
+      "tableId": "C",
+      "worlds": [],
+      "inbox": [
+        {
+          "id": "mail-9632ff21dfc11bf5",
+          "origin": "unspecified",
+          "title": "THE LEDGER DOES NOT LIE",
+          "status": "REFUSE"
+        }
+      ],
+      "compositions": [],
+      "caveat": "Independent local fictional worlds; SHA-256 is not an identity proof. No execution or physical credit."
+    }
+  },
+  "packet": {
+    "schema": "static-field.world-offer/010",
+    "fictional": true,
+    "authority": "NONE",
+    "sourceWorld": null,
+    "record": {
+      "schema": "reality2-party-record-v1",
+      "fictional": true,
+      "authority": "NO_REAL_WORLD_CLAIMS",
+      "history": [
+        {
+          "type": "START",
+          "text": "Six fictional towns form a cooperative table. Everything on this board is play."
+        },
+        {
+          "type": "AUDIT",
+          "text": "The table noticed the 42-vs-39 WOOD discrepancy. The claim remains disputed, and zero stock was credited. One idea token was earned for asking a better question."
+        },
+        {
+          "type": "AGREE",
+          "text": "The table recorded a fictional Little Yes for Millford–Bridgeport. This is not real consent."
+        }
+      ],
+      "relics": [
+        {
+          "id": "SYNTHETIC-1",
+          "type": "QUESTION_CARD",
+          "title": "42 WOOD / 39 observed"
+        }
+      ],
+      "board": {
+        "built": []
+      }
+    },
+    "candidate": {
+      "schema": "static-field.expansion-proposal/009",
+      "version": "static-field.expansion-forge/009",
+      "kind": "HELD_GAME_VARIANT",
+      "template": "LEDGER_DAY",
+      "sourceDigest": "sha256:4dc02ea2e367e3ce9adb43105c8372595d235dc256a56628910ebef2dcd2ad82",
+      "sourceSummary": {
+        "format": "007",
+        "history": [
+          {
+            "index": 0,
+            "type": "START",
+            "text": "Six fictional towns form a cooperative table. Everything on this board is play."
+          },
+          {
+            "index": 1,
+            "type": "AUDIT",
+            "text": "The table noticed the 42-vs-39 WOOD discrepancy. The claim remains disputed, and zero stock was credited. One idea token was earned for asking a better question."
+          },
+          {
+            "index": 2,
+            "type": "AGREE",
+            "text": "The table recorded a fictional Little Yes for Millford–Bridgeport. This is not real consent."
+          }
+        ],
+        "relics": [
+          {
+            "index": 0,
+            "type": "QUESTION_CARD",
+            "title": "42 WOOD / 39 observed"
+          }
+        ],
+        "terms": [],
+        "built": [],
+        "claim": "SYNTHETIC_PARTY_RECORD_UNVERIFIED",
+        "externalAuthority": "NONE"
+      },
+      "seedEvent": {
+        "type": "QUESTION_CARD",
+        "label": "42 WOOD / 39 observed",
+        "at": "relic:0"
+      },
+      "title": "THE LEDGER DOES NOT LIE",
+      "subtitle": "A disputed count must stay disputed even after reflection.",
+      "goal": "Audit 42/39 WOOD, then hold a listening circle that credits zero real stock.",
+      "lens": "WITNESS",
+      "requirements": [
+        {
+          "type": "AUDIT"
+        },
+        {
+          "type": "CIRCLE"
+        }
+      ],
+      "authority": "NONE",
+      "realWorldActionsAuthorized": 0,
+      "physicalDeeds": 0,
+      "realWorkerConsents": 0,
+      "acceptance": "REQUIRES_EXPLICIT_LOCAL_PLAYER_SELECTION",
+      "warnings": [
+        "Fictional party record is not authenticated evidence",
+        "No automatic import into Static Field canon",
+        "No real labor assent or token mint",
+        "Digest proves only file integrity, not truth"
+      ],
+      "digest": "sha256:46ea512d747c2009adb395ff94acf934a43697099ed26de972e95d7b1783ce98"
+    },
+    "claims": {
+      "authenticatedOrigin": false,
+      "physicalDeeds": 0,
+      "workerConsents": 0,
+      "realWorldRights": 0
+    },
+    "destination": "ANY_TABLE_MAY_HOLD_REFUSE_OR_ADMIT",
+    "digest": "sha256:9632ff21dfc11bf5fcc93ed6c359a9eff75ade062737381c576c0f99fca8b4d2"
+  },
+  "returnPacket": {
+    "schema": "static-field.world-offer/010",
+    "fictional": true,
+    "authority": "NONE",
+    "sourceWorld": {
+      "id": "world-0d2b126a1abc554",
+      "tableId": "B",
+      "ancestors": []
+    },
+    "record": {
+      "schema": "reality2-party-record-v1",
+      "fictional": true,
+      "authority": "NO_REAL_WORLD_CLAIMS",
+      "history": [
+        {
+          "type": "START",
+          "text": "Six fictional towns form a cooperative table. Everything on this board is play."
+        },
+        {
+          "type": "AUDIT",
+          "text": "The table noticed the 42-vs-39 WOOD discrepancy. The claim remains disputed, and zero stock was credited. One idea token was earned for asking a better question."
+        }
+      ],
+      "relics": [
+        {
+          "id": "SYNTHETIC-1",
+          "type": "QUESTION_CARD",
+          "title": "42 WOOD / 39 observed"
+        }
+      ],
+      "board": {
+        "built": []
+      }
+    },
+    "candidate": {
+      "schema": "static-field.expansion-proposal/009",
+      "version": "static-field.expansion-forge/009",
+      "kind": "HELD_GAME_VARIANT",
+      "template": "LEDGER_DAY",
+      "sourceDigest": "sha256:767a8f83758257e5bf8a168207445ede05aab40fe1b9bd6d505931b95ddee6cd",
+      "sourceSummary": {
+        "format": "007",
+        "history": [
+          {
+            "index": 0,
+            "type": "START",
+            "text": "Six fictional towns form a cooperative table. Everything on this board is play."
+          },
+          {
+            "index": 1,
+            "type": "AUDIT",
+            "text": "The table noticed the 42-vs-39 WOOD discrepancy. The claim remains disputed, and zero stock was credited. One idea token was earned for asking a better question."
+          }
+        ],
+        "relics": [
+          {
+            "index": 0,
+            "type": "QUESTION_CARD",
+            "title": "42 WOOD / 39 observed"
+          }
+        ],
+        "terms": [],
+        "built": [],
+        "claim": "SYNTHETIC_PARTY_RECORD_UNVERIFIED",
+        "externalAuthority": "NONE"
+      },
+      "seedEvent": {
+        "type": "QUESTION_CARD",
+        "label": "42 WOOD / 39 observed",
+        "at": "relic:0"
+      },
+      "title": "THE LEDGER DOES NOT LIE",
+      "subtitle": "A disputed count must stay disputed even after reflection.",
+      "goal": "Audit 42/39 WOOD, then hold a listening circle that credits zero real stock.",
+      "lens": "WITNESS",
+      "requirements": [
+        {
+          "type": "AUDIT"
+        },
+        {
+          "type": "CIRCLE"
+        }
+      ],
+      "authority": "NONE",
+      "realWorldActionsAuthorized": 0,
+      "physicalDeeds": 0,
+      "realWorkerConsents": 0,
+      "acceptance": "REQUIRES_EXPLICIT_LOCAL_PLAYER_SELECTION",
+      "warnings": [
+        "Fictional party record is not authenticated evidence",
+        "No automatic import into Static Field canon",
+        "No real labor assent or token mint",
+        "Digest proves only file integrity, not truth"
+      ],
+      "digest": "sha256:49f5a7b04c70ddbc5fff0b0838192785483ba639c45c5c5ce4790bef5098f7e6"
+    },
+    "claims": {
+      "authenticatedOrigin": false,
+      "physicalDeeds": 0,
+      "workerConsents": 0,
+      "realWorldRights": 0
+    },
+    "destination": "ANY_TABLE_MAY_HOLD_REFUSE_OR_ADMIT",
+    "digest": "sha256:6073d83a7554c2711169b95e47214d727cda574b8deac7cfd2bc77e5db6e7664"
+  }
+}

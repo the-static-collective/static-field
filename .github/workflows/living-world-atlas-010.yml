@@ -1,0 +1,49 @@
+name: Static Field 010 — Living World Atlas
+on:
+  push:
+    branches:
+      - experiment/living-world-atlas-010
+  pull_request:
+    paths:
+      - 'experiments/living-world-atlas-010/**'
+      - 'experiments/expansion-forge-009/**'
+      - 'experiments/little-yes-field-008/rail/**'
+      - '.github/workflows/living-world-atlas-010.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  replay-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original owners and 010 independent receiver tests
+        run: |
+          node --test experiments/little-yes-field-008/rail/game.test.mjs experiments/little-yes-field-008/kingdom/kingdom.test.mjs experiments/expansion-forge-009/tests/forge.test.mjs experiments/living-world-atlas-010/tests/atlas.test.mjs
+      - name: Offline HTML deterministic rebuild
+        run: |
+          node experiments/living-world-atlas-010/build.mjs
+          cp experiments/living-world-atlas-010/index.html /tmp/atlas-first.html
+          node experiments/living-world-atlas-010/build.mjs
+          cmp /tmp/atlas-first.html experiments/living-world-atlas-010/index.html
+          git diff --exit-code -- experiments/living-world-atlas-010/index.html
+      - name: Two-process independent replay
+        run: |
+          node experiments/living-world-atlas-010/proof.mjs
+          cp experiments/living-world-atlas-010/examples/three-table-proof.json /tmp/proof-first.json
+          node experiments/living-world-atlas-010/proof.mjs
+          cmp /tmp/proof-first.json experiments/living-world-atlas-010/examples/three-table-proof.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: living-world-atlas-010-offline-prototype
+          path: |
+            experiments/living-world-atlas-010/index.html
+            experiments/living-world-atlas-010/examples/three-table-proof.json
+          if-no-files-found: error
+          retention-days: 14
