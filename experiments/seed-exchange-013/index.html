@@ -531,7 +531,6 @@ async function validateTable(raw){
   return {ok:true};
  }catch(e){return {ok:false,reason:String(e.message)}}
 }
-
 return {ATLAS_SCHEMA,makeTable,demoPartyRecord,propose,verifyOffer,sendOffer,receiveOffer,decide,fork,act,returnFromWorld,composeWorlds,inspect,validateTable};
 })();
 const BREEDER=(()=>{
