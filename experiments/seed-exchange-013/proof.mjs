@@ -1,0 +1,7 @@
+import {mkdirSync,writeFileSync} from 'node:fs';
+import {dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {demo,verifyLot,verifyChild,verify} from './exchange.mjs';
+const root=dirname(fileURLToPath(import.meta.url));const d=await demo();
+const output={schema:'static-field.seed-exchange-proof/013',synthetic:true,authority:'LOCAL_FICTION_ONLY',sourceOwner:'STATIC_FIELD_013',sourceNative:'WORLD_GARDEN_012',stations:d.inspection.stations.map(x=>({id:x.id,name:x.name,inbox:x.inbox.map(m=>({from:m.from,status:m.status}))})),lots:d.inspection.lots.map(x=>({origin:x.origin,title:x.title,lens:x.lens,sourceNativeDigest:x.sourceDigest})),newGame:{title:d.exchange.plans[0].title,question:d.exchange.plans[0].question,recipe:d.exchange.plans[0].recipe,steps:d.exchange.plans[0].steps,sourceVotes:d.exchange.plans[0].votes,hostChoice:d.exchange.plans[0].hostChoice,status:d.exchange.plans[0].status},child:d.child,childReceipt:d.inspection.returns,replay:await verify(d.exchange),sourcePackets:await Promise.all(d.exchange.lots.map(x=>verifyLot(x))),childPacket:await verifyChild(d.child),evidence:{actualPeople:0,actualWork:0,realDeliveries:0,authenticatedIdentities:0,networkCalls:0}};
+mkdirSync(join(root,'examples'),{recursive:true});const p=join(root,'examples','four-stations.json');writeFileSync(p,JSON.stringify(output,null,2)+'\n');console.log('STATIC FIELD 013 inspectable proof at',p,'with',output.newGame.status);

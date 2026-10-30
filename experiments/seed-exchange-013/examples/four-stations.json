@@ -1,0 +1,163 @@
+{
+  "schema": "static-field.seed-exchange-proof/013",
+  "synthetic": true,
+  "authority": "LOCAL_FICTION_ONLY",
+  "sourceOwner": "STATIC_FIELD_013",
+  "sourceNative": "WORLD_GARDEN_012",
+  "stations": [
+    {
+      "id": "millford",
+      "name": "Millford Station",
+      "inbox": []
+    },
+    {
+      "id": "cedar",
+      "name": "Cedar Kitchen",
+      "inbox": []
+    },
+    {
+      "id": "lantern",
+      "name": "Lantern Crew",
+      "inbox": []
+    },
+    {
+      "id": "festival",
+      "name": "Festival Table",
+      "inbox": [
+        {
+          "from": "source-millford",
+          "status": "ADMIT_AS_FICTIONAL_REFERENCE"
+        },
+        {
+          "from": "source-cedar",
+          "status": "ADMIT_AS_FICTIONAL_REFERENCE"
+        },
+        {
+          "from": "source-lantern",
+          "status": "ADMIT_AS_FICTIONAL_REFERENCE"
+        }
+      ]
+    }
+  ],
+  "lots": [
+    {
+      "origin": "millford",
+      "title": "A Track Between Neighbors",
+      "lens": "ROUTE",
+      "sourceNativeDigest": "sha256:6bbf1e9b58ceb726e501dd77a31b7362a3f7897b8664fd82e317cf2f8df1b3ee"
+    },
+    {
+      "origin": "cedar",
+      "title": "The Shared Harvest Table",
+      "lens": "HARVEST",
+      "sourceNativeDigest": "sha256:339dcbb8844722f15b57d4a2c3a8d0d2458ea4a11f27aecf8cdbb7c613329c68"
+    },
+    {
+      "origin": "lantern",
+      "title": "Builders Deserve a Voice",
+      "lens": "CARE",
+      "sourceNativeDigest": "sha256:ca57c2a9084bbc60823fbeda559a8852805d696155add36956b9ddc4b62d5160"
+    }
+  ],
+  "newGame": {
+    "title": "The Jubilee Caravan",
+    "question": "Can food, transport and care form a cooperative festival route?",
+    "recipe": "CARE|HARVEST|ROUTE",
+    "steps": [
+      "TRACE_PROVENANCE",
+      "LISTEN_TO_BUILDERS",
+      "DRAW_THE_ROUTE",
+      "INVITE_THE_TABLE",
+      "WITNESS_RETURN"
+    ],
+    "sourceVotes": [
+      {
+        "owner": "cedar",
+        "choice": "YES"
+      },
+      {
+        "owner": "lantern",
+        "choice": "YES"
+      },
+      {
+        "owner": "millford",
+        "choice": "YES"
+      }
+    ],
+    "hostChoice": "ADMIT_LOCAL_GAME",
+    "status": "COMPLETED_FICTIONAL_MISSION"
+  },
+  "child": {
+    "schema": "static-field.seed-exchange-child/013",
+    "host": "festival",
+    "recipe": "CARE|HARVEST|ROUTE",
+    "title": "The Jubilee Caravan",
+    "question": "Can food, transport and care form a cooperative festival route?",
+    "sourceLotDigests": [
+      "sha256:55c4ddefbdadeb972cc66e855091f36180280176db8324637a85a87ee23c3a64",
+      "sha256:d6ff247a3202216db65c32b628e379e298895167452f7359e3fce94b821848be",
+      "sha256:ff2e0eb4155dc4d408662f625df53bb841468347bb487763595ca978ab6d091b"
+    ],
+    "stagesCompleted": [
+      "TRACE_PROVENANCE",
+      "LISTEN_TO_BUILDERS",
+      "DRAW_THE_ROUTE",
+      "INVITE_THE_TABLE",
+      "WITNESS_RETURN"
+    ],
+    "fictionOnly": true,
+    "claimedPhysicalWork": 0,
+    "authenticatedPeople": 0,
+    "authority": "PORTABLE_IDEA_ONLY",
+    "id": "sha256:b1f79be3dfeeaefdf7bc1149b8e5f336f2a0f3268c8de0dec0255e58855dfe4c"
+  },
+  "childReceipt": [
+    {
+      "id": "sha256:b1f79be3dfeeaefdf7bc1149b8e5f336f2a0f3268c8de0dec0255e58855dfe4c",
+      "title": "The Jubilee Caravan",
+      "at": "cedar",
+      "choice": "REFUSE"
+    },
+    {
+      "id": "sha256:b1f79be3dfeeaefdf7bc1149b8e5f336f2a0f3268c8de0dec0255e58855dfe4c",
+      "title": "The Jubilee Caravan",
+      "at": "lantern",
+      "choice": "ADMIT_AS_IDEA_ONLY"
+    }
+  ],
+  "replay": {
+    "ok": true,
+    "events": 23,
+    "source": "012-native-mail-replayed",
+    "authenticatedPeople": 0,
+    "physicalCredits": 0
+  },
+  "sourcePackets": [
+    {
+      "ok": true,
+      "source": "NATIVE_012_PACKET_FORMAT",
+      "identityVerified": false
+    },
+    {
+      "ok": true,
+      "source": "NATIVE_012_PACKET_FORMAT",
+      "identityVerified": false
+    },
+    {
+      "ok": true,
+      "source": "NATIVE_012_PACKET_FORMAT",
+      "identityVerified": false
+    }
+  ],
+  "childPacket": {
+    "ok": true,
+    "identityVerified": false
+  },
+  "evidence": {
+    "actualPeople": 0,
+    "actualWork": 0,
+    "realDeliveries": 0,
+    "authenticatedIdentities": 0,
+    "networkCalls": 0
+  }
+}
