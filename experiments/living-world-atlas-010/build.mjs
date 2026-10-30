@@ -9,10 +9,12 @@ forge=forge.replace(/^import .*?;\s*\n/m,"const {makeGame,step:railwayStep,offer
 let atlas=unexport(read('./atlas.mjs'));
 atlas=atlas.replace(/^import .*?;\s*\n/gm,'');
 atlas="const {forge,receive,minimizeRecord,startVariant,playVariant,progress,suggest,variantReturn}=FORGE;\nconst {makeGame,step:railwayStep,exportRecord}=RAIL;\n"+atlas;
+atlas=atlas.trimEnd()+'\n';
 const inserts={
  '/*__RAIL__*/':`const RAIL=(()=>{\n${rail}\nreturn {makeGame,step,offer,exportRecord,LINKS};\n})();`,
  '/*__FORGE__*/':`const FORGE=(()=>{\n${forge}\nreturn {forge,receive,minimizeRecord,startVariant,playVariant,progress,suggest,variantReturn};\n})();`,
  '/*__ATLAS__*/':`const ATLAS=(()=>{\n${atlas}\nreturn {ATLAS_SCHEMA,makeTable,demoPartyRecord,propose,verifyOffer,sendOffer,receiveOffer,decide,fork,act,returnFromWorld,composeWorlds,inspect,validateTable};\n})();`,
  '/*__APP__*/':read('./app.js')
 };let html=read('./ui-template.html');for(const [token,part]of Object.entries(inserts)){if(!html.includes(token))throw Error('Missing '+token);html=html.replace(token,part);}
+html=html.trimEnd();
 writeFileSync(join(dir,'index.html'),html,'utf8');console.log('Built single-file offline atlas:',Buffer.byteLength(html),'bytes');
