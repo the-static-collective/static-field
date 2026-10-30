@@ -1,0 +1,839 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#142c27"><title>STATIC FIELD 013 · The Seed Exchange</title>
+<style>
+:root{color-scheme:dark;--bg:#10211d;--panel:#19332b;--soft:#25493c;--light:#f1efdb;--muted:#bbcfbf;--line:#567a65;--mint:#b6dbbc;--gold:#f4cb83;--error:#f4b2a9;font:16px/1.5 system-ui,-apple-system,sans-serif}*{box-sizing:border-box}body{background:radial-gradient(ellipse at 20% 0%,#2d5143 0%,transparent 50%),radial-gradient(ellipse at 96% 80%,#493b29 0%,transparent 40%),var(--bg);color:var(--light);margin:0;min-height:100vh}body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,#e8ae5d08 1px,transparent 1px),linear-gradient(#e8ae5d08 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:-1}main{max-width:1220px;margin:auto;padding:22px 18px 85px}.top,.row,.bar,.plan-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.mark{letter-spacing:.18em;font-size:.76rem;font-weight:750;color:var(--mint)}.stamp,.chip{border:1px solid var(--line);border-radius:50px;font-size:.75rem;padding:4px 10px;color:var(--gold)}h1,h2,h3{font-family:Georgia,serif;font-weight:500}h1{font-size:clamp(3.6rem,8vw,7.9rem);letter-spacing:-.065em;line-height:.92;margin:32px 0 24px}h1 em{color:var(--mint);font-weight:400}h2{font-size:clamp(1.65rem,3.2vw,2.45rem);margin:5px 0 8px}h3{font-size:1.35rem;margin:0 0 8px}.intro{font-size:1.16rem;max-width:810px;color:#d9e4d3;line-height:1.65}.eyebrow{color:var(--gold);letter-spacing:.12em;font-size:.77rem;font-weight:700;text-transform:uppercase}.layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.stations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.panel{border:1px solid #54765d;background:linear-gradient(151deg,#1d392edc,#13261fe8);padding:21px;border-radius:18px;box-shadow:0 12px 28px #06160b44}.section{margin-top:23px}.station{border:1px solid #678975;background:linear-gradient(145deg,#2c4938,#1c342b);border-radius:16px;padding:17px;display:flex;flex-direction:column;min-height:280px}.station-top{display:flex;gap:12px;align-items:center}.monogram{display:grid;place-items:center;width:52px;height:52px;background:#234432;color:var(--gold);font:2rem Georgia,serif;border:1px solid #7a916d;border-radius:13px}.kicker{text-transform:uppercase;font-size:.68rem;letter-spacing:.12em;color:var(--mint);margin:0 0 2px}.station>p{font-size:.89rem;color:var(--muted)}.chipline,.timeline{display:flex;flex-wrap:wrap;gap:6px}.chipline{margin:9px 0 12px}.chip{font-size:.68rem;padding:4px 8px;color:var(--mint)}.mail,.vote{display:flex;gap:9px;justify-content:space-between;align-items:center;flex-wrap:wrap;border:1px solid #57765e;background:#10281d;padding:12px;border-radius:10px;margin:8px 0}.mail b,.mail small{display:block}.mail small{font-size:.68rem;color:var(--muted);overflow-wrap:anywhere}.mail>div:first-child{flex:1;min-width:130px}.bottom{margin-top:auto}.quiet{color:var(--muted);font-size:.9rem}.btn{border:1px solid #679076;background:#2e5140;color:#f1f4df;border-radius:9px;padding:10px 12px;cursor:pointer;font:650 .85rem system-ui;text-align:center}.btn:focus-visible{outline:3px solid white;outline-offset:2px}.btn:hover{background:#46745a}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.primary,.btn.positive{background:#c4e2ae;color:#1b3528;border-color:#c4e2ae}.btn.warn{background:#562f2c;border-color:#ae7468}.bar{justify-content:flex-start}.bar .btn{min-height:43px}.banner{border:1px solid #75977b;border-radius:14px;padding:18px;background:#1f3e32;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;margin-top:23px}.banner .label{font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold)}.banner strong{font:1.3rem Georgia,serif;display:block;margin:6px 0}.small{font-size:.83rem;color:var(--muted)}#status{min-height:24px;color:var(--gold)}#status[data-error=true]{color:var(--error)}#stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:23px}.mini{padding:14px;border:1px solid #507761;border-radius:11px;background:#18342a}.mini span,.mini b{display:block}.mini span{font-size:.72rem;color:var(--muted)}.mini b{font:1.8rem Georgia,serif;color:var(--mint)}.parcel{padding:12px;border-bottom:1px solid #395b45;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.parcel strong{flex:1}.parcel small{color:var(--muted)}.check{display:flex;gap:10px;align-items:center;border:1px solid #466b52;border-radius:10px;padding:12px;margin:8px 0;cursor:pointer}.check input{width:18px;height:18px;accent-color:#afd79c}.plan{border:1px solid #6b9471;padding:19px;border-radius:14px;background:#244333;margin-top:12px}.plan p{color:#e1e9d6}.vote span{font-size:.9rem}.votes{margin:14px 0}.timelock{font-size:.7rem;letter-spacing:.02em;padding:7px 9px;border:1px dashed #658a73;border-radius:8px}.timelock.done{background:#345d3b;border-style:solid}.timeline{margin:15px 0}.two{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}.field-file{display:inline-flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid #78947b;border-radius:9px;max-width:100%}input[type=file]{max-width:185px;font-size:.76rem}select{font:inherit;background:#123428;color:var(--light);padding:8px;border:1px solid #75967a;border-radius:8px}pre{padding:12px;border-radius:11px;background:#0c1b15;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;max-height:230px;color:#cce0b8;font-size:.73rem}footer{margin-top:40px;color:#b6c8b8;font-size:.83rem;max-width:900px}.rule{border-left:3px solid var(--gold);padding-left:14px;color:#e9e2ca}.print-only{display:none}@media(max-width:900px){.layout,.two{grid-template-columns:1fr}}@media(max-width:630px){.stations{grid-template-columns:1fr}#stats{grid-template-columns:repeat(2,1fr)}.banner{grid-template-columns:1fr}.panel{padding:15px}h1{font-size:4rem}.bar{gap:6px}.station{min-height:200px}}@media print{body{background:white;color:black}.btn,input,select,.banner,footer{display:none!important}.panel,.station{border:1px solid #333!important;break-inside:avoid;box-shadow:none} .print-only{display:block}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body><main><div class="top"><span class="mark">STATIC FIELD / REALITY 2.0 / THE COMMONS</span><span class="stamp">013 · SEED EXCHANGE · OFFLINE</span></div>
+<h1>THE SEED<br><em>EXCHANGE.</em></h1><p class="intro">A cooperative invention market for a real party. Four fictional tables bring discoveries. The game's mail carrier finds unexpected collaborations. Every table keeps its own Little Yes—and nobody's seed becomes someone else's property.</p>
+<div class="bar"><button class="btn primary" data-do="demo">Play the complete fictional festival</button><button class="btn" data-do="reset">Open an empty exchange</button><button class="btn" data-do="save">Save party history</button><label class="field-file">Restore history <input id="uploadSave" type="file" accept=".json,application/json"></label></div>
+<p id="status" role="status" aria-live="polite">Opening the community seed exchange.</p><div id="stats"></div>
+<div class="banner"><div><div class="label">THE MAIL CARRIER'S SUGGESTION</div><strong id="nextlabel">Preparing one useful next move…</strong><small class="small">Suggestions are optional; every source and receiver makes separate game decisions.</small></div><button class="btn primary" id="nextstep" data-do="next">Try suggested move →</button></div>
+<section class="section"><div class="eyebrow">01 / FOUR SOVEREIGN STATIONS</div><h2>Bring something worth sharing.</h2><p class="quiet">Every seed begins as an actual 012 World Garden game-derived pollen packet. The different station themes are new 013 fictional interpretations, not claims that 012 already authored them.</p><div class="stations" id="stations"></div></section>
+<section class="two section"><div class="panel"><div class="eyebrow">02 / THE MAILBAG</div><h2>Ideas travel. Authority doesn't.</h2><p class="quiet">Portable seed parcels are user-carried JSON. Receiving stations can hold or refuse independently. A SHA-256 digest is not a verified identity.</p><div id="postbox"></div><label class="field-file">Import an offered seed <input id="uploadLot" type="file" accept=".json,application/json"></label></div>
+<div class="panel"><div class="eyebrow">03 / COMPOSE A NEW GAME</div><h2>Whose seeds meet?</h2><p class="quiet">Select two or three already admitted ideas. Matching theme combinations yield new, bounded game rules; unsupported combinations stay held.</p><div id="compose-list"></div><button class="btn primary" id="compose" data-do="compose">Propose new rules</button><p class="rule">Example: food + railway + worker dignity creates <em>The Jubilee Caravan</em>. Its steps are different from any single source game.</p></div></section>
+<section class="section panel"><div class="eyebrow">04 / THE NEW WORLD</div><h2>Vote, play, return.</h2><div id="plans"></div></section>
+<section class="layout section"><div class="panel"><div class="eyebrow">05 / SEND THE BABY WORLD HOME</div><h2>One receiver may refuse.</h2><p class="quiet">Export a completed child-game idea. On another table or phone, import it as a held reference. You can choose its fictional destination here.</p><label class="field-file">Import a completed child seed <input id="uploadChild" type="file" accept=".json,application/json"></label><div class="row"><label for="receiver">Destination table</label><select id="receiver"><option value="cedar">Cedar Kitchen</option><option value="lantern">Lantern Crew</option><option value="millford">Millford Station</option></select></div><div id="returns"></div></div>
+<div class="panel"><div class="eyebrow">06 / THE EVIDENCE RAIL</div><h2>What actually happened?</h2><p class="quiet">Local fictional events only; every entry is replay-tested against the earlier native garden acceptance engine.</p><pre id="journal"></pre><p id="proof" class="small"></p></div></section>
+<footer><b>Experiment / review only.</b> This is a single-device simulation of distinct tables, not authenticated human consent or real-life work. No external service, transaction, blockchain NFT, real wood, real meals, real railways, wage claims or safety certifications. Portable packets can be examined and independently admitted only as fictional references. Future independent devices can exchange files without granting external authority.</footer>
+</main><script>
+const RAIL=(()=>{
+// LITTLE YES EXPRESS / REALITY.2 × GROOVETOWN-007 — cooperative fictional tabletop engine.
+// No actual land, materials, people, currency, blockchain mints, permissions or physical acts.
+const VERSION = 'LITTLE-YES-EXPRESS-007/v1';
+const TOWNS = [
+  {id:'millford',name:'Millford',resource:'wood',number:8,stock:7,x:94,y:185,kind:'Woodlands'},
+  {id:'bridgeport',name:'Bridgeport',resource:'ore',number:6,stock:7,x:273,y:118,kind:'Quarry'},
+  {id:'ovenham',name:'Ovenham',resource:'idea',number:9,stock:5,x:472,y:125,kind:'Workshop'},
+  {id:'lantern',name:'Lantern Town',resource:'idea',number:5,stock:4,x:666,y:198,kind:'Community Hearth'},
+  {id:'cedar',name:'Cedar Junction',resource:'food',number:7,stock:7,x:200,y:345,kind:'Garden'},
+  {id:'hearthside',name:'Hearthside',resource:'wood',number:10,stock:5,x:484,y:347,kind:'Commons'}
+];
+const LINKS = [
+  {id:'mb',a:'millford',b:'bridgeport',cost:1,name:'Millford–Bridgeport'},
+  {id:'bo',a:'bridgeport',b:'ovenham',cost:1,name:'Bridgeport–Ovenham'},
+  {id:'ol',a:'ovenham',b:'lantern',cost:2,name:'Ovenham–Lantern'},
+  {id:'mc',a:'millford',b:'cedar',cost:1,name:'Millford–Cedar'},
+  {id:'cb',a:'cedar',b:'bridgeport',cost:1,name:'Cedar–Bridgeport'},
+  {id:'ch',a:'cedar',b:'hearthside',cost:1,name:'Cedar–Hearthside'},
+  {id:'hl',a:'hearthside',b:'lantern',cost:2,name:'Hearthside–Lantern'},
+  {id:'bh',a:'bridgeport',b:'hearthside',cost:2,name:'Bridgeport–Hearthside'},
+  {id:'oh',a:'ovenham',b:'hearthside',cost:1,name:'Ovenham–Hearthside'}
+];
+const ROLES = [
+  {name:'The Engineer',task:'Ask what one rail connection could make possible.'},
+  {name:'The Hearthkeeper',task:'Protect warmth without confusing game fuel with safe physical heating.'},
+  {name:'The Gardener',task:'Connect the food supply to the town that needs it.'},
+  {name:'The Witness',task:'Keep claims distinct from observations and receipts.'},
+  {name:'The Mail Carrier',task:'Carry proposals, not obligations, between towns.'},
+  {name:'The Inventor',task:'Find useful shared infrastructure instead of redundant projects.'}
+];
+const RECIPES = [
+  {id:'rail',name:'Forge two rail segments',inputs:{wood:1,ore:1},outputs:{rail:2},at:'commons',flavor:'Shared material capability unlocks a new line.'},
+  {id:'firewood',name:'Craft two firewood tokens',inputs:{wood:1},outputs:{firewood:2},at:'millford',flavor:'Fictional material card; NOT real burning or heating guidance.'},
+  {id:'blueprint',name:'Compose a reusable blueprint',inputs:{idea:1,ore:1},outputs:{blueprint:1},at:'commons',flavor:'An idea token is non-physical, not an authenticated construction plan.'}
+];
+const copy = x => JSON.parse(JSON.stringify(x));
+const must = (condition,msg)=>{ if(!condition)throw Error(msg); };
+const safeInt=(x,low,high)=>Number.isSafeInteger(x)&&x>=low&&x<=high;
+function makeGame(size=4, seed=317){
+  must(safeInt(size,2,6),'Party supports 2–6 seats');
+  must(safeInt(seed,1,2147483646),'Invalid seed');
+  return {version:VERSION,mode:'SYNTHETIC_OFFLINE_PARTY',size,seed,random:seed,round:1,maxRounds:9,
+    actionsLeft:size,activeSeat:0,pressure:0,phase:'PLAYING',resources:{wood:2,ore:2,food:0,idea:1,rail:0,firewood:0,blueprint:0},
+    stock:Object.fromEntries(TOWNS.map(t=>[t.id,t.stock])),consents:[],built:[],delivered:{food:0,firewood:0},
+    claim:{item:'WOOD',claimed:42,observed:39,authority:'DISPUTED_NO_STOCK',audited:false},
+    relics:[],history:[{type:'START',text:'Six fictional towns form a cooperative table. Everything on this board is play.'}],
+    lastEvent:'The train waits for the first Little Yes.',lastRoll:0};
+}
+function connected(state,origin,destination){
+  if(origin===destination)return true;
+  const seen=new Set([origin]),stack=[origin];
+  while(stack.length){const current=stack.pop();for(const e of LINKS){if(!state.built.includes(e.id))continue;
+    const next=e.a===current?e.b:e.b===current?e.a:null;
+    if(next&&!seen.has(next)){if(next===destination)return true;seen.add(next);stack.push(next);}
+  }}return false;
+}
+function shortestPlan(state,origin,destination){
+  // Weighted path by absent route consent/build actions plus rail segments required; deterministic tie-break.
+  const paths=[{at:origin,via:[],cost:0}],best=new Map();
+  while(paths.length){paths.sort((a,b)=>a.cost-b.cost||a.via.join(',').localeCompare(b.via.join(',')));
+    const p=paths.shift();if(best.has(p.at)&&best.get(p.at)<=p.cost)continue;best.set(p.at,p.cost);
+    if(p.at===destination)return p;
+    for(const edge of LINKS){const to=edge.a===p.at?edge.b:edge.b===p.at?edge.a:null;if(!to||p.via.some(id=>id===edge.id))continue;
+      const missing=state.built.includes(edge.id)?0:(state.consents.includes(edge.id)?1:2);
+      paths.push({at:to,via:[...p.via,edge.id],cost:p.cost+missing+(state.built.includes(edge.id)?0:edge.cost*.1)});
+    }
+  }return null;
+}
+function goals(state){return {
+  railway:connected(state,'millford','lantern'),
+  warmth:state.delivered.firewood>=2,
+  food:state.delivered.food>=2
+};}
+function offer(state){
+  if(state.phase!=='PLAYING')return {title:state.phase==='WON'?'The towns did it together.':'Try another railway.',reason:'This is a finished fictional game, not an actual field receipt.'};
+  const g=goals(state);
+  if(!g.railway){const p=shortestPlan(state,'millford','lantern');
+    const missing=p?.via.map(id=>LINKS.find(x=>x.id===id)).find(e=>!state.built.includes(e.id));
+    if(missing){if(!state.consents.includes(missing.id))return {title:`Ask for the Little Yes: ${missing.name}`,reason:'Both fictional endpoints must be willing before a route enters play.',suggested:{kind:'agree',id:missing.id}};
+      if(state.resources.rail<missing.cost)return materialOffer(state,`To construct ${missing.name}, the table needs ${missing.cost} rail segment${missing.cost===1?'':'s'}.`);
+      return {title:`Build ${missing.name}`,reason:`A new route can connect the shared network; this one consumes ${missing.cost} rail.`,suggested:{kind:'build',id:missing.id}};
+    }
+  }
+  if(!g.warmth){if(state.resources.firewood<2){if(state.resources.wood<1)return gatherOffer(state,'wood','millford','Firewood tokens require one wood token first.');
+      return {title:'Craft two firewood tokens',reason:'A modeled warmth need requires a prepared material card; no physical heating is authorized.',suggested:{kind:'craft',id:'firewood'}};}
+    if(!connected(state,'millford','lantern'))return {title:'Connect Millford to Lantern Town',reason:'The simulated cargo needs a built route before the handoff.'};
+    return {title:'Send two firewood tokens to Lantern Town',reason:'One modeled handoff can now satisfy the warmth objective.',suggested:{kind:'ship',id:'firewood'}};
+  }
+  if(!g.food){if(state.resources.food<2)return gatherOffer(state,'food','cedar','The garden can contribute food tokens, while its source remains fictional.');
+    if(!connected(state,'cedar','lantern')){const p=shortestPlan(state,'cedar','lantern'),m=p?.via.map(id=>LINKS.find(x=>x.id===id)).find(x=>!state.built.includes(x.id));
+      if(m){if(!state.consents.includes(m.id))return {title:`Ask to connect ${m.name}`,reason:'The shared meal needs an actual built path in the game.',suggested:{kind:'agree',id:m.id}};
+        if(state.resources.rail<m.cost)return materialOffer(state,'One more rail connection could open the garden delivery.');
+        return {title:`Build ${m.name}`,reason:'This connects a missing segment in the shortest modeled route.',suggested:{kind:'build',id:m.id}};
+      }}
+    return {title:'Send two food tokens to Lantern Town',reason:'The garden is now connected to the destination.',suggested:{kind:'ship',id:'food'}};
+  }
+  return {title:'Try a town laboratory experiment',reason:'Check whether a new shared capability unlocks more than one downstream goal.'};
+}
+function gatherOffer(state,resource,town,why){return {title:`Gather ${resource} at ${TOWNS.find(t=>t.id===town).name}`,reason:why,suggested:{kind:'gather',id:town}};}
+function materialOffer(state,why){const r=RECIPES[0];if(state.resources.wood>=1&&state.resources.ore>=1)return {title:'Forge two new rail segments',reason:why,suggested:{kind:'craft',id:'rail'}};
+  const want=state.resources.wood<1?'wood':'ore',at=want==='wood'?'millford':'bridgeport';return gatherOffer(state,want,at,why);
+}
+function nextRandom(n){return (n*48271)%2147483647;}
+function nextRound(s){
+  s.round++;
+  s.actionsLeft=s.size;s.activeSeat=0;
+  s.random=nextRandom(s.random);const one=s.random%6+1;
+  s.random=nextRandom(s.random);const two=s.random%6+1;
+  s.lastRoll=one+two;
+  const tile=TOWNS.find(t=>t.number===s.lastRoll);
+  let production='No matching town produced this round.';
+  if(tile&&s.stock[tile.id]>0){s.stock[tile.id]--;s.resources[tile.resource]++;production=`${tile.name} produced one fictional ${tile.resource} token.`;}
+  const effects=[{text:'A gust rattles the stations. Pressure rises.',pressure:1},
+   {text:'A shared supper brings encouragement. Pressure eases.',pressure:-1},
+   {text:'A helpful question arrives. Gain one idea token.',idea:1},
+   {text:'A winter front approaches. Pressure rises.',pressure:1},
+   {text:'An old track is inspected. No automatic damage or credit.',pressure:0},
+   {text:'Cedar Junction finds one additional game-food token.',food:1},
+   {text:'A doubtful claim remains disputed; it cannot be spent.',pressure:0},
+   {text:'The neighbors make time for the commons. Pressure eases.',pressure:-1}];
+  const ev=effects[(s.round-2)%effects.length];s.pressure=Math.max(0,s.pressure+(ev.pressure||0));if(ev.idea)s.resources.idea+=ev.idea;if(ev.food)s.resources.food+=ev.food;
+  s.lastEvent=`Roll ${s.lastRoll}. ${production} ${ev.text}`;s.history.push({type:'ROUND',text:`Round ${s.round}: ${s.lastEvent}`});
+  if(s.round>s.maxRounds||s.pressure>=5)s.phase='LOST';
+}
+const resourceCheck=(s,inputs)=>Object.entries(inputs).every(([k,v])=>s.resources[k]>=v);
+function addRelic(s,type,title,details){
+  const serial=s.relics.length+1;
+  s.relics.push({id:`GAME-${String(serial).padStart(3,'0')}`,title,type,details,round:s.round,mode:'SYNTHETIC_PLAY_ONLY',transferable:'AS_A_FILE_ONLY',monetaryValue:null,blockchainMint:false});
+}
+function step(state,action){
+  must(state&&state.version===VERSION,'Unknown game state');
+  must(state.phase==='PLAYING','Game is finished');
+  must(safeInt(state.actionsLeft,1,6),'No actions left');
+  must(action&&typeof action.kind==='string','Missing action');
+  const s=copy(state),a=action;
+  let message='';
+  if(a.kind==='gather'){
+    const t=TOWNS.find(t=>t.id===a.id);must(t,'Unknown town');must(s.stock[t.id]>0,`${t.name} has no remaining fictional stock`);
+    s.stock[t.id]--;s.resources[t.resource]++;message=`Gathered one ${t.resource} token from ${t.name}.`;
+  }else if(a.kind==='agree'){
+    const e=LINKS.find(x=>x.id===a.id);must(e,'Unknown link');must(!s.consents.includes(a.id),'This link has already received its fictional Little Yes');
+    must(!s.built.includes(a.id),'This route already exists');s.consents.push(a.id);
+    message=`The table recorded a fictional Little Yes for ${e.name}. This is not real consent.`;
+  }else if(a.kind==='build'){
+    const e=LINKS.find(x=>x.id===a.id);must(e,'Unknown link');must(s.consents.includes(a.id),'A fictional Little Yes is required first');
+    must(!s.built.includes(a.id),'Route already built');must(s.resources.rail>=e.cost,`Need ${e.cost} rail tokens`);
+    s.resources.rail-=e.cost;s.built.push(a.id);message=`Built ${e.name} on the fictional board.`;
+    addRelic(s,'RAIL_TICKET',`Route: ${e.name}`,{routeId:e.id,cost:e.cost});
+  }else if(a.kind==='craft'){
+    const r=RECIPES.find(x=>x.id===a.id);must(r,'Unknown recipe');must(resourceCheck(s,r.inputs),`Missing materials for ${r.name}`);
+    for(const [k,n] of Object.entries(r.inputs))s.resources[k]-=n;
+    for(const [k,n] of Object.entries(r.outputs))s.resources[k]+=n;
+    message=`Crafted ${r.name.toLowerCase()}.`;
+    addRelic(s,'CRAFT_TOKEN',r.name,{recipeId:r.id,inputs:r.inputs,outputs:r.outputs});
+  }else if(a.kind==='ship'){
+    const isFood=a.id==='food',isWood=a.id==='firewood';must(isFood||isWood,'Unknown shipment');
+    const origin=isFood?'cedar':'millford';must(connected(s,origin,'lantern'),`No built route from ${origin} to Lantern Town`);
+    const item=a.id;must(s.resources[item]>=2,`Need 2 ${item} tokens`);must(s.delivered[item]<2,'Objective already served');
+    s.resources[item]-=2;s.delivered[item]+=2;message=`Handed off two fictional ${item} tokens to Lantern Town.`;
+    addRelic(s,'ARRIVAL_CARD',`${isFood?'Community meal':'Warm hearth'} arrival`,{from:origin,to:'lantern',material:item,quantity:2});
+  }else if(a.kind==='audit'){
+    must(!s.claim.audited,'Claim already examined');s.claim.audited=true;
+    s.resources.idea++;message='The table noticed the 42-vs-39 WOOD discrepancy. The claim remains disputed, and zero stock was credited. One idea token was earned for asking a better question.';
+    addRelic(s,'QUESTION_CARD','42 WOOD / 39 observed',{finding:'DISPUTED',spendableStockCredited:0});
+  }else throw Error('Unknown action');
+  s.history.push({type:a.kind.toUpperCase(),seat:s.activeSeat+1,round:s.round,text:message});
+  s.actionsLeft--;s.activeSeat=(s.activeSeat+1)%s.size;
+  if(Object.values(goals(s)).every(Boolean)){s.phase='WON';s.lastEvent='The three cooperative objectives were accomplished in the fictional game.';
+    addRelic(s,'COMMONS_EDITION','A railway that could carry care',{goals:goals(s),newPhysicalDeeds:0});
+  }else if(s.actionsLeft===0){if(s.round===s.maxRounds)s.phase='LOST';else nextRound(s);}
+  return {state:s,message};
+}
+function exportRecord(state){must(state&&state.version===VERSION,'Invalid state');
+  return {schema:'reality2-party-record-v1',fictional:true,authority:'NO_REAL_WORLD_CLAIMS',game:VERSION,
+    scores:{phase:state.phase,round:state.round,goals:goals(state),pressure:state.pressure},
+    relics:state.relics,history:state.history,board:{built:state.built,consents:state.consents},
+    boundaries:['Claim != inventory','Play agreement != human consent','Receipt != deed','NFT card != cryptocurrency','No real rail, firewood, construction or shipping authorized']};}
+
+return {makeGame,step,offer,exportRecord,LINKS};
+})();
+const FORGE=(()=>{
+// STATIC FIELD: EXPANSION FORGE 009 — source-bound cooperative expansion candidates.
+// A synthetic party-record is UNVERIFIED data, not a source signature, human event or real authorization.
+const {makeGame,step:railwayStep,offer:railwayOffer,LINKS,exportRecord:railwayExport}=RAIL;
+const FORGE_VERSION='static-field.expansion-forge/009';
+const RECORD_SCHEMA='static-field.expansion-proposal/009';
+const copy=x=>JSON.parse(JSON.stringify(x));
+const err=(code)=>{throw Error(code)};
+const ensure=(p,c)=>{if(!p)err(c)};
+const string=(x,max=160)=>typeof x==='string'&&x.length>0&&x.length<=max;
+const allowedTypes=new Set(['START','ROUND','GATHER','AGREE','BUILD','CRAFT','SHIP','AUDIT']);
+const relicTypes=new Set(['RAIL_TICKET','CRAFT_TOKEN','ARRIVAL_CARD','QUESTION_CARD','COMMONS_EDITION']);
+const schemas=['reality2-party-record-v1','THE-EARTH-REMEMBERS-008/party-record'];
+const validRoute=id=>LINKS.some(r=>r.id===id);
+function sortedCanonical(value){if(Array.isArray(value))return '['+value.map(sortedCanonical).join(',')+']';
+ if(value&&typeof value==='object')return '{'+Object.keys(value).sort().map(k=>JSON.stringify(k)+':'+sortedCanonical(value[k])).join(',')+'}';
+ return JSON.stringify(value);
+}
+function toHex(bytes){return Array.from(bytes,x=>x.toString(16).padStart(2,'0')).join('');}
+async function hash(value){
+ const data=new TextEncoder().encode(sortedCanonical(value));
+ const digest=await globalThis.crypto.subtle.digest('SHA-256',data);
+ return 'sha256:'+toHex(new Uint8Array(digest));
+}
+function extractRecord(raw){
+ ensure(raw&&typeof raw==='object'&&!Array.isArray(raw),'INVALID_RECORD');
+ ensure(JSON.stringify(raw).length<180000,'OVERSIZED_RECORD');
+ ensure(schemas.includes(raw.schema||raw.format),'UNKNOWN_RECORD_SCHEMA');
+ const kingdom=raw.format===schemas[1];
+ const rail=kingdom?raw.rail:raw;
+ ensure(rail&&rail.schema===schemas[0]&&rail.fictional===true&&rail.authority==='NO_REAL_WORLD_CLAIMS','NOT_FICTIONAL_RAIL_PROOF');
+ ensure(Array.isArray(rail.history)&&rail.history.length>=1&&rail.history.length<=140,'INVALID_HISTORY');
+ ensure(Array.isArray(rail.relics)&&rail.relics.length<=140,'INVALID_RELICS');
+ ensure(rail.board&&Array.isArray(rail.board.built)&&rail.board.built.length<=9,'INVALID_BOARD');
+ ensure(rail.board.built.every(validRoute),'INVALID_ROUTE');
+ const history=rail.history.map((h,i)=>{
+   ensure(h&&allowedTypes.has(h.type)&&string(h.text,500),'INVALID_HISTORY_EVENT');
+   return {index:i,type:h.type,text:h.text.slice(0,170)};
+ });
+ const relics=rail.relics.map((r,i)=>{
+   ensure(r&&relicTypes.has(r.type)&&string(r.title,160)&&string(r.id,70),'INVALID_RELIC');
+   return {index:i,type:r.type,title:r.title};
+ });
+ const worker=kingdom?raw.terms:[];
+ ensure(!kingdom||Array.isArray(worker)&&worker.length<=10,'INVALID_LABOR_TERMS');
+ const terms=(worker||[]).map((w,i)=>{
+  ensure(w&&['forest','quarry','fields','workshop','builders','drivers','cleaners'].includes(w.role)&&['NEEDS_TERMS','SCRIPTED_YES','REFUSED'].includes(w.status),'INVALID_LABOR_TERM');
+  return {index:i,role:w.role,status:w.status};
+ });
+ return {format:kingdom?'008':'007',history,relics,terms,built:[...new Set(rail.board.built)].sort(),
+  // A ref copied from a browser file is not authenticated evidence, even when the digest matches.
+  claim:'SYNTHETIC_PARTY_RECORD_UNVERIFIED',externalAuthority:'NONE'};
+}
+function minimizeRecord(raw){
+ const summary=extractRecord(raw);
+ const rail={schema:'reality2-party-record-v1',fictional:true,authority:'NO_REAL_WORLD_CLAIMS',
+  history:summary.history.map(x=>({type:x.type,text:x.text})),
+  relics:summary.relics.map(x=>({id:`SYNTHETIC-${x.index+1}`,type:x.type,title:x.title})),
+  board:{built:summary.built}};
+ return summary.format==='008'?{format:'THE-EARTH-REMEMBERS-008/party-record',rail,
+   terms:summary.terms.map(x=>({role:x.role,status:x.status}))}:rail;
+}
+function eventsOf(summary){
+ const events=[];
+ for(const h of summary.history){if(['BUILD','CRAFT','SHIP','AUDIT'].includes(h.type))events.push({type:h.type,label:h.text,at:`history:${h.index}`});}
+ for(const r of summary.relics){if(['RAIL_TICKET','ARRIVAL_CARD','QUESTION_CARD'].includes(r.type))events.push({type:r.type,label:r.title,at:`relic:${r.index}`});}
+ for(const t of summary.terms)events.push({type:t.status==='REFUSED'?'REFUSAL':'LABOR',label:`${t.role}: ${t.status}`,at:`term:${t.index}`});
+ return events;
+}
+const TEMPLATES={
+ 'SECOND_TRACK':{title:'THE SECOND TRACK',lens:'CONNECTION',subtitle:'Build one link the originating table never built.',goal:'Construct the indicated route on a NEW fictional board.',kind:'route'},
+ 'HEARTH_CIRCLE':{title:'THE HEARTH CIRCLE',lens:'CARE',subtitle:'Warmth needs both resources and a circle of care.',goal:'Make two firewood tokens and explicitly hold a game-only care circle.',kind:'firewood'},
+ 'NIGHT_SHIFT':{title:'THE NIGHT SHIFT HAS A VOICE',lens:'DIGNITY',subtitle:'Maintenance becomes a visible dependency, not an invisible person-token.',goal:'Audit the disputed claim, create a blueprint, and hold a game-only listening circle.',kind:'dignity'},
+ 'LEDGER_DAY':{title:'THE LEDGER DOES NOT LIE',lens:'WITNESS',subtitle:'A disputed count must stay disputed even after reflection.',goal:'Audit 42/39 WOOD, then hold a listening circle that credits zero real stock.',kind:'witness'},
+ 'GARDEN_ROUTE':{title:'THE GARDEN TAKES THE TRAIN',lens:'NOURISH',subtitle:'Connect the garden to the hearth and keep food available.',goal:'Build Cedar–Hearthside and gather two fictional food tokens.',kind:'garden'},
+ 'COMMONS_BLUEPRINT':{title:'THE COMMONS BLUEPRINT',lens:'INVENTION',subtitle:'An idea becomes useful only when it names a supported next step.',goal:'Craft a blueprint and build a voluntary game rail connection.',kind:'blueprint'}
+};
+function newRoute(built){return LINKS.find(x=>!built.includes(x.id) && (x.a==='millford'||x.b==='millford'))?.id||LINKS.find(x=>!built.includes(x.id))?.id||'mb';}
+function recipeFor(template,summary){
+ if(template==='SECOND_TRACK')return [{type:'RAIL',id:newRoute(summary.built)}];
+ if(template==='HEARTH_CIRCLE')return [{type:'RESOURCE',id:'firewood',n:2},{type:'CIRCLE'}];
+ if(template==='NIGHT_SHIFT')return [{type:'AUDIT'},{type:'RESOURCE',id:'blueprint',n:1},{type:'CIRCLE'}];
+ if(template==='LEDGER_DAY')return [{type:'AUDIT'},{type:'CIRCLE'}];
+ if(template==='GARDEN_ROUTE')return [{type:'RAIL',id:'ch'},{type:'RESOURCE',id:'food',n:2}];
+ return [{type:'RESOURCE',id:'blueprint',n:1},{type:'RAIL',id:newRoute(summary.built)}];
+}
+function chooseRecipes(events){
+ const map={RAIL_TICKET:'SECOND_TRACK',BUILD:'SECOND_TRACK',CRAFT:'COMMONS_BLUEPRINT',SHIP:'HEARTH_CIRCLE',ARRIVAL_CARD:'GARDEN_ROUTE',AUDIT:'LEDGER_DAY',QUESTION_CARD:'LEDGER_DAY',LABOR:'NIGHT_SHIFT',REFUSAL:'NIGHT_SHIFT'};
+ const uniques=[];
+ // Newest event is most relevant to the group's last decision; preserve distinct mechanics.
+ for(const ev of [...events].reverse()){const template=map[ev.type];if(template&&!uniques.some(x=>x.template===template))uniques.push({template,event:ev});}
+ const options=['SECOND_TRACK','NIGHT_SHIFT','COMMONS_BLUEPRINT','LEDGER_DAY','GARDEN_ROUTE','HEARTH_CIRCLE'];
+ for(const template of options){if(uniques.length>=3)break;if(!uniques.some(x=>x.template===template))uniques.push({template,event:events.at(-1)});}
+ return uniques.slice(0,3);
+}
+async function forge(raw){
+ const source=extractRecord(raw),events=eventsOf(source);
+ if(!events.length)return {status:'HOLD_NO_COMPLETED_GAME_EVENT',needed:'Play a construction, crafting, arrival, audit, or worker-voice event before minting a fictional candidate.',authority:'NONE',candidates:[]};
+ const sourceDigest=await hash(source);
+ const chosen=chooseRecipes(events);
+ const candidates=[];
+ for(const {template,event} of chosen){
+  const t=TEMPLATES[template];const result={schema:RECORD_SCHEMA,version:FORGE_VERSION,kind:'HELD_GAME_VARIANT',
+   template,sourceDigest,sourceSummary:source,seedEvent:event,
+   title:t.title,subtitle:t.subtitle,goal:t.goal,lens:t.lens,
+   requirements:recipeFor(template,source),
+   authority:'NONE',realWorldActionsAuthorized:0,physicalDeeds:0,realWorkerConsents:0,
+   acceptance:'REQUIRES_EXPLICIT_LOCAL_PLAYER_SELECTION',
+   warnings:['Fictional party record is not authenticated evidence','No automatic import into Static Field canon','No real labor assent or token mint','Digest proves only file integrity, not truth']};
+  result.digest=await hash(result);candidates.push(result);
+ }
+ return {status:'HOLD_PLAYER_CHOICE',sourceDigest,source,candidates,authority:'NONE'};
+}
+async function receive(rawCandidate,record,decision='HOLD'){
+ if(!['HOLD','ADMIT','REFUSE'].includes(decision))err('INVALID_DECISION');
+ if(!rawCandidate||rawCandidate.schema!==RECORD_SCHEMA)return {status:'REFUSE_UNSUPPORTED_PACKET'};
+ try{
+  const regenerated=await forge(record);
+  if(regenerated.status!=='HOLD_PLAYER_CHOICE')return {status:'REFUSE_NO_SOURCE_EVENTS'};
+  const exact=regenerated.candidates.find(x=>x.digest===rawCandidate.digest);
+  if(!exact||sortedCanonical(exact)!==sortedCanonical(rawCandidate))return {status:'REFUSE_TAMPERED_OR_UNAUTHORIZED_RECIPE'};
+  return {status:decision==='ADMIT'?'ADMIT_LOCAL_FICTION_ONLY':decision==='REFUSE'?'REFUSE_PLAYER_CHOICE':'HOLD_PLAYER_CHOICE',candidate:exact,
+   localPlayAllowed:decision==='ADMIT',externalAuthority:'NONE',realWorldActionsAuthorized:0};
+ }catch{return {status:'REFUSE_INVALID_SOURCE_RECORD'};}
+}
+function startVariant(received,size=4){
+ ensure(received?.status==='ADMIT_LOCAL_FICTION_ONLY'&&received.candidate?.schema===RECORD_SCHEMA,'NOT_LOCALLY_ADMITTED');
+ ensure(Number.isSafeInteger(size)&&size>=2&&size<=6,'BAD_PARTY_SIZE');
+ const seed=(parseInt(received.candidate.digest.slice(7,15),16)%2147483645)+1;
+ return {format:'static-field.expansion-variant-play/009',candidate:copy(received.candidate),rail:makeGame(size,seed),circleHeld:false,
+  localHistory:[{type:'START',text:'A NEW fictional board begins. Prior inventory and authority were not copied.'}],phase:'PLAYING'};
+}
+function progress(s){
+ const steps=s.candidate.requirements.map(r=>{
+  if(r.type==='RAIL')return {...r,done:s.rail.built.includes(r.id)};
+  if(r.type==='RESOURCE')return {...r,done:s.rail.resources[r.id]>=r.n};
+  if(r.type==='AUDIT')return {...r,done:s.rail.claim.audited};
+  if(r.type==='CIRCLE')return {...r,done:s.circleHeld};
+  err('UNKNOWN_RECIPE_OPERATION');
+ });
+ return {steps,complete:steps.every(x=>x.done),sourceEvent:s.candidate.seedEvent,phase:s.rail.phase};
+}
+function suggest(s){
+ const missing=progress(s).steps.find(x=>!x.done);
+ if(!missing)return {title:'Expansion objective complete',reason:'Export a game-only return ticket. No physical achievement is credited.',action:null};
+ if(missing.type==='CIRCLE')return {title:'Hold the circle',reason:'Make room for voices at the table; this does not represent outside consent.',action:{kind:'circle'}};
+ if(missing.type==='AUDIT')return {title:'Inspect the disputed 42 / 39 WOOD claim',reason:'The difference is never credited as stock.',action:{kind:'rail',move:{kind:'audit'}}};
+ if(missing.type==='RAIL'){
+  if(!s.rail.consents.includes(missing.id))return {title:'Invite the Little Yes for '+LINKS.find(e=>e.id===missing.id).name,action:{kind:'rail',move:{kind:'agree',id:missing.id}},reason:'Fictional counterparties must agree before a new route is built.'};
+  const cost=LINKS.find(e=>e.id===missing.id).cost;
+  if(s.rail.resources.rail<cost){
+   if(s.rail.resources.wood<1)return {title:'Gather wood',action:{kind:'rail',move:{kind:'gather',id:'millford'}},reason:'Rail crafting needs one wood token.'};
+   if(s.rail.resources.ore<1)return {title:'Gather ore',action:{kind:'rail',move:{kind:'gather',id:'bridgeport'}},reason:'Rail crafting needs one ore token.'};
+   return {title:'Forge rail',action:{kind:'rail',move:{kind:'craft',id:'rail'}},reason:'Craft source-owned rail tokens.'};
+  }
+  return {title:'Build the proposed line',action:{kind:'rail',move:{kind:'build',id:missing.id}},reason:'It is now possible inside the fictional model.'};
+ }
+ if(missing.type==='RESOURCE'){
+  if(missing.id==='food')return {title:'Gather from Cedar Junction',action:{kind:'rail',move:{kind:'gather',id:'cedar'}},reason:'Only fictional food tokens.'};
+  if(missing.id==='firewood')return s.rail.resources.wood>=1?{title:'Craft firewood',action:{kind:'rail',move:{kind:'craft',id:'firewood'}},reason:'Not physical fuel.'}:{title:'Gather fictional wood',action:{kind:'rail',move:{kind:'gather',id:'millford'}},reason:'No disputed stock is spendable.'};
+  if(missing.id==='blueprint'){
+   if(s.rail.resources.ore<1)return {title:'Gather ore',action:{kind:'rail',move:{kind:'gather',id:'bridgeport'}},reason:'Blueprint resource cost.'};
+   if(s.rail.resources.idea<1)return {title:'Gather an idea',action:{kind:'rail',move:{kind:'gather',id:'ovenham'}},reason:'Model creativity.'};
+   return {title:'Craft the blueprint',action:{kind:'rail',move:{kind:'craft',id:'blueprint'}},reason:'A game token, not validated engineering.'};
+  }
+ }
+ return railwayOffer(s.rail);
+}
+function playVariant(raw,action){
+ ensure(raw&&raw.format==='static-field.expansion-variant-play/009','INVALID_VARIANT');
+ ensure(raw.phase==='PLAYING','VARIANT_FINISHED');
+ const s=copy(raw);
+ if(action?.kind==='circle'){
+   ensure(!s.circleHeld,'CIRCLE_ALREADY_HELD');
+   s.circleHeld=true;
+   s.localHistory.push({type:'CIRCLE',text:'Fictional table listens. No real-world worker was consulted or committed.'});
+ } else if(action?.kind==='rail'){
+   const outcome=railwayStep(s.rail,action.move);
+   s.rail=outcome.state;
+   s.localHistory.push({type:'RAIL',text:outcome.message});
+ } else err('UNKNOWN_VARIANT_ACTION');
+ if(progress(s).complete){s.phase='LOCAL_VARIANT_GOAL_MET';s.localHistory.push({type:'END',text:'Optional game objective completed. No real-world claim.'});}
+ else if(s.rail.phase!=='PLAYING')s.phase='LOCAL_VARIANT_CLOSED_WITH_UNMET_GOAL';
+ return {state:s,status:s.phase,progress:progress(s)};
+}
+function variantReturn(s){ensure(s?.format==='static-field.expansion-variant-play/009','INVALID_VARIANT');
+ return {schema:'static-field.expansion-return-unsent/009',authority:'NONE',status:'FICTIONAL_UNVERIFIED',
+  sourceDigest:s.candidate.sourceDigest,candidateDigest:s.candidate.digest,template:s.candidate.template,goal:s.candidate.goal,
+  result:s.phase,progress:progress(s),originalGame:railwayExport(s.rail),history:s.localHistory,
+  realWorldActionsAuthorized:0,realWorkerConsents:0,physicalDeeds:0,blockchainMints:0,
+  nextQuestion:'Which specific, permissioned and independently verifiable real-world question is worth investigating?'};
+}
+
+return {forge,receive,minimizeRecord,startVariant,playVariant,progress,suggest,variantReturn};
+})();
+const ATLAS_WORLD=(()=>{
+const {forge,receive,minimizeRecord,startVariant,playVariant,progress,suggest,variantReturn}=FORGE;
+const {makeGame,step:railwayStep,exportRecord}=RAIL;
+// STATIC FIELD 010 — independent-table Living World Atlas.
+// Source-owned 009 forge verifies finite local play mechanics. SHA-256 = file
+// integrity only, never identity, permission, labor consent, or real-world proof.
+const ATLAS_SCHEMA='static-field.living-world-atlas/010';
+const OFFER_SCHEMA='static-field.world-offer/010';
+const cp=x=>structuredClone(x);
+const insist=(x,code)=>{if(!x)throw Error(code);};
+const legalLabel=x=>typeof x==='string'&&x.trim().length>0&&x.length<=65&&/^[a-zA-Z0-9 _.,:!?'-]+$/.test(x);
+const uniq=a=>[...new Set(a)];
+const sortJson=x=>Array.isArray(x)?'['+x.map(sortJson).join(',')+']':x&&typeof x==='object'?'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+sortJson(x[k])).join(',')+'}':JSON.stringify(x);
+async function digest(x){const b=new TextEncoder().encode(sortJson(x));const h=await crypto.subtle.digest('SHA-256',b);return 'sha256:'+Array.from(new Uint8Array(h),x=>x.toString(16).padStart(2,'0')).join('');}
+function makeTable(id,label){insist(legalLabel(id)&&legalLabel(label),'BAD_TABLE_NAME');return {schema:ATLAS_SCHEMA,id,label,authority:'FICTION_ONLY',worlds:[],inbox:[],outbox:[],compositions:[],events:[]};}
+const assertTable=t=>insist(t?.schema===ATLAS_SCHEMA&&t.authority==='FICTION_ONLY'&&Array.isArray(t.worlds)&&Array.isArray(t.inbox)&&Array.isArray(t.outbox),'INVALID_ATLAS');
+function demoPartyRecord(){let x=makeGame(4,317);x=railwayStep(x,{kind:'audit'}).state;x=railwayStep(x,{kind:'agree',id:'mb'}).state;return exportRecord(x);}
+async function propose(record,candidateIndex=0,fromWorld=null){
+ insist(Number.isSafeInteger(candidateIndex)&&candidateIndex>=0&&candidateIndex<=2,'BAD_PROPOSAL_INDEX');
+ const safe=minimizeRecord(record);const result=await forge(safe);
+ insist(result.status==='HOLD_PLAYER_CHOICE','NO_SOURCE_EVENT');
+ const candidate=result.candidates[candidateIndex];insist(candidate,'CANDIDATE_NOT_FOUND');
+ const sourceWorld=fromWorld?{id:fromWorld.id,tableId:fromWorld.tableId,ancestors:uniq(fromWorld.ancestors||[]).slice(0,12)}:null;
+ const core={schema:OFFER_SCHEMA,fictional:true,authority:'NONE',sourceWorld,record:safe,candidate,
+  claims:{authenticatedOrigin:false,physicalDeeds:0,workerConsents:0,realWorldRights:0},destination:'ANY_TABLE_MAY_HOLD_REFUSE_OR_ADMIT'};
+ return {...core,digest:await digest(core)};
+}
+async function verifyOffer(packet){
+ try{
+  insist(packet&&typeof packet==='object'&&JSON.stringify(packet).length<=190000,'OVERSIZED_OR_BAD_PACKET');
+  const {schema,fictional,authority,sourceWorld,record,candidate,claims,destination,digest:packetDigest}=packet;
+  insist(schema===OFFER_SCHEMA&&fictional===true&&authority==='NONE'&&destination==='ANY_TABLE_MAY_HOLD_REFUSE_OR_ADMIT','BAD_OFFER_SCHEMA');
+  insist(claims&&claims.authenticatedOrigin===false&&claims.physicalDeeds===0&&claims.workerConsents===0&&claims.realWorldRights===0,'FORGED_AUTHORITY');
+  insist(sourceWorld===null||(sourceWorld&&legalLabel(sourceWorld.id)&&legalLabel(sourceWorld.tableId)&&Array.isArray(sourceWorld.ancestors)&&sourceWorld.ancestors.length<=12&&sourceWorld.ancestors.every(legalLabel)),'BAD_ANCESTRY');
+  const core={schema,fictional,authority,sourceWorld,record,candidate,claims,destination};
+  insist(Object.keys(packet).sort().join('|')===[...Object.keys(core),'digest'].sort().join('|'),'EXTRA_OFFER_FIELDS');
+  insist(await digest(core)===packetDigest,'ALTERED_ENVELOPE');
+  insist(JSON.stringify(minimizeRecord(record))===JSON.stringify(record),'NONMINIMAL_PRIVATE_INPUT');
+  const disposition=await receive(candidate,record,'HOLD');
+  insist(disposition.status==='HOLD_PLAYER_CHOICE','INVALID_SOURCE_CANDIDATE');
+  return {ok:true,digest:packetDigest,candidate};
+ }catch(e){return {ok:false,status:'REFUSE_'+String(e.message).replace(/[^A-Z0-9_]/gi,'_').slice(0,65)}}
+}
+async function sendOffer(table,record,candidateIndex=0,worldId=null){
+ assertTable(table);insist(table.outbox.length<40,'OUTBOX_LIMIT');
+ const w=worldId?table.worlds.find(x=>x.id===worldId):null;
+ insist(!worldId||!!w,'UNKNOWN_SOURCE_WORLD');
+ const offer=await propose(record,candidateIndex,w);
+ const t=cp(table);if(!t.outbox.some(x=>x.digest===offer.digest))t.outbox.push(offer);
+ t.events.push({type:'OFFER_PREPARED',digest:offer.digest,notSent:true});return {table:t,offer};
+}
+async function receiveOffer(table,offer){
+ assertTable(table);insist(table.inbox.length<60,'INBOX_LIMIT');
+ const checked=await verifyOffer(offer);if(!checked.ok)return {table:cp(table),status:checked.status};
+ const t=cp(table);let entry=t.inbox.find(x=>x.offer.digest===offer.digest);
+ if(entry)return {table:t,status:'ALREADY_IN_INBOX',entry};
+ entry={id:'mail-'+offer.digest.slice(7,23),offer:cp(offer),status:'HOLD',decidedWorldId:null};
+ t.inbox.push(entry);t.events.push({type:'RECEIVED_UNVERIFIED_FICTION',offer:offer.digest});
+ return {table:t,status:'HOLD_REQUIRES_DESTINATION_CHOICE',entry};
+}
+async function spawn(t,offer,label,partySize,source){
+ insist(legalLabel(label),'BAD_WORLD_NAME');
+ insist(Number.isSafeInteger(partySize)&&partySize>=2&&partySize<=6,'BAD_PARTY_SIZE');
+ insist(t.worlds.length<30,'WORLD_LIMIT');
+ const admitted=await receive(offer.candidate,offer.record,'ADMIT');
+ insist(admitted.status==='ADMIT_LOCAL_FICTION_ONLY','CANNOT_ADMIT_CANDIDATE');
+ const ordinal=t.worlds.length+1;
+ const id=`world-${(await digest({table:t.id,ordinal,offer:offer.digest,label})).slice(7,22)}`;
+ const parent=source===null?offer.sourceWorld?.id||null:source;
+ const ancestors=uniq([...(offer.sourceWorld?.ancestors||[]),...(parent?[parent]:[])]).slice(-12);
+ const world={id,label,tableId:t.id,sourceOffer:offer,ancestors,play:startVariant(admitted,partySize),decisions:[{type:'LOCAL_PLAYER_ADMIT',sourceOffer:offer.digest}],status:'LOCAL_FICTION_ONLY'};
+ t.worlds.push(world);t.events.push({type:'WORLD_BORN',worldId:id,sourceOffer:offer.digest});return world;
+}
+async function decide(table,mailId,decision,label='New World',partySize=4){
+ assertTable(table);insist(['HOLD','REFUSE','ADMIT'].includes(decision),'INVALID_DECISION');
+ const t=cp(table);const item=t.inbox.find(x=>x.id===mailId);insist(item,'UNKNOWN_MAIL');
+ insist(item.status==='HOLD','ALREADY_DECIDED');
+ if(decision==='HOLD')return {table:t,status:'HOLD'};
+ if(decision==='REFUSE'){item.status='REFUSE';t.events.push({type:'REFUSED',mailId});return {table:t,status:'REFUSE'};}
+ const check=await verifyOffer(item.offer);insist(check.ok,'SOURCE_CHANGED_SINCE_RECEIPT');
+ const world=await spawn(t,item.offer,label,partySize,null);
+ item.status='ADMIT';item.decidedWorldId=world.id;
+ return {table:t,status:'ADMIT_LOCAL_FICTION_ONLY',world};
+}
+async function fork(table,worldId,label){
+ assertTable(table);const t=cp(table);const origin=t.worlds.find(x=>x.id===worldId);insist(origin,'UNKNOWN_WORLD');
+ const check=await verifyOffer(origin.sourceOffer);insist(check.ok,'SOURCE_CHANGED');
+ const world=await spawn(t,origin.sourceOffer,label,origin.play.rail.size,origin.id);
+ return {table:t,world};
+}
+function act(table,worldId,action){
+ assertTable(table);const t=cp(table);const w=t.worlds.find(x=>x.id===worldId);insist(w,'UNKNOWN_WORLD');
+ const outcome=playVariant(w.play,action);w.play=outcome.state;w.decisions.push({type:'LOCAL_GAME_MOVE',action:cp(action),status:outcome.status});
+ t.events.push({type:'PLAYED',worldId,status:outcome.status});return {table:t,world:w,progress:outcome.progress};
+}
+async function returnFromWorld(table,worldId,candidateIndex=0){
+ assertTable(table);const w=table.worlds.find(x=>x.id===worldId);insist(w,'UNKNOWN_WORLD');
+ const record=variantReturn(w.play).originalGame;
+ return sendOffer(table,record,candidateIndex,worldId);
+}
+async function composeWorlds(table,ids,label){
+ assertTable(table);insist(Array.isArray(ids)&&ids.length===2&&ids[0]!==ids[1],'TWO_DISTINCT_WORLDS_REQUIRED');
+ insist(legalLabel(label),'BAD_COMPOSITION_NAME');const t=cp(table);
+ const worlds=ids.map(id=>t.worlds.find(x=>x.id===id));insist(worlds.every(Boolean),'UNKNOWN_WORLD');
+ const id='constellation-'+(await digest({table:t.id,ids:ids.slice().sort(),label})).slice(7,22);
+ const comp={schema:'static-field.constellation/010',id,label,worlds:ids.slice(),status:'LOCAL_OVERLAY_ONLY',
+  requirements:worlds.map(w=>({worldId:w.id,candidateDigest:w.play.candidate.digest,goal:w.play.candidate.goal})),
+  authority:'NONE',sharedInventory:false,sourceOwnerApprovals:false,realWorldActionsAuthorized:0};
+ if(!t.compositions.some(x=>x.id===id))t.compositions.push(comp);
+ return {table:t,composition:comp};
+}
+function inspect(table){assertTable(table);
+ return {schema:'static-field.atlas-inspection/010',tableId:table.id,worlds:table.worlds.map(w=>({id:w.id,label:w.label,ancestors:w.ancestors,template:w.play.candidate.template,progress:progress(w.play),phase:w.play.phase,suggestion:w.play.phase==='PLAYING'?suggest(w.play):null})),
+  inbox:table.inbox.map(x=>({id:x.id,origin:x.offer.sourceWorld?.tableId||'unspecified',title:x.offer.candidate.title,status:x.status})),
+  compositions:table.compositions.map(c=>({...c,complete:c.worlds.every(id=>{const w=table.worlds.find(x=>x.id===id);return !!w&&progress(w.play).complete;})})),
+  caveat:'Independent local fictional worlds; SHA-256 is not an identity proof. No execution or physical credit.'};
+}
+async function validateTable(raw){
+ try{
+  assertTable(raw);insist(legalLabel(raw.id)&&legalLabel(raw.label),'BAD_TABLE_NAME');
+  insist(raw.worlds.length<=30&&raw.inbox.length<=60&&raw.outbox.length<=40&&raw.compositions.length<=30,'LIMIT');
+  const ids=new Set();for(const [index,w] of raw.worlds.entries()){
+   insist(legalLabel(w.id)&&!ids.has(w.id),'DUPLICATE_WORLD');ids.add(w.id);
+   insist(w.tableId===raw.id&&legalLabel(w.label)&&Array.isArray(w.decisions)&&w.decisions.length<=200&&Array.isArray(w.ancestors)&&w.ancestors.length<=12,'BAD_WORLD_RECORD');
+   const c=await verifyOffer(w.sourceOffer);insist(c.ok,'BAD_WORLD_SOURCE');
+   const expectedId=`world-${(await digest({table:raw.id,ordinal:index+1,offer:w.sourceOffer.digest,label:w.label})).slice(7,22)}`;
+   insist(w.id===expectedId,'ALTERED_WORLD_ID');
+   insist(w.decisions[0]?.type==='LOCAL_PLAYER_ADMIT'&&w.decisions[0]?.sourceOffer===w.sourceOffer.digest,'MISSING_PLAYER_ADMISSION');
+   const verified=await receive(w.sourceOffer.candidate,w.sourceOffer.record,'ADMIT');
+   let reconstructed=startVariant(verified,w.play?.rail?.size);
+   for(const move of w.decisions.slice(1)){
+    insist(move.type==='LOCAL_GAME_MOVE','UNKNOWN_WORLD_EVENT');
+    const replay=playVariant(reconstructed,move.action);insist(move.status===replay.status,'ALTERED_MOVE_RESULT');reconstructed=replay.state;
+   }
+   insist(sortJson(reconstructed)===sortJson(w.play),'ALTERED_WORLD_HISTORY');
+  }
+  for(const i of raw.inbox){insist((await verifyOffer(i.offer)).ok,'BAD_MAIL');insist(['HOLD','REFUSE','ADMIT'].includes(i.status),'BAD_MAIL_STATUS');}
+  for(const o of raw.outbox)insist((await verifyOffer(o)).ok,'BAD_OUTBOUND');
+  return {ok:true};
+ }catch(e){return {ok:false,reason:String(e.message)}}
+}
+
+return {ATLAS_SCHEMA,makeTable,demoPartyRecord,propose,verifyOffer,sendOffer,receiveOffer,decide,fork,act,returnFromWorld,composeWorlds,inspect,validateTable};
+})();
+const BREEDER=(()=>{
+const ATLAS=ATLAS_WORLD;
+const {suggest:forgeSuggest}=FORGE;
+// STATIC FIELD 011 — new mechanics bred from independently admitted 010 worlds.
+// This is an offline fictional grammar, never a biological, labor, economic or real-world proof.
+const SCHEMA='static-field.world-breeder/011';
+const CROSS_SCHEMA='static-field.crossworld-new-mechanic/011';
+const copy=x=>structuredClone(x);
+const ok=(condition,code)=>{if(!condition)throw Error(code);};
+const safeLabel=x=>typeof x==='string'&&x.length>0&&x.length<=65&&/^[a-zA-Z0-9 _.,:!?'-]+$/.test(x);
+const canon=x=>Array.isArray(x)?'['+x.map(canon).join(',')+']':x&&typeof x==='object'?'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+canon(x[k])).join(',')+'}':JSON.stringify(x);
+const sha=async x=>'sha256:'+Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(canon(x)))),v=>v.toString(16).padStart(2,'0')).join('');
+const PAIRS={
+  'CONNECTION|DIGNITY':{id:'WORKER_VOICE_PASSAGE',title:'THE NAME ON THE TICKET',purpose:'A rail journey needs a witnessed care conversation before the route is opened.',novel:'A newly bred station charter: LISTEN + AUDIT before BUILD, followed by a distinct RELAY publication choice.'},
+  'CONNECTION|WITNESS':{id:'OPEN_LEDGER_ROUTE',title:'THE OPEN LEDGER LINE',purpose:'A contested supply claim must remain contested when the railroad gains a new station.',novel:'A new bridge rule: AUDIT + LISTEN before BUILD, then an explicitly chosen RELAY recording.'}
+};
+const pairKey=(a,b)=>[a,b].sort().join('|');
+function getParents(table,a,b){ok(a!==b,'DISTINCT_PARENT_WORLDS_REQUIRED');const x=table.worlds.find(w=>w.id===a),y=table.worlds.find(w=>w.id===b);ok(x&&y,'UNKNOWN_SOURCE_WORLD');ok(x.tableId===table.id&&y.tableId===table.id,'SOURCE_WORLD_NOT_LOCAL');return [x,y];}
+function makeHabitat(table){ok(table?.schema===ATLAS.ATLAS_SCHEMA,'ATLAS_REQUIRED');return {schema:SCHEMA,authority:'LOCAL_FICTION_ONLY',table:copy(table),crossings:[],events:[]};}
+function assertHabitat(s){ok(s?.schema===SCHEMA&&s.authority==='LOCAL_FICTION_ONLY'&&Array.isArray(s.crossings)&&Array.isArray(s.events)&&s.table?.schema===ATLAS.ATLAS_SCHEMA,'INVALID_BREEDER_STATE');ok(s.crossings.length<=20&&s.events.length<=300,'STATE_LIMIT');}
+function pairing(table,a,b){const [x,y]=getParents(table,a,b);const rule=PAIRS[pairKey(x.play.candidate.lens,y.play.candidate.lens)];ok(rule,'HOLD_UNSUPPORTED_COMPOSITION');const routeParent=[x,y].find(w=>w.play.candidate.lens==='CONNECTION');ok(routeParent,'HOLD_NO_RAIL_PARENT');const other=[x,y].find(w=>w.id!==routeParent.id);return {parents:[x,y],routeParent,other,rule};}
+async function propose(s,a,b){assertHabitat(s);ok((await ATLAS.validateTable(s.table)).ok,'UNVERIFIED_ATLAS_REPLAY');const {parents,routeParent,other,rule}=pairing(s.table,a,b);
+ const basis={schema:CROSS_SCHEMA,tableId:s.table.id,parents:parents.map(w=>({worldId:w.id,candidateDigest:w.play.candidate.digest,template:w.play.candidate.template,lens:w.play.candidate.lens,sourceOfferDigest:w.sourceOffer.digest})),
+  routeParentId:routeParent.id,otherParentId:other.id,recipe:rule.id,title:rule.title,purpose:rule.purpose,novel:rule.novel,
+  conditions:['SEPARATE_LITTLE_YES_PER_PARENT','CHILD_INDEPENDENT_INVENTORY','CHILD_AUDIT_42_VS_39','CHILD_LISTEN_CIRCLE','CHILD_CONSTRUCT_SOURCE_ROUTE','EXPLICIT_CHILD_RELAY'],
+  claims:{originAuthenticated:false,workerConsentVerified:false,realResourcesCredited:0,externalAuthority:'NONE'},status:'HELD_NOT_ADMITTED'};
+ return {...basis,digest:await sha(basis)};
+}
+async function nominate(raw,a,b){assertHabitat(raw);ok(raw.crossings.length<20,'CROSSING_LIMIT');const proposal=await propose(raw,a,b);ok(!raw.crossings.some(c=>c.proposal.digest===proposal.digest),'DUPLICATE_CROSSING');const h=copy(raw);const crossing={proposal,decisions:proposal.parents.map(p=>({worldId:p.worldId,choice:'HOLD'})),childId:null,relay:false,status:'HOLD_TWO_INDEPENDENT_LITTLE_YES'};h.crossings.push(crossing);h.events.push({type:'CROSSING_PROPOSED',digest:proposal.digest});return {habitat:h,crossing};}
+function locate(h,d){const c=h.crossings.find(x=>x.proposal.digest===d);ok(c,'UNKNOWN_CROSSING');return c;}
+function respond(raw,digest,worldId,choice){assertHabitat(raw);ok(['YES','HOLD','REFUSE'].includes(choice),'INVALID_CHOICE');const h=copy(raw),c=locate(h,digest);ok(!c.childId,'CHILD_ALREADY_BORN');const v=c.decisions.find(x=>x.worldId===worldId);ok(v,'NOT_ONE_OF_TWO_PARENTS');ok(v.choice==='HOLD','CHOICE_ALREADY_RECORDED');v.choice=choice;c.status=c.decisions.some(x=>x.choice==='REFUSE')?'REFUSED_BY_PARENT':c.decisions.every(x=>x.choice==='YES')?'READY_FOR_LOCAL_BIRTH':'HOLD_TWO_INDEPENDENT_LITTLE_YES';h.events.push({type:'PARENT_CHOICE',worldId,choice,digest});return {habitat:h,status:c.status};}
+async function birth(raw,digest,label='The Third Station'){assertHabitat(raw);ok(safeLabel(label),'BAD_CHILD_NAME');ok((await ATLAS.validateTable(raw.table)).ok,'UNVERIFIED_ATLAS_REPLAY');const h=copy(raw),c=locate(h,digest);
+ ok(c.status==='READY_FOR_LOCAL_BIRTH'&&c.decisions.every(v=>v.choice==='YES'),'HOLD_MISSING_SEPARATE_LITTLE_YES');
+ const regenerated=await propose(h,c.proposal.parents[0].worldId,c.proposal.parents[1].worldId);
+ ok(canon(regenerated)===canon(c.proposal),'ALTERED_PARENT_PROPOSAL');
+ const out=await ATLAS.fork(h.table,c.proposal.routeParentId,label);h.table=out.table;c.childId=out.world.id;c.status='CHILD_PLAYING';h.events.push({type:'CHILD_BORN',childId:c.childId,digest});return {habitat:h,world:out.world};}
+function childState(h,c){ok(c.childId,'NO_CHILD_BORN');const child=h.table.worlds.find(w=>w.id===c.childId);ok(child,'MISSING_CHILD_WORLD');ok(child.play.candidate.digest===h.table.worlds.find(w=>w.id===c.proposal.routeParentId)?.play.candidate.digest,'CHILD_SOURCE_CHANGED');return child;}
+function inspect(raw,digest){assertHabitat(raw);const c=locate(raw,digest);let progress=null;
+ if(c.childId){const w=childState(raw,c),route=w.play.candidate.requirements.find(r=>r.type==='RAIL');const routeDone=route? w.play.rail.built.includes(route.id):false;
+ const audit=!!w.play.rail.claim.audited,circle=!!w.play.circleHeld;
+ progress={audit,circle,route:routeDone,relay:c.relay,complete:audit&&circle&&routeDone&&c.relay,
+  steps:[{id:'AUDIT',done:audit},{id:'LISTEN',done:circle},{id:'BUILD',done:routeDone},{id:'RELAY',done:c.relay}],
+  charter:'The derived combination requires listening and an integrity audit before a physical game route may be built.'};}
+ return {title:c.proposal.title,recipe:c.proposal.recipe,parents:c.proposal.parents,choices:copy(c.decisions),status:c.status,childId:c.childId,progress,authority:'LOCAL_FICTION_ONLY',externalRights:0};}
+function move(raw,digest,action){assertHabitat(raw);const h=copy(raw),c=locate(h,digest);ok(c.status==='CHILD_PLAYING','CHILD_NOT_OPEN');const child=childState(h,c);
+ const before=inspect(h,digest).progress;
+ if(action?.kind==='relay'){ok(before.audit&&before.circle&&before.route,'HOLD_NOT_READY_FOR_RELAY');ok(!c.relay,'RELAY_ALREADY_RECORDED');c.relay=true;c.status='FICTIONAL_CROSSWORLD_GOAL_MET';h.events.push({type:'CHILD_RELAY_RELEASED',childId:c.childId,digest});return {habitat:h,inspection:inspect(h,digest)};}
+ ok(action?.kind==='circle'||action?.kind==='rail','UNRECOGNIZED_CHILD_ACTION');
+ if(action.kind==='rail'&&action.move?.kind==='build')ok(before.audit&&before.circle,'HOLD_LISTEN_AND_AUDIT_BEFORE_BUILD');
+ const out=ATLAS.act(h.table,c.childId,action);h.table=out.table;h.events.push({type:'CHILD_PLAYED_NATIVE_009',childId:c.childId,action:copy(action)});return {habitat:h,inspection:inspect(h,digest)};}
+function next(raw,digest){const state=inspect(raw,digest);if(!state.childId)return {title:'Ask each parent world for a separate Little Yes',action:null};const p=state.progress;if(p.complete)return {title:'A newly bred game-only mechanic was completed',action:null};if(!p.audit)return {title:'Inspect the disputed 42 / 39 WOOD claim',action:{kind:'rail',move:{kind:'audit'}}};if(!p.circle)return {title:'Hold a fictional listening circle',action:{kind:'circle'}};if(!p.route){const c=locate(raw,digest),w=childState(raw,c);return forgeSuggest(w.play);}return {title:'Record the separate cross-world relay choice',action:{kind:'relay'}};}
+async function verify(raw){try{assertHabitat(raw);ok((await ATLAS.validateTable(raw.table)).ok,'INVALID_NATIVE_010_TABLE');for(const c of raw.crossings){ok(Object.keys(c).sort().join('|')==='childId|decisions|proposal|relay|status','FORGED_CROSSING_KEYS');const original=await propose(raw,c.proposal.parents[0].worldId,c.proposal.parents[1].worldId);ok(canon(original)===canon(c.proposal),'ALTERED_RECIPE');ok(c.decisions.length===2&&c.decisions.every((d,i)=>d.worldId===c.proposal.parents[i].worldId&&['HOLD','YES','REFUSE'].includes(d.choice)),'INVALID_CONSENT_RECORD');// Replay 011 actions independently of mutable current status. A digest is never a signature.
+ const traces=raw.events.filter(e=>e.digest===c.proposal.digest || (e.childId&&e.childId===c.childId));
+ ok(traces[0]?.type==='CROSSING_PROPOSED','MISSING_NOMINATION_EVENT');
+ const votes=traces.filter(e=>e.type==='PARENT_CHOICE');
+ ok(votes.length===c.decisions.filter(x=>x.choice!=='HOLD').length,'MISSING_VOTE_EVENT');
+ const seen=new Set();for(const v of votes){ok(['YES','REFUSE'].includes(v.choice)&&c.decisions.some(x=>x.worldId===v.worldId&&x.choice===v.choice)&&!seen.has(v.worldId),'ALTERED_VOTE_EVENT');seen.add(v.worldId);}
+ if(c.childId){ok(traces.filter(e=>e.type==='CHILD_BORN').length===1&&traces.filter(e=>e.type==='CHILD_BORN')[0].childId===c.childId,'MISSING_BIRTH_EVENT');
+ ok(traces.filter(e=>e.type==='CHILD_PLAYED_NATIVE_009').length===childState(raw,c).decisions.length-1,'MISSING_NATIVE_ACTION_EVENT');
+ ok(traces.filter(e=>e.type==='CHILD_RELAY_RELEASED').length===(c.relay?1:0),'MISSING_RELAY_EVENT');}
+ else ok(!traces.some(e=>e.type==='CHILD_BORN'||e.type==='CHILD_RELAY_RELEASED'),'UNBORN_HISTORY_FRAUD');
+ if(c.childId){ok(c.decisions.every(x=>x.choice==='YES'),'BIRTH_WITHOUT_YES');const w=childState(raw,c);ok(w.decisions[0]?.type==='LOCAL_PLAYER_ADMIT','NO_NATIVE_CHILD_ADMISSION');ok(w.ancestors.includes(c.proposal.routeParentId),'MISSING_NATIVE_PARENT');ok(c.status=== (c.relay?'FICTIONAL_CROSSWORLD_GOAL_MET':'CHILD_PLAYING'),'ALTERED_CROSSING_STATUS');if(c.relay){const progress=inspect(raw,c.proposal.digest).progress;ok(progress.audit&&progress.circle&&progress.route,'FORGED_RELAY');}}else{ok(c.relay===false&&['REFUSED_BY_PARENT','READY_FOR_LOCAL_BIRTH','HOLD_TWO_INDEPENDENT_LITTLE_YES'].includes(c.status),'ILLEGAL_UNBORN_STATUS');}}
+ return {ok:true,fictional:true};}catch(e){return {ok:false,reason:String(e.message)};}}
+async function demo(){let table=ATLAS.makeTable('W','Moon Lantern');const r=ATLAS.demoPartyRecord();for(const i of [1,2]){const packet=await ATLAS.propose(r,i);const reception=await ATLAS.receiveOffer(table,packet);table=reception.table;table=(await ATLAS.decide(table,reception.entry.id,'ADMIT',i===1?'First Railway':'Worker Voice')).table;}
+ let h=makeHabitat(table);const proposed=await nominate(h,table.worlds[0].id,table.worlds[1].id);h=proposed.habitat;for(const p of proposed.crossing.proposal.parents){h=respond(h,proposed.crossing.proposal.digest,p.worldId,'YES').habitat;}h=(await birth(h,proposed.crossing.proposal.digest,'The Named Station')).habitat;
+ const digest=proposed.crossing.proposal.digest;let moves=[];for(let i=0;i<24&&inspect(h,digest).status==='CHILD_PLAYING';i++){const tip=next(h,digest);ok(tip.action,'NO_NEXT_ACTION');moves.push(tip.title);h=move(h,digest,tip.action).habitat;}return {habitat:h,inspection:inspect(h,digest),moves,validation:await verify(h)};}
+
+return {SCHEMA,CROSS_SCHEMA,makeHabitat,propose,nominate,respond,birth,inspect,move,next,verify,demo};
+})();
+const GARDEN=(()=>{
+const A=ATLAS_WORLD,B=BREEDER;
+// STATIC FIELD 012 — The World Garden, a bounded fiction-only source-linked garden.
+// Real 011 birth and 010/009/007 play are executed; nothing here claims external assent.
+const SCHEMA='static-field.world-garden/012';
+const MAIL_SCHEMA='static-field.garden-pollen/012';
+const cp=structuredClone;
+const insist=(b,c)=>{if(!b)throw Error(c);};
+const canonical=x=>Array.isArray(x)?'['+x.map(canonical).join(',')+']':x&&typeof x==='object'?'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+canonical(x[k])).join(',')+'}':JSON.stringify(x);
+const digest=async o=>'sha256:'+Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(canonical(o)))),b=>b.toString(16).padStart(2,'0')).join('');
+const label=x=>typeof x==='string'&&x.length>0&&x.length<=65&&/^[a-zA-Z0-9 _.,:!?'-]+$/.test(x);
+const CONDITIONS=['OBSERVE','TEND'];
+const KINDS=['DIGNITY','WITNESS','ATLAS'];
+const sourceFor=(h,kind)=>kind==='DIGNITY'?[h.table.worlds[1].id,h.table.worlds[2].id]:[h.table.worlds[1].id,h.table.worlds[0].id];
+const seed=(s,id)=>{const v=s.seeds.find(x=>x.id===id);insist(v,'UNKNOWN_SEED');return v;};
+const graftOf=(s,id)=>{const g=s.grafts.find(x=>x.id===id);insist(g,'UNKNOWN_GRAFT');return g;};
+async function initial(id,name){insist(label(id)&&label(name),'INVALID_GARDEN_LABEL');let table=A.makeTable(id,name);const record=A.demoPartyRecord();
+ for(const [i,title] of [[0,'The Ledger'],[1,'The Railway'],[2,'The Workers']]){
+  const offer=await A.propose(record,i);const incoming=await A.receiveOffer(table,offer);const admitted=await A.decide(incoming.table,incoming.entry.id,'ADMIT',title);table=admitted.table;
+ }
+ return B.makeHabitat(table);
+}
+async function create(id='garden-a',name='The Porch Nursery'){
+ return {schema:SCHEMA,id,name,authority:'LOCAL_FICTION_ONLY',habitat:await initial(id,name),seeds:[],grafts:[],inbox:[],events:[],limits:{seedSlots:8,simultaneousGrafts:1}};
+}
+async function sourceProposal(s,kind){insist(KINDS.includes(kind),'UNKNOWN_SEED_KIND');if(kind==='ATLAS')return A.propose(A.demoPartyRecord(),0);const [a,b]=sourceFor(s.habitat,kind);return B.propose(s.habitat,a,b);}
+function pairing(s,a,b){insist(a!==b,'SELF_POLLINATION_HELD');const x=seed(s,a),y=seed(s,b);const types=[x.kind,y.kind].sort().join('|');
+ if(types==='DIGNITY|WITNESS')return {ok:true,mechanic:'THE WITNESSED NAME ON THE TICKET',rule:'After AUDIT, record a separate dispute acknowledgment before the original 011 BUILD; after original RELAY, choose whether to share the fictional blueprint.',sourceIds:[x.id,y.id].sort()};
+ return {ok:false,reason:types==='ATLAS|DIGNITY'||types==='ATLAS|WITNESS'?'HOLD_SOURCE_ADAPTER_NOT_PROVEN':'HOLD_NO_SUPPORTED_CROSS_RULE'};
+}
+function inspect(s){insist(s?.schema===SCHEMA,'INVALID_GARDEN');return {title:s.name,worlds:s.habitat.table.worlds.length,seeds:s.seeds.map(x=>({id:x.id,kind:x.kind,title:x.title,status:x.status,care:x.care,vote:x.vote,sourceDigest:x.proposal.digest,source:x.kind==='ATLAS'?'ATLAS_010':'BREEDER_011'})),grafts:s.grafts.map(g=>({id:g.id,title:g.title,status:g.status,childId:g.childId,acknowledged:g.acknowledged,shared:g.shared,parentSeeds:g.parentSeeds,sourceNative:B.inspect(s.habitat,g.crossingDigest)})),inbox:s.inbox.map(m=>({id:m.id,from:m.packet.originGarden,status:m.status,title:m.packet.title})),events:s.events.length,authority:'LOCAL_FICTION_ONLY'};}
+async function apply(raw,event){insist(raw?.schema===SCHEMA&&raw.authority==='LOCAL_FICTION_ONLY','INVALID_GARDEN');insist(Array.isArray(raw.events)&&raw.events.length<160,'EVENT_LIMIT');const s=cp(raw);const type=event?.type;
+ if(type==='PLANT'){
+  insist(KINDS.includes(event.kind),'UNKNOWN_SEED_KIND');insist(s.seeds.length<8,'GARDEN_FULL');insist(!s.seeds.some(x=>x.kind===event.kind),'DUPLICATE_SEED_KIND');
+  const proposal=await sourceProposal(s,event.kind);const id=`seed-${(await digest({garden:s.id,kind:event.kind,d:proposal.digest})).slice(7,19)}`;
+  s.seeds.push({id,kind:event.kind,proposal,title:event.kind==='DIGNITY'?'Names in the Station':event.kind==='WITNESS'?'The Open Ledger':'A Seed from the Atlas',status:'DORMANT',care:[],vote:'HOLD'});
+ }else if(type==='TEND'){
+  const v=seed(s,event.id);insist(CONDITIONS.includes(event.method),'BAD_GARDEN_CARE');insist(v.vote!=='REFUSE','REFUSED_SEED_STAYS_DORMANT');insist(!v.care.includes(event.method),'CARE_ALREADY_RECORDED');v.care.push(event.method);v.status=v.care.length===2?'READY_FOR_PLAYER_CHOICE':'GERMINATING';
+ }else if(type==='CHOOSE'){
+  const v=seed(s,event.id);insist(v.care.length===2,'SEED_NOT_NURTURED');insist(['YES','REFUSE'].includes(event.choice),'BAD_SEED_CHOICE');insist(v.vote==='HOLD','SEED_ALREADY_DECIDED');v.vote=event.choice;v.status=event.choice==='YES'?'LITTLE_YES_RECORDED':'REFUSED_WITHOUT_PENALTY';
+ }else if(type==='GRAFT'){
+  insist(label(event.label),'INVALID_GRAFT_NAME');insist(s.grafts.length<1,'ONE_GRAFT_PER_EXPERIMENT');const a=seed(s,event.a),b=seed(s,event.b);const compatible=pairing(s,a.id,b.id);insist(compatible.ok,compatible.reason);insist(a.vote==='YES'&&b.vote==='YES','HOLD_TWO_SEPARATE_LITTLE_YES');insist(a.care.length===2&&b.care.length===2,'HOLD_MISSING_CARE');
+  const dignity=s.seeds.find(x=>x.kind==='DIGNITY');const ids=sourceFor(s.habitat,'DIGNITY');
+  let out=await B.nominate(s.habitat,ids[0],ids[1]);s.habitat=out.habitat;const p=out.crossing.proposal;
+  for(const ref of p.parents)s.habitat=B.respond(s.habitat,p.digest,ref.worldId,'YES').habitat;
+  const born=await B.birth(s.habitat,p.digest,event.label);s.habitat=born.habitat;
+  s.grafts.push({id:'graft-'+p.digest.slice(7,19),title:event.label,parentSeeds:[a.id,b.id].sort(),crossingDigest:p.digest,childId:born.world.id,acknowledged:false,shared:false,status:'CHILD_PLAYING'});
+  a.status='GRAFT_PARENT';b.status='GRAFT_PARENT';insist(dignity,'MISSING_SOURCE_SEED');
+ }else if(type==='ACKNOWLEDGE'){
+  const g=graftOf(s,event.id);insist(!g.acknowledged,'DISPUTE_ALREADY_ACKNOWLEDGED');const progress=B.inspect(s.habitat,g.crossingDigest).progress;
+  insist(progress?.audit,'AUDIT_FIRST');g.acknowledged=true;
+ }else if(type==='MOVE'){
+  const g=graftOf(s,event.id);insist(!g.shared,'ALREADY_SHARED');const tip=B.next(s.habitat,g.crossingDigest);insist(tip.action,'NO_NEXT_MOVE');
+  insist(canonical(event.action)===canonical(tip.action),'UNEXPECTED_NATIVE_MOVE');if(tip.action.kind==='rail'&&tip.action.move?.kind==='build')insist(g.acknowledged,'HOLD_WITNESS_ACK_BEFORE_BUILD');
+  s.habitat=B.move(s.habitat,g.crossingDigest,tip.action).habitat;
+  const r=B.inspect(s.habitat,g.crossingDigest);if(r.progress?.complete)g.status='READY_FOR_BLUEPRINT_CHOICE';
+ }else if(type==='SHARE'){
+  const g=graftOf(s,event.id);insist(!g.shared&&g.status==='READY_FOR_BLUEPRINT_CHOICE','GAME_NOT_COMPLETE');insist(g.acknowledged,'MISSING_DISPUTE_ACK');g.shared=true;g.status='FICTIONAL_BLUEPRINT_READY';
+ }else if(type==='RECEIVE'){
+  const p=event.packet;const valid=await verifyPacket(p);insist(valid.ok,valid.reason);insist(s.inbox.length<16,'INBOX_FULL');insist(!s.inbox.some(x=>x.packet.digest===p.digest),'DUPLICATE_MAIL');
+  s.inbox.push({id:'mail-'+p.digest.slice(7,19),packet:p,status:'HOLD'});
+ }else if(type==='MAIL_CHOICE'){
+  const m=s.inbox.find(m=>m.id===event.id);insist(m,'UNKNOWN_MAIL');insist(m.status==='HOLD','MAIL_ALREADY_DECIDED');insist(['REFUSE','ADMIT_AS_FICTIONAL_REFERENCE'].includes(event.choice),'INVALID_MAIL_DECISION');m.status=event.choice;
+ }else throw Error('UNSUPPORTED_GARDEN_EVENT');
+ s.events.push(cp(event));return s;
+}
+async function act(raw,event){const proof=await verify(raw);insist(proof.ok,'GARDEN_REPLAY_FAILED_'+proof.reason);return apply(raw,event);}
+function compatible(s,a,b){return pairing(s,a,b);}
+function suggested(s){if(!s.seeds.some(x=>x.kind==='DIGNITY'))return {title:'Plant Names in the Station',event:{type:'PLANT',kind:'DIGNITY'}};
+ if(!s.seeds.some(x=>x.kind==='WITNESS'))return {title:'Plant The Open Ledger',event:{type:'PLANT',kind:'WITNESS'}};
+ for(const v of s.seeds.filter(x=>x.kind!=='ATLAS')){for(const method of CONDITIONS)if(!v.care.includes(method))return {title:`${method==='OBSERVE'?'Observe':'Tend'} ${v.title}`,event:{type:'TEND',id:v.id,method}};if(v.vote==='HOLD')return {title:`Ask for a Little Yes from ${v.title}`,event:{type:'CHOOSE',id:v.id,choice:'YES'}};}
+ if(!s.grafts.length){const a=s.seeds.find(x=>x.kind==='DIGNITY'),b=s.seeds.find(x=>x.kind==='WITNESS');if(a.vote==='YES'&&b.vote==='YES')return {title:'Graft the two independently selected seeds',event:{type:'GRAFT',a:a.id,b:b.id,label:'The Witnessed Station'}};return {title:'Respect a refusal or unresolved Little Yes',event:null};}
+ const g=s.grafts[0];if(g.shared)return {title:'The fictional blueprint is ready for voluntary mail',event:null};
+ const state=B.inspect(s.habitat,g.crossingDigest);if(state.progress?.audit&&!g.acknowledged)return {title:'Acknowledge that 42 WOOD was claimed but only 39 observed',event:{type:'ACKNOWLEDGE',id:g.id}};
+ if(state.progress?.complete)return {title:'Choose to share the completed fictional blueprint',event:{type:'SHARE',id:g.id}};
+ return {title:B.next(s.habitat,g.crossingDigest).title,event:{type:'MOVE',id:g.id,action:B.next(s.habitat,g.crossingDigest).action}};
+}
+async function verify(raw){try{
+ insist(raw?.schema===SCHEMA&&raw.authority==='LOCAL_FICTION_ONLY'&&label(raw.id)&&label(raw.name),'BAD_GARDEN');
+ insist(raw.limits?.seedSlots===8&&raw.limits?.simultaneousGrafts===1,'FORGED_LIMITS');
+ insist(Array.isArray(raw.events)&&raw.events.length<=160&&JSON.stringify(raw).length<280000,'GARDEN_TOO_LARGE');
+ const fresh=await create(raw.id,raw.name);let r=fresh;
+ for(const e of raw.events)r=await apply(r,e);
+ insist(canonical(r)===canonical(raw),'GARDEN_MUTATION_OR_MISSING_EVENT');
+ insist((await B.verify(raw.habitat)).ok,'NATIVE_011_VALIDATION_FAILED');
+ return {ok:true,events:raw.events.length,fictionOnly:true};
+ }catch(e){return {ok:false,reason:String(e.message)};}}
+async function issuePacket(s,graftId){insist((await verify(s)).ok,'GARDEN_NOT_VERIFIED');const g=graftOf(s,graftId);insist(g.shared,'BLUEPRINT_NOT_SHARED');
+ const b={schema:MAIL_SCHEMA,originGarden:s.id,title:g.title,originSeedDigests:g.parentSeeds.map(id=>seed(s,id).proposal.digest),native011CrossingDigest:g.crossingDigest,
+  gameOnly:true,localClaims:{physicalResources:0,verifiedLaborConsent:false,authenticatedSender:false,externalAuthority:'NONE'},destinationRule:'HOLD_UNTIL_LOCAL_RECEIVER_CHOICE'};
+ return {...b,digest:await digest(b)};
+}
+async function verifyPacket(p){try{insist(p&&typeof p==='object'&&JSON.stringify(p).length<6000,'BAD_PACKET_SIZE');const {digest:d,...core}=p;insist(Object.keys(core).sort().join('|')==='destinationRule|gameOnly|localClaims|native011CrossingDigest|originGarden|originSeedDigests|schema|title','UNEXPECTED_PACKET_FIELDS');insist(p.schema===MAIL_SCHEMA&&p.gameOnly===true&&label(p.originGarden)&&label(p.title)&&p.destinationRule==='HOLD_UNTIL_LOCAL_RECEIVER_CHOICE','BAD_PACKET_SCHEMA');
+ insist(Array.isArray(p.originSeedDigests)&&p.originSeedDigests.length===2&&p.originSeedDigests.every(s=>/^sha256:[a-f0-9]{64}$/.test(s)),'BAD_SEED_REFERENCES');
+ insist(p.localClaims?.physicalResources===0&&p.localClaims?.verifiedLaborConsent===false&&p.localClaims?.authenticatedSender===false&&p.localClaims?.externalAuthority==='NONE','FORGED_AUTHORITY');insist(await digest(core)===d,'PACKET_TAMPERED');return {ok:true};}catch(e){return {ok:false,reason:String(e.message)};}}
+async function demo(){let s=await create();for(let i=0;i<50;i++){const t=suggested(s);if(!t.event)break;s=await act(s,t.event);}const v=await verify(s);insist(v.ok,'DEMO_INVALID');return {garden:s,inspection:inspect(s),tip:suggested(s),verification:v};}
+
+return {SCHEMA,MAIL_SCHEMA,create,sourceProposal,inspect,act,compatible,suggested,verify,issuePacket,verifyPacket,demo};
+})();
+const EXCHANGE=(()=>{
+// STATIC FIELD 013 — THE SEED EXCHANGE
+// A bounded, offline, explicitly fictional four-table exchange with actual source-owned 012 mail admission.
+const SCHEMA='static-field.seed-exchange/013';
+const LOT_SCHEMA='static-field.seed-exchange-lot/013';
+const CHILD_SCHEMA='static-field.seed-exchange-child/013';
+const STATIONS=Object.freeze([
+ {id:'millford',name:'Millford Station',lens:'ROUTE',role:'The track crew',theme:'How can a route move something worth sharing?'},
+ {id:'cedar',name:'Cedar Kitchen',lens:'HARVEST',role:'The kitchen keeper',theme:'What can a shared meal accomplish?'},
+ {id:'lantern',name:'Lantern Crew',lens:'CARE',role:'The builders and carers',theme:'Whose consent and care must the plan include?'},
+ {id:'festival',name:'Festival Table',lens:'WITNESS',role:'The listening table',theme:'How will participants know what actually happened?'}
+]);
+const RECIPES=Object.freeze({
+ 'CARE|ROUTE':{name:'The Route That Remembers Its Builders',question:'Can a route be built without hiding its workers?',steps:['TRACE_WORK','ASK_BUILDERS','PLAN_ROUTE','WITNESS_RETURN']},
+ 'HARVEST|ROUTE':{name:'The Harvest Express',question:'Could a rail link make a shared harvest useful elsewhere?',steps:['TRACE_HARVEST','ASK_GROWERS','PLAN_ROUTE','WITNESS_ARRIVAL']},
+ 'CARE|HARVEST':{name:'The Shared Table',question:'Can a harvest become a meal without treating helpers as expendable?',steps:['TRACE_NEED','ASK_HELPERS','DESIGN_TABLE','WITNESS_RETURN']},
+ 'ROUTE|WITNESS':{name:'The Ledger Railway',question:'How do we distinguish promised loads from delivered ones?',steps:['TRACE_CLAIMS','ASK_CARRIERS','DESIGN_ROUTE','COMPARE_RECEIPTS']},
+ 'CARE|HARVEST|ROUTE':{name:'The Jubilee Caravan',question:'Can food, transport and care form a cooperative festival route?',steps:['TRACE_PROVENANCE','LISTEN_TO_BUILDERS','DRAW_THE_ROUTE','INVITE_THE_TABLE','WITNESS_RETURN']},
+ 'CARE|HARVEST|ROUTE|WITNESS':{name:'The Commons Jubilee',question:'Can all four tables design a useful, fair and inspectable gathering?',steps:['TRACE_PROVENANCE','LISTEN_TO_BUILDERS','DESIGN_SHARED_ROUTE','VERIFY_CLAIMS','INVITE_THE_TABLE','WITNESS_RETURN']}
+});
+const clone=structuredClone;
+const assert=(ok,reason)=>{if(!ok)throw Error(reason);};
+const keys=o=>Object.keys(o||{}).sort().join('|');
+const json=x=>Array.isArray(x)?'['+x.map(json).join(',')+']':x&&typeof x==='object'?'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+json(x[k])).join(',')+'}':JSON.stringify(x);
+const digest=async o=>'sha256:'+Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(json(o)))),b=>b.toString(16).padStart(2,'0')).join('');
+const label=x=>typeof x==='string'&&x.length>1&&x.length<=85&&/^[\w .,!?:;'-]+$/.test(x);
+const st=(s,id)=>{const v=s.stations.find(t=>t.id===id);assert(v,'UNKNOWN_STATION');return v;};
+const lot=(s,id)=>{const v=s.lots.find(x=>x.id===id);assert(v,'UNKNOWN_LOT');return v;};
+const plan=(s,id)=>{const v=s.plans.find(x=>x.id===id);assert(v,'UNKNOWN_PLAN');return v;};
+function groupRecipe(lots){const sequence=lots.map(l=>l.lens).sort().join('|');return RECIPES[sequence]||null;}
+function recipes(){return structuredClone(RECIPES);}
+async function create(){return {schema:SCHEMA,authority:'LOCAL_FICTION_ONLY',stations:await Promise.all(STATIONS.map(async t=>({...t,receiver:await GARDEN.create('receiver-'+t.id,t.name+' Receiving Porch')}))),lots:[],plans:[],returns:[],events:[]};}
+/** Build a verifiable source-012 packet from an actual completed source garden. Caller controls only presentation lens. */
+async function prepareLot(garden,owner,lens,title){assert(STATIONS.some(x=>x.id===owner),'UNKNOWN_STATION');assert(['ROUTE','CARE','HARVEST','WITNESS'].includes(lens),'UNKNOWN_LENS');assert(label(title),'BAD_LOT_TITLE');assert(garden?.id==='source-'+owner,'WRONG_SOURCE_GARDEN');const proof=await GARDEN.verify(garden);assert(proof.ok,'SOURCE_GARDEN_UNVERIFIED');assert(garden.grafts?.[0]?.shared===true,'NO_RELEASED_SOURCE_GRAFT');const packet=await GARDEN.issuePacket(garden,garden.grafts[0].id);const core={schema:LOT_SCHEMA,origin:owner,lens,title,source012:packet,fictionOnly:true,authority:'PROPOSAL_NOT_PERMISSION',sourceCategory:'012-native-witnessed-station-plus-local-013-lens'};return {...core,id:await digest(core)};}
+async function growExampleSource(owner){assert(STATIONS.some(x=>x.id===owner),'UNKNOWN_STATION');let g=await GARDEN.create('source-'+owner,owner+' Garden');for(let i=0;i<32;i++){const t=GARDEN.suggested(g);if(!t.event)break;g=await GARDEN.act(g,t.event);}assert(g.grafts[0]?.shared,'SOURCE_GARDEN_DID_NOT_FINISH');return g;}
+async function exampleLot(owner){const v=STATIONS.find(x=>x.id===owner);assert(v,'UNKNOWN_STATION');const g=await growExampleSource(owner);const title={millford:'A Track Between Neighbors',cedar:'The Shared Harvest Table',lantern:'Builders Deserve a Voice',festival:'The Ledger of Arrivals'}[owner];return prepareLot(g,owner,v.lens,title);}
+async function verifyLot(x){try{assert(x&&JSON.stringify(x).length<3600,'LOT_TOO_LARGE');assert(keys(x)==='authority|fictionOnly|id|lens|origin|schema|source012|sourceCategory|title','LOT_EXTRA_OR_MISSING_FIELDS');assert(x.schema===LOT_SCHEMA&&x.fictionOnly===true&&x.authority==='PROPOSAL_NOT_PERMISSION','LOT_FORGED_AUTHORITY');assert(x.sourceCategory==='012-native-witnessed-station-plus-local-013-lens'&&label(x.title),'INVALID_LOT_DETAILS');assert(STATIONS.some(y=>y.id===x.origin&&y.lens===x.lens),'INVALID_ORIGIN_LENS');assert(x.source012?.originGarden==='source-'+x.origin,'SOURCE_ID_NOT_MATCHED');assert((await GARDEN.verifyPacket(x.source012)).ok,'NATIVE_012_PACKET_INVALID');const {id,...core}=x;assert(await digest(core)===id,'LOT_DIGEST_MISMATCH');return {ok:true,source:'NATIVE_012_PACKET_FORMAT',identityVerified:false};}catch(e){return {ok:false,reason:String(e.message)};}}
+/** Only the allowed event vocabulary is replayed; no arbitrary instructions or executable extensions can cross. */
+async function apply(raw,event){assert(raw.schema===SCHEMA&&raw.events.length<125,'EXCHANGE_NOT_VALID');const s=clone(raw);assert(event&&typeof event==='object'&&typeof event.type==='string','BAD_EVENT');const t=event.type;
+ if(t==='OFFER'){
+  assert(s.lots.length<12,'LOT_CAPACITY');const x=event.lot;assert((await verifyLot(x)).ok,'LOT_INVALID');assert(!s.lots.some(y=>y.id===x.id),'DUPLICATE_LOT');s.lots.push(x);
+ }else if(t==='DELIVER'){
+  const x=lot(s,event.id),dest=st(s,event.to);assert(x.origin!==dest.id,'SELF_DELIVERY_HOLD');assert(!dest.deliveries?.some(d=>d.lot===x.id),'DUPLICATE_DELIVERY');const next=await GARDEN.act(dest.receiver,{type:'RECEIVE',packet:x.source012});dest.receiver=next;dest.deliveries=[...(dest.deliveries||[]),{lot:x.id,mailId:'mail-'+x.source012.digest.slice(7,19)}];
+ }else if(t==='RECEIVER_CHOICE'){
+  const dest=st(s,event.at);const entry=(dest.deliveries||[]).find(x=>x.lot===event.id);assert(entry,'DELIVERY_NOT_FOUND');assert(['ADMIT_AS_FICTIONAL_REFERENCE','REFUSE'].includes(event.choice),'BAD_RECEIVER_CHOICE');dest.receiver=await GARDEN.act(dest.receiver,{type:'MAIL_CHOICE',id:entry.mailId,choice:event.choice});
+ }else if(t==='PROPOSE'){
+  const dest=st(s,event.host);const ids=event.lots;assert(Array.isArray(ids)&&ids.length>=2&&ids.length<=4&&new Set(ids).size===ids.length,'BAD_RECIPE_LOTS');const inputs=ids.map(id=>lot(s,id));assert(new Set(inputs.map(x=>x.origin)).size===ids.length,'NEEDS_DISTINCT_ORIGINS');assert(inputs.every(x=>{const rec=(dest.deliveries||[]).find(d=>d.lot===x.id);return rec&&GARDEN.inspect(dest.receiver).inbox.find(m=>m.id===rec.mailId)?.status==='ADMIT_AS_FICTIONAL_REFERENCE';}),'RECEIVER_MUST_ADMIT_EACH_LOT');const recipe=groupRecipe(inputs);assert(recipe,'HOLD_UNSUPPORTED_RECIPE');assert(s.plans.length<8,'PLAN_LIMIT');const core={host:dest.id,ingredients:ids.slice().sort(),sourceDigests:inputs.map(x=>x.source012.digest).sort(),recipe:inputs.map(x=>x.lens).sort().join('|'),title:recipe.name,question:recipe.question,steps:recipe.steps.slice()};const id=await digest(core);assert(!s.plans.some(x=>x.id===id),'DUPLICATE_PLAN');s.plans.push({id,...core,stage:0,hostChoice:'HOLD',votes:inputs.map(x=>({owner:x.origin,choice:'HOLD'})).sort((a,b)=>a.owner.localeCompare(b.owner)),status:'WAITING_FOR_SEPARATE_LITTLE_YES'});
+ }else if(t==='SOURCE_CHOICE'){
+  const p=plan(s,event.plan);assert(['YES','REFUSE'].includes(event.choice),'BAD_SOURCE_CHOICE');const v=p.votes.find(x=>x.owner===event.owner);assert(v&&v.choice==='HOLD','NOT_A_FRESH_SOURCE_CHOICE');assert(p.status==='WAITING_FOR_SEPARATE_LITTLE_YES','PLAN_ALREADY_CLOSED');v.choice=event.choice;
+ }else if(t==='HOST_CHOICE'){
+  const p=plan(s,event.plan);assert(event.host===p.host&&['ADMIT_LOCAL_GAME','REFUSE'].includes(event.choice),'BAD_HOST_CHOICE');assert(p.hostChoice==='HOLD'&&p.status==='WAITING_FOR_SEPARATE_LITTLE_YES','HOST_ALREADY_DECIDED');p.hostChoice=event.choice;
+ }else if(t==='PLAY'){
+  const p=plan(s,event.plan);assert(p.status==='READY_FOR_LOCAL_GAME'||p.status==='IN_PLAY','PLAN_NOT_OPEN_TO_PLAY');assert(event.move===p.steps[p.stage],'OUT_OF_SEQUENCE_MOVE');p.stage++;p.status=p.stage===p.steps.length?'COMPLETED_FICTIONAL_MISSION':'IN_PLAY';
+ }else if(t==='RECEIVE_CHILD'){
+  const v=event.child;assert((await verifyChild(v)).ok,'BAD_CHILD_PACKET');const dest=st(s,event.at);assert(v.host!==dest.id,'SAME_TABLE_RETURN');assert(!s.returns.some(x=>x.child.id===v.id&&x.at===event.at),'DUPLICATE_CHILD_MAIL');assert(s.returns.length<12,'RETURN_CAPACITY');s.returns.push({child:v,at:dest.id,choice:'HOLD'});
+ }else if(t==='RETURN_CHOICE'){
+  const r=s.returns.find(x=>x.child.id===event.id&&x.at===event.at);assert(r&&r.choice==='HOLD','RETURN_NOT_PENDING');assert(['REFUSE','ADMIT_AS_IDEA_ONLY'].includes(event.choice),'BAD_RETURN_CHOICE');r.choice=event.choice;
+ }else throw Error('UNKNOWN_EXCHANGE_EVENT');
+ if(t==='SOURCE_CHOICE'||t==='HOST_CHOICE'){
+  const p=plan(s,event.plan);if(p.votes.some(v=>v.choice==='REFUSE')||p.hostChoice==='REFUSE')p.status='REFUSED_WITHOUT_PENALTY';else if(p.votes.every(v=>v.choice==='YES')&&p.hostChoice==='ADMIT_LOCAL_GAME')p.status='READY_FOR_LOCAL_GAME';
+ }
+ s.events.push(clone(event));return s;
+}
+async function verify(s){try{assert(s?.schema===SCHEMA&&s.authority==='LOCAL_FICTION_ONLY'&&Array.isArray(s.events)&&s.events.length<=125&&JSON.stringify(s).length<450000,'BAD_EXCHANGE_SAVE');let fresh=await create();for(const e of s.events)fresh=await apply(fresh,e);assert(json(fresh)===json(s),'EXCHANGE_TAMPERED_OR_MISSING_EVENT');return {ok:true,events:s.events.length,source:'012-native-mail-replayed',authenticatedPeople:0,physicalCredits:0};}catch(e){return {ok:false,reason:String(e.message)};}}
+async function act(s,event){const v=await verify(s);assert(v.ok,'SAVE_REFUSED_'+v.reason);return apply(s,event);}
+function inspect(s){return {version:SCHEMA,stations:s.stations.map(t=>({...STATIONS.find(v=>v.id===t.id),inbox:GARDEN.inspect(t.receiver).inbox.map(m=>({...m,lotId:(t.deliveries||[]).find(d=>d.mailId===m.id)?.lot})),sent:s.lots.filter(v=>v.origin===t.id).length})),lots:s.lots.map(({source012,...rest})=>({...rest,sourceDigest:source012.digest})),plans:s.plans.map(p=>({...p,steps:p.steps.map((step,i)=>({step,done:i<p.stage}))})),returns:s.returns.map(r=>({id:r.child.id,title:r.child.title,at:r.at,choice:r.choice})),events:s.events.length};}
+async function issueChild(s,id){assert((await verify(s)).ok,'SAVE_NOT_REPLAYABLE');const p=plan(s,id);assert(p.status==='COMPLETED_FICTIONAL_MISSION','CHILD_NOT_COMPLETED');const base={schema:CHILD_SCHEMA,host:p.host,recipe:p.recipe,title:p.title,question:p.question,sourceLotDigests:p.ingredients.slice(),stagesCompleted:p.steps.slice(),fictionOnly:true,claimedPhysicalWork:0,authenticatedPeople:0,authority:'PORTABLE_IDEA_ONLY'};return {...base,id:await digest(base)};}
+async function verifyChild(c){try{assert(c&&JSON.stringify(c).length<3500,'CHILD_TOO_LARGE');assert(keys(c)==='authenticatedPeople|authority|claimedPhysicalWork|fictionOnly|host|id|question|recipe|schema|sourceLotDigests|stagesCompleted|title','CHILD_UNKNOWN_FIELDS');assert(c.schema===CHILD_SCHEMA&&c.fictionOnly===true&&c.claimedPhysicalWork===0&&c.authenticatedPeople===0&&c.authority==='PORTABLE_IDEA_ONLY','CHILD_FORGED_AUTHORITY');assert(STATIONS.some(x=>x.id===c.host),'CHILD_UNKNOWN_HOST');const recipe=RECIPES[c.recipe];assert(recipe&&c.title===recipe.name&&c.question===recipe.question&&json(c.stagesCompleted)===json(recipe.steps),'CHILD_FORGED_RECIPE');assert(Array.isArray(c.sourceLotDigests)&&c.sourceLotDigests.length===c.recipe.split('|').length&&c.sourceLotDigests.every(x=>/^sha256:[a-f0-9]{64}$/.test(x)),'CHILD_BAD_ORIGINS');const {id,...base}=c;assert(id===await digest(base),'CHILD_DIGEST_MISMATCH');return {ok:true,identityVerified:false};}catch(e){return {ok:false,reason:String(e.message)};}}
+function next(s){const host=st(s,'festival');if(s.lots.length<3){const owner=['millford','cedar','lantern'].find(x=>!s.lots.some(v=>v.origin===x));return {label:`Grow ${owner}'s native World Garden seed`,kind:'OFFER',owner};}
+ for(const x of s.lots){if(x.origin==='festival')continue;const rec=(host.deliveries||[]).find(y=>y.lot===x.id);if(!rec)return {label:`Carry ${STATIONS.find(t=>t.id===x.origin).name}'s seed to Festival Table`,event:{type:'DELIVER',id:x.id,to:'festival'}};const inbox=GARDEN.inspect(host.receiver).inbox.find(m=>m.id===rec.mailId);if(inbox?.status==='HOLD')return {label:`Festival Table chooses whether to admit ${x.title}`,event:{type:'RECEIVER_CHOICE',at:'festival',id:x.id,choice:'ADMIT_AS_FICTIONAL_REFERENCE'}};if(inbox?.status==='REFUSE')return {label:'One seed was refused. Local remix remains open to other proposals.',event:null};}
+ if(!s.plans.length)return {label:'Propose a new game from three independently admitted seeds',event:{type:'PROPOSE',host:'festival',lots:s.lots.filter(x=>x.origin!=='festival').map(x=>x.id)}};
+ const p=s.plans[0];if(p.status==='REFUSED_WITHOUT_PENALTY')return {label:'One table refused. The proposal ends without penalty.',event:null};
+ for(const v of p.votes)if(v.choice==='HOLD')return {label:`Ask ${STATIONS.find(t=>t.id===v.owner).name} for its own Little Yes`,event:{type:'SOURCE_CHOICE',plan:p.id,owner:v.owner,choice:'YES'}};
+ if(p.hostChoice==='HOLD')return {label:'Ask Festival Table to admit this local fictional game',event:{type:'HOST_CHOICE',plan:p.id,host:'festival',choice:'ADMIT_LOCAL_GAME'}};
+ if(p.status==='COMPLETED_FICTIONAL_MISSION')return {label:'The invented game is complete. Export its child-world seed.',event:null};return {label:`Play: ${p.steps[p.stage].replaceAll('_',' ').toLowerCase()}`,event:{type:'PLAY',plan:p.id,move:p.steps[p.stage]}};
+}
+async function demo(){let s=await create();for(const id of ['millford','cedar','lantern'])s=await act(s,{type:'OFFER',lot:await exampleLot(id)});for(let i=0;i<40;i++){const tip=next(s);if(!tip.event)break;s=await act(s,tip.event);}assert(s.plans[0]?.status==='COMPLETED_FICTIONAL_MISSION','EXAMPLE_NOT_COMPLETED');const child=await issueChild(s,s.plans[0].id);s=await act(s,{type:'RECEIVE_CHILD',at:'cedar',child});s=await act(s,{type:'RETURN_CHOICE',at:'cedar',id:child.id,choice:'REFUSE'});s=await act(s,{type:'RECEIVE_CHILD',at:'lantern',child});s=await act(s,{type:'RETURN_CHOICE',at:'lantern',id:child.id,choice:'ADMIT_AS_IDEA_ONLY'});return {exchange:s,child,inspection:inspect(s),verification:await verify(s)};}
+
+return {SCHEMA,LOT_SCHEMA,CHILD_SCHEMA,STATIONS,recipes,create,prepareLot,growExampleSource,exampleLot,verifyLot,act,verify,inspect,issueChild,verifyChild,next,demo};
+})();
+// Static Field 013 / seed-exchange offline table UI. Browsers never contact a server.
+(()=>{
+const E=EXCHANGE;
+let state=null,busy=false;
+const $=x=>document.getElementById(x);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=x=>String(x||'').slice(0,19)+'…';
+const card=(k,v)=>`<div class="mini"><span>${esc(k)}</span><b>${esc(v)}</b></div>`;
+const button=(act,label,cl='')=>`<button class="btn ${cl}" data-do="${esc(act)}">${esc(label)}</button>`;
+function notice(msg,err=false){const o=$('status');o.textContent=msg;o.dataset.error=err?'true':'false';}
+function download(name,text,type='application/json'){const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
+async function updated(e){state=await E.act(state,e);await paint();notice(`${e.type} recorded. Synthetic game state independently replayed.`);}
+async function paint(){if(!state)return;const i=E.inspect(state),tip=E.next(state);
+$('stats').innerHTML=[['Garden stations',i.stations.length],['Seed parcels',i.lots.length],['New games',i.plans.length],['Recorded moves',i.events]].map(x=>card(...x)).join('');
+$('nextlabel').textContent=tip.label;$('nextstep').disabled=!(tip.event||tip.kind==='OFFER');
+const recipe=E.recipes();
+$('stations').innerHTML=i.stations.map(t=>{
+const sent=i.lots.filter(x=>x.origin===t.id);const inbox=t.inbox||[];
+return `<article class="station"><div class="station-top"><span class="monogram">${esc(t.name.charAt(0))}</span><div><p class="kicker">${esc(t.role)}</p><h3>${esc(t.name)}</h3></div></div><p>${esc(t.theme)}</p><div class="chipline"><span class="chip">${esc(t.lens)}</span><span class="chip">${sent.length} source seed</span><span class="chip">${inbox.length} received</span></div>${sent.map(l=>`<div class="mail"><div><b>${esc(l.title)}</b><small>source-012 · ${esc(short(l.sourceDigest))}</small></div>${button(`lot-export|${l.id}`,'Export parcel')}</div>`).join('')||'<p class="quiet">A native World Garden seed can grow here.</p>'}
+${t.id==='festival'?`<div class="receive-list">${inbox.map(m=>`<div class="mail"><div><b>${esc(m.title)}</b><small>${esc(m.from)} → ${esc(m.status)}</small></div><div class="row">${m.status==='HOLD'?button(`inbox|${t.id}|${m.lotId}|ADMIT_AS_FICTIONAL_REFERENCE`,'Admit idea','positive')+button(`inbox|${t.id}|${m.lotId}|REFUSE`,'Refuse','warn'):''}</div></div>`).join('')}</div>`:''}
+<div class="row bottom">${!sent.length?button(`grow|${t.id}`,'Grow & offer seed','positive'):''}${t.id!=='festival'&&sent.length&&!i.stations.find(x=>x.id==='festival').inbox.some(x=>x.lotId===sent[0].id)?button(`deliver|${sent[0].id}`,'Mail to Festival Table'):''}</div></article>`;
+}).join('');
+$('postbox').innerHTML=i.lots.length?i.lots.map(l=>`<div class="parcel"><span class="chip">${esc(l.lens)}</span><strong>${esc(l.title)}</strong><small>${esc(l.origin)} · sha256 origin packet</small></div>`).join(''):'<p class="quiet">Nothing in the mailbag yet. Every parcel can be carried as a local JSON file.</p>';
+$('plans').innerHTML=i.plans.length?i.plans.map(p=>`<article class="plan"><div class="plan-heading"><span class="chip">${esc(p.recipe)}</span><span class="chip">${esc(p.status)}</span></div><h3>${esc(p.title)}</h3><p>${esc(p.question)}</p><p class="quiet">Source parents: ${esc(p.votes.map(x=>x.owner).join(' + '))}. No real-world authority travels with this plan.</p><div class="votes">${p.votes.map(v=>`<div class="vote"><span>${esc(v.owner)} · ${esc(v.choice)}</span>${v.choice==='HOLD'&&p.status==='WAITING_FOR_SEPARATE_LITTLE_YES'?button(`vote|${p.id}|${v.owner}|YES`,'Little Yes','positive')+button(`vote|${p.id}|${v.owner}|REFUSE`,'Refuse','warn'):''}</div>`).join('')}<div class="vote"><span>Festival Table · ${esc(p.hostChoice)}</span>${p.hostChoice==='HOLD'&&p.status==='WAITING_FOR_SEPARATE_LITTLE_YES'?button(`host|${p.id}|ADMIT_LOCAL_GAME`,'Admit game','positive')+button(`host|${p.id}|REFUSE`,'Refuse','warn'):''}</div></div><div class="timeline">${p.steps.map(x=>`<span class="timelock ${x.done?'done':''}">${x.done?'✓':'○'} ${esc(x.step.replaceAll('_',' '))}</span>`).join('')}</div><div class="row">${['READY_FOR_LOCAL_GAME','IN_PLAY'].includes(p.status)?button(`play|${p.id}`,'Play next story move','positive'):''}${p.status==='COMPLETED_FICTIONAL_MISSION'?button(`child-export|${p.id}`,'Export new baby-world seed','positive')+button(`field-export|${p.id}`,'Print real-world question (proposal)'):''}</div></article>`).join(''):'<p class="quiet">To invent a new game, Festival Table must independently admit at least two different station seeds.</p>';
+const admitted=i.stations.find(x=>x.id==='festival').inbox.filter(m=>m.status==='ADMIT_AS_FICTIONAL_REFERENCE').map(m=>m.lotId);
+$('compose-list').innerHTML=admitted.map(id=>{const l=i.lots.find(x=>x.id===id);return `<label class="check"><input type="checkbox" class="recipe-choice" value="${esc(id)}" checked><span><strong>${esc(l?.title||id)}</strong><br><small>${esc(l?.origin||'?')} / ${esc(l?.lens||'?')}</small></span></label>`;}).join('')||'<p class="quiet">At least two independently admitted parcels needed.</p>';
+$('compose').disabled=admitted.length<2;
+$('returns').innerHTML=i.returns.length?i.returns.map(r=>`<div class="mail"><div><b>${esc(r.title)}</b><small>${esc(r.at)} · ${esc(r.choice)}</small></div>${r.choice==='HOLD'?button(`return|${r.at}|${r.id}|ADMIT_AS_IDEA_ONLY`,'Admit idea','positive')+button(`return|${r.at}|${r.id}|REFUSE`,'Refuse','warn'):''}</div>`).join(''):'<p class="quiet">Another table can receive a completed child seed and independently decide. A hash verifies only file integrity.</p>';
+$('journal').textContent=state.events.slice(-15).map((e,index)=>`${String(i.events-Math.min(15,i.events)+index+1).padStart(2,'0')} ${e.type} ${e.owner||e.to||e.at||''}`).join('\n')||'The room is waiting for its first seed.';
+const v=await E.verify(state);$('proof').textContent=v.ok?`✓ Source 012 receiving events independently replayed · ${v.events} game events · 0 real deeds`:`✕ ${v.reason}`;
+}
+async function go(code){const [cmd,...args]=code.split('|');if(cmd==='next'){const tip=E.next(state);if(tip.kind==='OFFER')await updated({type:'OFFER',lot:await E.exampleLot(tip.owner)});else if(tip.event)await updated(tip.event);return;}
+if(cmd==='demo'){const d=await E.demo();state=d.exchange;await paint();notice('Fictional four-table festival complete: one table refused its baby-world mail; another admitted only an idea.');return;}
+if(cmd==='reset'){state=await E.create();await paint();notice('Four new fictional independent tables; no inherited inventory.');return;}
+if(cmd==='grow'){const id=args[0];await updated({type:'OFFER',lot:await E.exampleLot(id)});return;}
+if(cmd==='deliver'){await updated({type:'DELIVER',id:args[0],to:'festival'});return;}
+if(cmd==='inbox'){await updated({type:'RECEIVER_CHOICE',at:args[0],id:args[1],choice:args[2]});return;}
+if(cmd==='vote'){await updated({type:'SOURCE_CHOICE',plan:args[0],owner:args[1],choice:args[2]});return;}
+if(cmd==='host'){await updated({type:'HOST_CHOICE',plan:args[0],host:'festival',choice:args[1]});return;}
+if(cmd==='play'){const p=state.plans.find(x=>x.id===args[0]);await updated({type:'PLAY',plan:p.id,move:p.steps[p.stage]});return;}
+if(cmd==='compose'){const ids=[...document.querySelectorAll('.recipe-choice:checked')].map(x=>x.value);await updated({type:'PROPOSE',host:'festival',lots:ids});return;}
+if(cmd==='save'){download('static-field-013-exchange-save.json',JSON.stringify(state,null,2)+'\n');notice('Replayable session saved. Not a real-world receipt.');return;}
+if(cmd==='lot-export'){const p=state.lots.find(x=>x.id===args[0]);download('seed-'+p.origin+'.json',JSON.stringify(p,null,2)+'\n');return;}
+if(cmd==='child-export'||cmd==='field-export'){const c=await E.issueChild(state,args[0]);if(cmd==='child-export'){download('seed-exchange-013-child.json',JSON.stringify(c,null,2)+'\n');notice('Portable child-game idea exported, not published.');return;}
+const p=state.plans.find(x=>x.id===args[0]);const text=['SEED EXCHANGE 013 · REAL WORLD QUESTION CARD','',p.title,p.question,'','Possible first conversation: Who in our actual community would voluntarily want to investigate this?','','Source stations (fictional): '+p.votes.map(x=>x.owner).join(', '),'Evidence required: local consent, verified resources, safety and purpose.','Status: UNSENT DRAFT / ZERO PHYSICAL WORK','','Do not infer actual participants, materials, wages or commitments from game state.'].join('\n');download('field-question-013.txt',text,'text/plain');return;}
+if(cmd==='return'){await updated({type:'RETURN_CHOICE',at:args[0],id:args[1],choice:args[2]});return;}
+}
+let busyFlag=false;document.addEventListener('click',async e=>{const b=e.target.closest('button[data-do]');if(!b||busyFlag)return;busyFlag=true;try{b.disabled=true;await go(b.dataset.do);}catch(err){notice('HOLD / '+String(err.message),true);}finally{busyFlag=false;if(state)await paint();}});
+$('uploadLot').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{if(f.size>4000)throw Error('PARCEL_TOO_LARGE');const lot=JSON.parse(await f.text());await updated({type:'OFFER',lot});notice('Local source packet was checked and registered as a proposal. Sender identity is NOT authenticated.');}catch(err){notice('REFUSE / '+String(err.message),true);}finally{e.target.value='';}});
+$('uploadChild').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{if(f.size>3500)throw Error('CHILD_TOO_LARGE');const child=JSON.parse(await f.text());const to=$('receiver').value;await updated({type:'RECEIVE_CHILD',at:to,child});notice('Child seed held pending independent local choice.');}catch(err){notice('REFUSE / '+String(err.message),true);}finally{e.target.value='';}});
+$('uploadSave').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{if(f.size>450000)throw Error('SAVE_TOO_LARGE');const s=JSON.parse(await f.text());const proof=await E.verify(s);if(!proof.ok)throw Error('NOT_REPLAYABLE_'+proof.reason);state=s;await paint();notice('Session restored after complete source-owned replay.');}catch(err){notice('REFUSE / '+String(err.message),true);}finally{e.target.value='';}});
+(async()=>{try{state=await E.create();await paint();notice('Four local fictional stations are open. No game decision counts as real participant consent.');}catch(e){notice('HOLD / '+e.message,true);}})();
+})();
+
+</script></body></html>
