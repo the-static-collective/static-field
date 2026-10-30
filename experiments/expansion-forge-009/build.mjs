@@ -6,8 +6,18 @@ const grab=p=>readFileSync(join(root,p),'utf8');
 function replaceExports(content){return content.replace(/\bexport (?=(const|function|class|async function)\b)/g,'');}
 const rail=replaceExports(grab('../little-yes-field-008/rail/game.mjs'));
 let kingdom=grab('../little-yes-field-008/kingdom/kingdom.mjs');
-kingdom=kingdom.replace(/^import .*? from .*?;\s*\n/m,`const {makeGame,step:railStep,goals:railGoals,offer:railOffer,exportRecord,VERSION:RAIL_VERSION,TOWNS,LINKS,RECIPES}=RAIL;\n`);
+// The archived 008 package and the existing Static Field 008 head export the
+// SAME functions in two equivalent forms: inline `export function` versus a
+// trailing `export {...}`. Normalize both before packaging; never ship a
+// raw ES export statement inside the classic-script offline bundle.
+kingdom=kingdom.replace(/^import .*? from .*?;\s*\n/m,'');
+kingdom=kingdom.replace(/^export \{[^\n]+\};?\s*\n?/gm,'');
 kingdom=replaceExports(kingdom);
+kingdom=kingdom.replace(/^\/\/ THE EARTH REMEMBERS[^\n]*\n/m,'').replace(/^\/\/ Original 007 rules[^\n]*\n/m,'').trim();
+kingdom=`// THE EARTH REMEMBERS / WHO BUILT YOUR KINGDOM? — scenario extension for Little Yes Express 007
+// Original 007 rules remain source-owned; this wrapper never creates real people, rights, wages or proof.
+const {makeGame,step:railStep,goals:railGoals,offer:railOffer,exportRecord,VERSION:RAIL_VERSION,TOWNS,LINKS,RECIPES}=RAIL;
+${kingdom}\n`;
 let forge=grab('./forge.mjs');
 forge=forge.replace(/^import .*? from .*?;\s*\n/m,`const {makeGame,step:railwayStep,offer:railwayOffer,LINKS,exportRecord:railwayExport}=RAIL;\n`);
 forge=replaceExports(forge);
