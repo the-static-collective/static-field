@@ -1,0 +1,48 @@
+name: Static Field 012 - The World Garden
+on:
+  push:
+    branches: [experiment/world-garden-012]
+  pull_request:
+    paths:
+      - 'experiments/world-garden-012/**'
+      - 'experiments/world-breeder-011/**'
+      - 'experiments/living-world-atlas-010/**'
+      - 'experiments/expansion-forge-009/**'
+      - 'experiments/little-yes-field-008/rail/**'
+      - '.github/workflows/world-garden-012.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-native-test-and-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exact source-owned inherited and 012 native execution tests
+        run: |
+          node --test experiments/little-yes-field-008/rail/game.test.mjs experiments/little-yes-field-008/kingdom/kingdom.test.mjs experiments/expansion-forge-009/tests/forge.test.mjs experiments/living-world-atlas-010/tests/atlas.test.mjs experiments/world-breeder-011/tests/breeder.test.mjs experiments/world-garden-012/tests/garden.test.mjs
+      - name: Build offline party player twice and compare
+        run: |
+          node experiments/world-garden-012/build.mjs
+          cp experiments/world-garden-012/index.html /tmp/world-garden-012-first.html
+          node experiments/world-garden-012/build.mjs
+          cmp /tmp/world-garden-012-first.html experiments/world-garden-012/index.html
+      - name: Produce source-derived independent held and refused mail evidence
+        run: |
+          node experiments/world-garden-012/proof.mjs
+          cp experiments/world-garden-012/examples/garden-proof.json /tmp/world-garden-012-first.json
+          node experiments/world-garden-012/proof.mjs
+          cmp /tmp/world-garden-012-first.json experiments/world-garden-012/examples/garden-proof.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: world-garden-012-offline-game-and-receipts
+          path: |
+            experiments/world-garden-012/index.html
+            experiments/world-garden-012/examples/garden-proof.json
+          retention-days: 14
